@@ -1,0 +1,37 @@
+{
+    "name": "takielias/tablar",
+    "description": "Laravel 9.* Front-end preset for Tabler html Template.",
+    "keywords": [
+        "laravel",
+        "preset",
+        "tabler",
+        "bootstrap"
+    ],
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Taki Elias",
+            "email": "taki.elias@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~9",
+        "laravel/ui": "~4"
+    },
+    "autoload": {
+        "psr-4": {
+            "TakiElias\\Tablar\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "TakiElias\\Tablar\\TablarServiceProvider"
+            ]
+        }
+    }
+}

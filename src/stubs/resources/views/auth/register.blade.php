@@ -1,0 +1,1 @@
+@extends('tablar::auth.register')
