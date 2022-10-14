@@ -25,9 +25,3 @@ import '../../node_modules/@tabler/core/dist/libs/nouislider/dist/nouislider';
 import '../../node_modules/@tabler/core/dist/libs/tinymce/tinymce';
 import '../../node_modules/@tabler/core/dist/libs/tom-select/dist/js/tom-select.popular';
 import '../../node_modules/@tabler/core/dist/js/demo-theme';
-
-/*
-Import the Tabler CSS
-*/
-
-import '../sass/tabler.scss';
