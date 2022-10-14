@@ -1,6 +1,6 @@
 @inject('navbarItemHelper', 'TakiElias\Tablar\Helpers\NavbarItemHelper')
 @if ($navbarItemHelper->isSubmenu($item))
-    <li class="nav-item dropdown" @isset($item['id']) id="{{ $item['id'] }}" @endisset>
+    <li class="nav-item dropdown {{ $item['class'] }}" @isset($item['id']) id="{{ $item['id'] }}" @endisset>
         <a class="nav-link dropdown-toggle {{ $item['class'] }}" href="" data-bs-toggle="dropdown"
            data-bs-auto-close="outside" role="button" aria-expanded="false">
                     <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
