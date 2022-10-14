@@ -116,6 +116,10 @@ Now visit your login route
 
 ![Login](https://user-images.githubusercontent.com/38932580/194739218-67066af4-ea1c-4a93-bc9e-14a332c686d5.png)
 
+N.B : If you use virtual host for your laravel application, don't forget to change the **APP_URL**
+```shell
+APP_URL=http://your virtual host
+```
 
 <!-- USAGE EXAMPLES -->
 
