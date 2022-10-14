@@ -16,6 +16,7 @@
         @include('tablar::partials.header.top')
         @include('tablar::partials.navbar.nav')
         <div class="page-wrapper">
+        <!-- Page body -->
             @yield('content')
             @include('tablar::partials.footer.bottom')
         </div>
