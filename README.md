@@ -90,10 +90,6 @@ For config.
 ```shell
 php artisan ui tablar:export-config
 ```
-For config.
-```shell
-php artisan ui tablar:export-config
-```
 For auth scaffolding.
 ```shell
 php artisan ui tablar:export-auth
