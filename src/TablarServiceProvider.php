@@ -59,6 +59,15 @@ class TablarServiceProvider extends ServiceProvider
             $command->comment('Please run "npm install" first. Once the installation is done, run "php artisan ui tablar:export"');
         });
 
+        PresetCommand::macro('tablar:export-all', function ($command) {
+            TablarPreset::exportConfig();
+            $command->info('Tablar Config Exported successfully.');
+            TablarPreset::exportAuth();
+            $command->info('Tablar auth scaffolding installed successfully.');
+            TablarPreset::exportAllView();
+            $command->info('Tablar views scaffolding has been exported successfully.');
+        });
+
         PresetCommand::macro('tablar:export-config', function ($command) {
             TablarPreset::exportConfig();
             $command->info('Tablar Config Exported successfully.');
