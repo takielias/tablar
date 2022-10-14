@@ -70,7 +70,7 @@ composer require takielias/tablar @dev
 First Install the preset
 
 ```shell
-php artisan ui tabler:install
+php artisan ui tablar:install
 ```
 Now
 
@@ -80,7 +80,7 @@ npm install
 Finally, export the config, assets & auth scaffolding.
 
 ```shell
-php artisan ui tabler:export-all
+php artisan ui tablar:export-all
 ```
 N.B: You may export individual component. For assets.
 ```shell
