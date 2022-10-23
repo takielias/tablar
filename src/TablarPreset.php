@@ -12,13 +12,11 @@ use SplFileInfo;
 /**
  *
  */
-class TablarPreset extends Preset
-{
+class TablarPreset extends Preset {
     /**
      * Install the preset.
      */
-    public static function install()
-    {
+    public static function install() {
         static::updatePackages();
         static::updateAssets();
         static::updateBootstrapping();
@@ -29,8 +27,7 @@ class TablarPreset extends Preset
     /**
      * Install the preset and auth views.
      */
-    public static function exportAuth()
-    {
+    public static function exportAuth() {
         static::scaffoldController();
         static::scaffoldAuth();
     }
@@ -39,32 +36,28 @@ class TablarPreset extends Preset
     /**
      * Install the preset and auth views.
      */
-    public static function exportConfig()
-    {
+    public static function exportConfig() {
         static::scaffoldConfig();
     }
 
     /**
      * Export the Config file.
      */
-    protected static function scaffoldConfig()
-    {
+    protected static function scaffoldConfig() {
         copy(__DIR__ . '../../config/tablar.php', base_path('config/tablar.php'));
     }
 
     /**
      * Install the preset and auth views.
      */
-    public static function exportAllView()
-    {
+    public static function exportAllView() {
         static::scaffoldAllView();
     }
 
     /**
      * Export the Config file.
      */
-    protected static function scaffoldAllView()
-    {
+    protected static function scaffoldAllView() {
         (new Filesystem())->copyDirectory(__DIR__ . '/../resources/views', static::getResourcePath('views/vendor/tablar'));
 
     }
@@ -73,8 +66,7 @@ class TablarPreset extends Preset
      * Export Tabler assets
      * @return void
      */
-    public static function exportAssets()
-    {
+    public static function exportAssets() {
 
         tap(new Filesystem, function ($filesystem) {
             collect($filesystem->allFiles(base_path('node_modules/@tabler/icons/iconfont/fonts')))
@@ -95,15 +87,14 @@ class TablarPreset extends Preset
      *
      * @return array
      */
-    protected static function updatePackageArray(array $packages): array
-    {
+    protected static function updatePackageArray(array $packages): array {
         return array_merge([
             "jquery" => "3.6.*",
-            "bootstrap" => "~5.2.1",
-            "popper.js" => "^1.16.1",
-            '@tabler/core' => '1.0.0-beta12',
+            "bootstrap" => "~5.2.2",
+            "popper.js" => "^2.11.6",
+            '@tabler/core' => '1.0.0-beta14',
             "@popperjs/core" => "^2.11.6",
-            "@tabler/icons" => "^1.100.0",
+            "@tabler/icons" => "^1.105.0",
             "laravel-vite-plugin" => "^0.6.0",
             "sass" => "^1.32.11",
             "sass-loader" => "^11.0.1",
@@ -118,8 +109,7 @@ class TablarPreset extends Preset
     /**
      * Update the Sass files for the application.
      */
-    protected static function updateAssets()
-    {
+    protected static function updateAssets() {
         tap(new Filesystem, function ($filesystem) {
 
             $filesystem->delete(public_path('js/app.js'));
@@ -153,8 +143,7 @@ class TablarPreset extends Preset
     /**
      * Update the bootstrapping files.
      */
-    protected static function updateBootstrapping()
-    {
+    protected static function updateBootstrapping() {
         copy(__DIR__ . '/stubs/vite.config.js', base_path('vite.config.js'));
         (new Filesystem())->copyDirectory(__DIR__ . '/stubs/resources', static::getResourcePath());
     }
@@ -162,8 +151,7 @@ class TablarPreset extends Preset
     /**
      * Export the authentication views.
      */
-    protected static function scaffoldAuth()
-    {
+    protected static function scaffoldAuth() {
         file_put_contents(app_path('Http/Controllers/HomeController.php'), static::compileControllerStub());
 
         file_put_contents(
@@ -190,8 +178,7 @@ class TablarPreset extends Preset
      * Export Home & Auth controllers
      * @return void
      */
-    protected static function scaffoldController()
-    {
+    protected static function scaffoldController() {
         if (!is_dir($directory = app_path('Http/Controllers/Auth'))) {
             mkdir($directory, 0755, true);
         }
@@ -211,8 +198,7 @@ class TablarPreset extends Preset
      * HomeController stub
      * @return array|bool|string
      */
-    protected static function compileControllerStub(): array|bool|string
-    {
+    protected static function compileControllerStub(): array|bool|string {
         return str_replace(
             '{{namespace}}',
             Container::getInstance()->getNamespace(),
@@ -224,8 +210,7 @@ class TablarPreset extends Preset
      * Welcome.blade.php
      * @return void
      */
-    protected static function updateWelcomePage()
-    {
+    protected static function updateWelcomePage() {
         (new Filesystem)->delete(resource_path('views/welcome.blade.php'));
 
         copy(__DIR__ . '/stubs/resources/views/welcome.blade.php', resource_path('views/welcome.blade.php'));
@@ -238,8 +223,7 @@ class TablarPreset extends Preset
      *
      * @return string
      */
-    protected static function getResourcePath(string $path = ''): string
-    {
+    protected static function getResourcePath(string $path = ''): string {
         if (self::expectsAssetsFolder()) {
             return resource_path('assets/' . $path);
         }
@@ -252,8 +236,7 @@ class TablarPreset extends Preset
      *
      * @return bool
      */
-    protected static function expectsAssetsFolder(): bool
-    {
+    protected static function expectsAssetsFolder(): bool {
         return (int)str_replace('.', '', app()->version()) < 570;
     }
 }
