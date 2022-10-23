@@ -123,15 +123,43 @@ APP_URL=http://your virtual host
 
 To use the blade template provided by this package, just create a new blade file and extend the layout with @extends('tablar::page'). The template yields the following main sections:
 
-```
+```shell
 @extends('tablar::page')
 
 @section('content')
+    <!-- Page header -->
+    <div class="page-header d-print-none">
+        <div class="container-xl">
+            <div class="row g-2 align-items-center">
+                <div class="col">
+                    <h2 class="page-title">
+                        Empty page
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page body -->
+    <div class="page-body">
+        <div class="container-xl">
+            @if(config('tablar','display_alert'))
+                @include('tablar::common.alert')
+            @endif
 
-Your content goes here
+            <!-- Page Content goes here -->
 
+        </div>
+    </div>
 @endsection
 ```
+Enable Display Alert manually
+
+```shell
+@if(config('tablar','display_alert'))
+@include('tablar::common.alert')
+@endif
+```
+Add the code above into your blade file. And don't forget to make `display_alert` to `true` from **tablar.php** config file
 
 ## Customization
 
