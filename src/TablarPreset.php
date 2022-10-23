@@ -99,7 +99,6 @@ class TablarPreset extends Preset {
             "sass-loader" => "^11.0.1",
             "vite" => "^3.0.0",
         ], Arr::except($packages, [
-            'lodash',
             'postcss',
             'jquery',
         ]));
