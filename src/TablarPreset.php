@@ -91,7 +91,6 @@ class TablarPreset extends Preset {
         return array_merge([
             "jquery" => "3.6.*",
             "bootstrap" => "~5.2.2",
-            "popper.js" => "^2.11.6",
             '@tabler/core' => '1.0.0-beta14',
             "@popperjs/core" => "^2.11.6",
             "@tabler/icons" => "^1.105.0",
