@@ -17,9 +17,6 @@
         @include('tablar::partials.navbar.nav')
         <div class="page-wrapper">
             <!-- Page body -->
-            @if(config('tablar','validation_error'))
-                @include('tablar::partials.common.alert')
-            @endif
             @yield('content')
             @include('tablar::partials.footer.bottom')
         </div>
