@@ -17,6 +17,8 @@
 
 Laravel 9.0+ Tabler Dashboard Preset built for Fast Development with Dark Mode. It also contains Dynamic menu generator that helps to maintain the navigation permission easily.
 
+Inspired By Laravel Adminlte `jeroennoten/Laravel-AdminLTE`
+
 ### Laravel Tablar CRUD Generator https://github.com/takielias/tablar-crud-generator
 
 ![Tablar Light](https://user-images.githubusercontent.com/38932580/194739188-0034be57-d738-4d0d-bc49-8c96c8b6e89c.png)
