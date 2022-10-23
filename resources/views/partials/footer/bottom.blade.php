@@ -3,14 +3,10 @@
         <div class="row text-center align-items-center flex-row-reverse">
             <div class="col-lg-auto ms-lg-auto">
                 <ul class="list-inline list-inline-dots mb-0">
-                    <li class="list-inline-item"><a href="#" class="link-secondary">Documentation</a>
-                    </li>
-                    <li class="list-inline-item"><a href="#" class="link-secondary">License</a>
-                    </li>
-                    <li class="list-inline-item"><a href="https://github.com/tabler/tabler" target="_blank"
+                    <li class="list-inline-item"><a href="https://github.com/takielias/tablar" target="_blank"
                                                     class="link-secondary" rel="noopener">Source code</a></li>
                     <li class="list-inline-item">
-                        <a href="https://github.com/sponsors/codecalm" target="_blank" class="link-secondary"
+                        <a href="https://www.buymeacoffee.com/takielias" target="_blank" class="link-secondary"
                            rel="noopener">
                             <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
                             <svg xmlns="http://www.w3.org/2000/svg"
