@@ -5,11 +5,10 @@
         <div class="container">
             <div class="row">
                 <div class="col col-login mx-auto">
-                    <div class="text-center mb-6">
-                        <img
-                            src="{{asset('assets/logo.svg')}}"
-                            class="h-6"
-                            alt="Logo Tabler">
+                    <div class="text-center mb-1 mt-5">
+                        <a href="" class="navbar-brand navbar-brand-autodark">
+                            <img src="{{asset(config('tablar.auth_logo.img.path','assets/logo.svg'))}}" height="36"
+                                 alt=""></a>
                     </div>
                     <form class="card" action="{{ route('password.email') }}" method="post" novalidate>
                         @csrf
