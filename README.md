@@ -24,7 +24,6 @@ Laravel 9.0+ Tabler Dashboard Preset built for Fast Development with Dark Mode. 
 ![Tablar Dark](https://user-images.githubusercontent.com/38932580/194739128-fa092837-10d7-47eb-8f66-ac22b3c26a7c.png)
 
 <br>
-<br>
 <a href="https://www.buymeacoffee.com/takielias" target="_blank"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="takielias" /></a>
 </p>
 <br><br>
