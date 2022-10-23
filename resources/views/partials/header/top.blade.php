@@ -38,6 +38,15 @@
                     @php( $profile_url = View::getSection('profile_url') ?? config('tablar.profile_url', 'logout') )
                     @php( $setting_url = View::getSection('setting_url') ?? config('tablar.setting_url', 'home') )
 
+                    @if (config('tablar.use_route_url', true))
+                        @php( $profile_url = $profile_url ? route($profile_url) : '' )
+                        @php( $logout_url = $logout_url ? route($logout_url) : '' )
+                        @php( $setting_url = $setting_url ? route($setting_url) : '' )
+                    @else
+                        @php( $profile_url = $profile_url ? url($profile_url) : '' )
+                        @php( $logout_url = $logout_url ? url($logout_url) : '' )
+                        @php( $setting_url = $setting_url ? url($setting_url) : '' )
+                    @endif
 
                     <a href="#" class="dropdown-item">Status</a>
                     <a href="{{$profile_url}}" class="dropdown-item">Profile</a>

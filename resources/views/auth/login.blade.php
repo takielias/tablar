@@ -2,9 +2,10 @@
 @section('title', 'Login')
 @section('content')
     <div class="container container-tight py-4">
-        <div class="text-center mb-4">
-            <a href="" class="navbar-brand navbar-brand-autodark"><img src="{{asset('assets/logo.svg')}}" height="36"
-                                                                       alt=""></a>
+        <div class="text-center mb-1 mt-5">
+            <a href="" class="navbar-brand navbar-brand-autodark">
+                <img src="{{asset(config('tablar.auth_logo.img.path','assets/logo.svg'))}}" height="36"
+                     alt=""></a>
         </div>
         <div class="card card-md">
             <div class="card-body">
