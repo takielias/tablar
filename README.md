@@ -121,7 +121,7 @@ APP_URL=http://your virtual host
 
 ## Usage
 
-To use the blade template provided by this package, just create a new blade file and extend the layout with @extends('tablar::page'). The template yields the following main sections:
+To use the blade template provided by this package, just create a new blade file and extend the layout with @extends('tablar::page'). You may use the following code snippet:
 
 ```shell
 @extends('tablar::page')
@@ -152,14 +152,15 @@ To use the blade template provided by this package, just create a new blade file
     </div>
 @endsection
 ```
-Enable Display Alert manually
+**Enable Display Alert**
 
-```shell
-@if(config('tablar','display_alert'))
-@include('tablar::common.alert')
-@endif
-```
-Add the code above into your blade file. And don't forget to make `display_alert` to `true` from **tablar.php** config file
+Make `display_alert` to `true` from **tablar.php** config file
+
+**Use Tabler Pagination**
+
+`
+{!! $modelName->links('tablar::pagination') !!}
+`
 
 ## Customization
 
