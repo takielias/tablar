@@ -13,8 +13,12 @@
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Email address</label>
-                        <input type="email" class="form-control" name="email" placeholder="your@email.com"
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+                               placeholder="your@email.com"
                                autocomplete="off">
+                        @error('email')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-2">
                         <label class="form-label">
@@ -24,7 +28,9 @@
                   </span>
                         </label>
                         <div class="input-group input-group-flat">
-                            <input type="password" name="password" class="form-control" placeholder="Your password"
+                            <input type="password" name="password"
+                                   class="form-control @error('password') is-invalid @enderror"
+                                   placeholder="Your password"
                                    autocomplete="off">
                             <span class="input-group-text">
                     <a href="#" class="link-secondary" title="Show password" data-bs-toggle="tooltip"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
@@ -36,6 +42,9 @@
                               d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"/></svg>
                     </a>
                   </span>
+                            @error('password')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="mb-2">

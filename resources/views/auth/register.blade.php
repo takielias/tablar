@@ -2,6 +2,7 @@
 @section('title', 'Register')
 @section('content')
     <div class="container container-tight py-4">
+
         <div class="text-center mb-4">
             <a href="" class="navbar-brand navbar-brand-autodark"><img src="{{asset('assets/logo.svg')}}" height="36"
                                                                        alt=""></a>
@@ -12,16 +13,22 @@
                 <h2 class="card-title text-center mb-4">Create new account</h2>
                 <div class="mb-3">
                     <label class="form-label">Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="Enter name">
+                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Enter name">
+                    @error('name')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Email address</label>
-                    <input type="email" name="email" class="form-control" placeholder="Enter email">
+                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email">
+                    @error('email')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Password</label>
                     <div class="input-group input-group-flat">
-                        <input type="password" name="password" class="form-control" placeholder="Password"
+                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password"
                                autocomplete="off">
                         <span class="input-group-text">
                   <a href="#" class="link-secondary" title="Show password" data-bs-toggle="tooltip"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
@@ -33,13 +40,16 @@
                             d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"/></svg>
                   </a>
                 </span>
+                        @error('password')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Confirm Password</label>
                     <div class="input-group input-group-flat">
-                        <input type="password" name="password_confirmation" class="form-control" placeholder="Password"
+                        <input type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Password"
                                autocomplete="off">
                         <span class="input-group-text">
                   <a href="#" class="link-secondary" title="Show password" data-bs-toggle="tooltip"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
@@ -51,6 +61,9 @@
                             d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"/></svg>
                   </a>
                 </span>
+                        @error('password_confirmation')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3">

@@ -11,8 +11,7 @@ use Laravel\Ui\UiCommand as PresetCommand;
 use TakiElias\Tablar\Events\BuildingMenu;
 use TakiElias\Tablar\Http\ViewComposers\TablarComposer;
 
-class TablarServiceProvider extends ServiceProvider
-{
+class TablarServiceProvider extends ServiceProvider {
     /**
      * The prefix to use for register/load the package resources.
      *
@@ -25,8 +24,7 @@ class TablarServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
+    public function register(): void {
         // Bind a singleton instance of the AdminLte class into the service
         // container.
 
@@ -44,8 +42,7 @@ class TablarServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Factory $view, Dispatcher $events, Repository $config)
-    {
+    public function boot(Factory $view, Dispatcher $events, Repository $config): void {
         $this->loadViews();
         $this->loadTranslations();
         $this->loadConfig();
@@ -95,8 +92,7 @@ class TablarServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    private function loadViews()
-    {
+    private function loadViews(): void {
         $viewsPath = $this->packagePath('resources/views');
         $this->loadViewsFrom($viewsPath, $this->pkgPrefix);
     }
@@ -106,8 +102,7 @@ class TablarServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    private function loadTranslations()
-    {
+    private function loadTranslations(): void {
         $translationsPath = $this->packagePath('resources/lang');
         $this->loadTranslationsFrom($translationsPath, $this->pkgPrefix);
     }
@@ -117,8 +112,7 @@ class TablarServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    private function loadConfig()
-    {
+    private function loadConfig(): void {
         $configPath = $this->packagePath('config/tablar.php');
         $this->mergeConfigFrom($configPath, $this->pkgPrefix);
     }
@@ -129,8 +123,7 @@ class TablarServiceProvider extends ServiceProvider
      * @param string $path The relative path to the resource
      * @return string
      */
-    private function packagePath($path)
-    {
+    private function packagePath($path): string {
         return __DIR__ . "/../$path";
     }
 
@@ -139,8 +132,7 @@ class TablarServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    private function registerViewComposers(Factory $view)
-    {
+    private function registerViewComposers(Factory $view): void {
         $view->composer('tablar::page', TablarComposer::class);
     }
 
@@ -149,8 +141,7 @@ class TablarServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    private static function registerMenu(Dispatcher $events, Repository $config)
-    {
+    private static function registerMenu(Dispatcher $events, Repository $config): void {
         // Register a handler for the BuildingMenu event, this handler will add
         // the menu defined on the config file to the menu builder instance.
 

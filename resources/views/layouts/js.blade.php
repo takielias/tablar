@@ -1,13 +1,12 @@
 <script>
     /*!
-* Tabler v1.0.0-beta12 (https://tabler.io)
-* @version 1.0.0-beta12
-* @link https://tabler.io
-* Copyright 2018-2022 The Tabler Authors
-* Copyright 2018-2022 codecalm.net Paweł Kuna
-* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
-*/
-
+    * Tabler v1.0.0-beta14 (https://tabler.io)
+    * @version 1.0.0-beta14
+    * @link https://tabler.io
+    * Copyright 2018-2022 The Tabler Authors
+    * Copyright 2018-2022 codecalm.net Paweł Kuna
+    * Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
+    */
     (function (factory) {
         typeof define === 'function' && define.amd ? define(factory) :
             factory();
