@@ -1,8 +1,6 @@
-# Laravel Tabler HTML Dashboard with Dynamic Menu
+![Laravel Tabler Admin Dashboard](https://banners.beyondco.de/Laravel%20Tabler%20Admin%20Dashboard.png?theme=light&packageManager=composer+require&packageName=takielias%2Ftablar&pattern=topography&style=style_1&description=Laravel+%2B+Tabler+%3D+Tablar+%23+Admin+Dashboard+with+Dark+Mode.&md=1&showWatermark=0&fontSize=125px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
 
 ## Tabler + Laravel = TabLar
-
-Laravel 9.0+ Tabler Dashboard Preset built for Fast Development with Dark Mode. It also contains Dynamic menu generator that helps to maintain the navigation permission easily.
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
@@ -14,13 +12,12 @@ Laravel 9.0+ Tabler Dashboard Preset built for Fast Development with Dark Mode. 
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <a href="https://github.com/takielias/tablar">
-    <img src="https://user-images.githubusercontent.com/38932580/194738761-8bfe9436-3869-4ad8-b39f-9752bd1e3a9e.png" alt="Logo" width="80" height="80">
-  </a>
 
-<h3 align="center">Laravel Tabler Admin Dashboard Package</h3>
+<p align="center">
+
+Laravel 9.0+ Tabler Dashboard Preset built for Fast Development with Dark Mode. It also contains Dynamic menu generator that helps to maintain the navigation permission easily.
+
+### Laravel Tablar CRUD Generator https://github.com/takielias/tablar-crud-generator
 
 ![Tablar Light](https://user-images.githubusercontent.com/38932580/194739188-0034be57-d738-4d0d-bc49-8c96c8b6e89c.png)
 
@@ -64,7 +61,7 @@ running follow these simple example steps.
 ### Installation
 
 ```shell
-composer require takielias/tablar @dev
+composer require takielias/tablar
 ```
 
 First Install the preset
