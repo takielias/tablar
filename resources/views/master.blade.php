@@ -23,7 +23,6 @@
 <body class="@yield('classes_body')" @yield('body_data')>
 @yield('body')
 @include('tablar::extra.modal')
-@include('tablar::layouts.js')
 @yield('tablar_js')
 </body>
 </html>
