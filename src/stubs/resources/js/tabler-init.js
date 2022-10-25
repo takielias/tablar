@@ -2,26 +2,39 @@
 Import the jQuery
 */
 
-import $ from 'jquery'
+import jQuery from "jquery";
 
-window.jQuery = window.$ = $
+window.$ = window.jQuery = jQuery;
 
 /*
-Import the Tabler JS Libs
+Import the Tabler js
 */
 
 import '../../node_modules/@tabler/core/dist/js/tabler';
-import '../../node_modules/@tabler/core/dist/libs/apexcharts/dist/apexcharts';
-import '../../node_modules/@tabler/core/dist/libs/jsvectormap/dist/js/jsvectormap';
-import '../../node_modules/@tabler/core/dist/libs/countup.js/dist/countUp';
-import '../../node_modules/@tabler/core/dist/libs/plyr/dist/plyr';
-import '../../node_modules/@tabler/core/dist/libs/list.js/dist/list';
-import '../../node_modules/@tabler/core/dist/libs/dropzone/dist/dropzone-min';
-import '../../node_modules/@tabler/core/dist/libs/fslightbox/index';
-import '../../node_modules/@tabler/core/dist/libs/jsvectormap/dist/maps/world';
-import '../../node_modules/@tabler/core/dist/libs/jsvectormap/dist/maps/world-merc';
-import '../../node_modules/@tabler/core/dist/libs/litepicker/dist/litepicker';
-import '../../node_modules/@tabler/core/dist/libs/nouislider/dist/nouislider';
-import '../../node_modules/@tabler/core/dist/libs/tinymce/tinymce';
-import '../../node_modules/@tabler/core/dist/libs/tom-select/dist/js/tom-select.popular';
+import ApexCharts from 'apexcharts';
+
+/*
+Import External Lib
+*/
+
+window.ApexCharts = ApexCharts;
+import Plyr from 'plyr';
+
+window.Plyr = Plyr;
+import Litepicker from 'litepicker';
+
+window.Litepicker = Litepicker;
+import noUiSlider from 'nouislider';
+
+window.noUiSlider = noUiSlider;
+import TomSelect from 'tom-select';
+
+window.TomSelect = TomSelect
+import 'jsvectormap';
+import 'countup.js';
+import 'list.js';
+import 'dropzone';
+import 'fslightbox';
+import 'tinymce';
 import '../../node_modules/@tabler/core/dist/js/demo-theme';
+

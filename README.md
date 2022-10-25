@@ -93,6 +93,10 @@ For config.
 ```shell
 php artisan ui tablar:export-config
 ```
+For Js.
+```shell
+php artisan ui tablar:export-js
+```
 For auth scaffolding.
 ```shell
 php artisan ui tablar:export-auth
@@ -155,6 +159,29 @@ To use the blade template provided by this package, just create a new blade file
     </div>
 @endsection
 ```
+
+## External style Tag
+If you need to use custom script in different pages, please follow the instruction below to achieve it.
+```shell
+@section('css')
+    <style>
+     ......
+    </style>
+@stop
+```
+
+## External script Tag
+If you need to use custom script in different pages, please follow the instruction below to achieve it.
+```shell
+@section('js')
+    <script type="module">
+        $(".btn-test").click(function () {
+            alert("The Button was clicked.");
+        });
+    </script>
+@stop
+```
+
 **Enable Display Alert**
 
 Make `display_alert` to `true` from **tablar.php** config file
