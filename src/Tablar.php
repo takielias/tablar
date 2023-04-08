@@ -60,7 +60,7 @@ class Tablar
         $this->events = $events;
         $this->container = $container;
 
-        // Fill the map of filters methods.
+        // Fill the map with filters methods.
 
         $this->menuFilterMap = [
             'sidebar' => [$this, 'sidebarFilter'],

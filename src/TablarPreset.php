@@ -42,7 +42,7 @@ class TablarPreset extends Preset
     public static function exportJs()
     {
 //        static::updateAssets();
-        (new Filesystem())->copyDirectory(__DIR__ . '/stubs/resources/js', static::getResourcePath(). '/js');
+        (new Filesystem())->copyDirectory(__DIR__ . '/stubs/resources/js', static::getResourcePath() . '/js');
     }
 
     /**
@@ -130,6 +130,7 @@ class TablarPreset extends Preset
         ], Arr::except($packages, [
             'postcss',
             'jquery',
+            'lodash',
         ]));
     }
 
