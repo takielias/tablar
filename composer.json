@@ -1,6 +1,6 @@
 {
     "name": "takielias/tablar",
-    "description": "Laravel 9.* Front-end preset for Tabler html Template.",
+    "description": "Laravel 9.* ~ 10.* Front-end preset for Tabler html Template.",
     "keywords": [
         "laravel",
         "preset",
@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "illuminate/support": "~9",
+        "illuminate/support": "~9|~10",
         "laravel/ui": "~4"
     },
     "autoload": {
