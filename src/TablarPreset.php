@@ -129,7 +129,26 @@ class TablarPreset extends Preset
             "vite" => "^4.0.0",
         ], Arr::except($packages, [
             'postcss',
-            'jquery'
+            'jquery',
+            'bootstrap',
+            '@tabler/core',
+            '@popperjs/core',
+            '@tabler/icons',
+            'apexcharts',
+            'countup.js',
+            'dropzone',
+            'fslightbox',
+            'jsvectormap',
+            'list.js',
+            'litepicker',
+            'nouislider',
+            'plyr',
+            'tinymce',
+            'tom-select',
+            'laravel-vite-plugin',
+            'sass',
+            'sass-loader',
+            'vite'
         ]));
     }
 
