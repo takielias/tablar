@@ -60,7 +60,7 @@ running follow these simple example steps.
 ### Prerequisites
 
 - PHP 8.0+
-- Fresh Laravel Framework (9.* recommended)
+- Fresh Laravel Framework (10.* recommended)
 - Composer
 - Node js >= 16.0
 

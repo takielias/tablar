@@ -107,30 +107,29 @@ class TablarPreset extends Preset
     protected static function updatePackageArray(array $packages): array
     {
         return array_merge([
-            "jquery" => "3.6.*",
-            "bootstrap" => "~5.2.2",
-            '@tabler/core' => '1.0.0-beta14',
+            "jquery" => "3.7.*",
+            "bootstrap" => "5.3.0-alpha3",
+            '@tabler/core' => '1.0.0-beta19',
             "@popperjs/core" => "^2.11.6",
-            "@tabler/icons" => "^1.105.0",
-            "apexcharts" => "^3.35.5",
-            "countup.js" => "^2.3.2",
+            "@tabler/icons" => "^2.20.0",
+            "apexcharts" => "^3.40.0",
+            "countup.js" => "^2.6.2",
             "dropzone" => "^6.0.0-beta.2",
-            "fslightbox" => "^3.3.1",
-            "jsvectormap" => "^1.5.1",
+            "fslightbox" => "^3.4.1",
+            "jsvectormap" => "^1.5.3",
             "list.js" => "^2.3.1",
             "litepicker" => "^2.0.12",
-            "nouislider" => "^15.6",
-            "plyr" => "^3.7.2",
-            "tinymce" => "^6.2.0",
-            "tom-select" => "^2.2.1",
-            "laravel-vite-plugin" => "^0.6.0",
-            "sass" => "^1.32.11",
-            "sass-loader" => "^11.0.1",
-            "vite" => "^3.0.0",
+            "nouislider" => "^15.7.0",
+            "plyr" => "^3.7.8",
+            "tinymce" => "^6.4.2",
+            "tom-select" => "^2.2.2",
+            "laravel-vite-plugin" => "^0.7.5",
+            "sass" => "^1.62.1",
+            "sass-loader" => "^13.3.1",
+            "vite" => "^4.0.0",
         ], Arr::except($packages, [
             'postcss',
-            'jquery',
-            'lodash',
+            'jquery'
         ]));
     }
 
