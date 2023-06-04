@@ -20,7 +20,7 @@
 
 <p align="center">
 
-Laravel 9.0+ Tabler Dashboard Preset built for Fast Development with Dark Mode. It also contains Dynamic menu generator that helps to maintain the navigation permission easily.
+Tabler Dashboard Preset built for Fast Development with Dark Mode. It also contains Dynamic menu generator that helps to maintain the navigation permission easily.
 
 Inspired By Laravel Adminlte `jeroennoten/Laravel-AdminLTE`
 
@@ -59,7 +59,7 @@ running follow these simple example steps.
 
 ### Prerequisites
 
-- PHP 8.0+
+- PHP >= 8.1
 - Fresh Laravel Framework (10.* recommended)
 - Composer
 - Node js >= 16.0
