@@ -25,8 +25,15 @@ class Tablar
     protected $menu;
 
     /**
+     * The event dispatcher instance.
+     *
+     * @var Dispatcher
+     */
+    protected $events;
+
+    /**
      * The array of menu filters. These filters will apply on each one of the
-     * menu items in order to transforms they in some way.
+     * menu items in order to transform them in some way.
      *
      * @var array
      */
