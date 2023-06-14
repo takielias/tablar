@@ -86,7 +86,7 @@ class TablarPreset extends Preset
     {
 
         tap(new Filesystem, function ($filesystem) {
-            collect($filesystem->allFiles(base_path('node_modules/@tabler/icons/iconfont/fonts')))
+            collect($filesystem->allFiles(base_path('node_modules/@tabler/icons-webfont/fonts')))
                 ->each(function (SplFileInfo $file) use ($filesystem) {
                     $filesystem->copy(
                         $file->getPathname(),
@@ -111,7 +111,8 @@ class TablarPreset extends Preset
             "bootstrap" => "5.3.0-alpha3",
             '@tabler/core' => '1.0.0-beta19',
             "@popperjs/core" => "^2.11.6",
-            "@tabler/icons" => "^2.20.0",
+            "@tabler/icons" => "^2.22.0",
+            "@tabler/icons-webfont" => "^2.22.0",
             "apexcharts" => "^3.40.0",
             "countup.js" => "^2.6.2",
             "dropzone" => "^6.0.0-beta.2",
@@ -134,6 +135,7 @@ class TablarPreset extends Preset
             '@tabler/core',
             '@popperjs/core',
             '@tabler/icons',
+            '@tabler/icons-webfont',
             'apexcharts',
             'countup.js',
             'dropzone',
@@ -269,7 +271,7 @@ class TablarPreset extends Preset
     }
 
     /**
-     * Gets resource path depending on version of Laravel.
+     * Gets a resource path depending on a version of Laravel.
      *
      * @param string $path
      *

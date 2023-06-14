@@ -156,7 +156,7 @@ class Builder
             }
         }
 
-        // Return empty array when the item is not found.
+        // Return an empty array when the item is not found.
 
         return [];
     }
@@ -177,7 +177,7 @@ class Builder
 
         // If the item is a submenu, transform all the submenu items first.
         // These items need to be transformed first because some of the submenu
-        // filters (like the ActiveFilter) depends on these results.
+        // filters (like the ActiveFilter) depend on these results.
 
         if (MenuItemHelper::isSubmenu($item)) {
             $item['submenu'] = $this->transformItems($item['submenu']);
@@ -234,7 +234,7 @@ class Builder
 
         Arr::set($this->menu, $targetPath, $targetArr);
 
-        // Apply the filters because the menu now have new items.
+        // Apply the filters because the menu now has new items.
 
         $this->menu = $this->transformItems($this->menu);
     }

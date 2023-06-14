@@ -1,2 +1,6 @@
 //Tabler Core Scss
 @import "../../node_modules/@tabler/core/src/scss/tabler";
+//Tabler Webfont Icon
+@import "../../node_modules/@tabler/icons-webfont/tabler-icons.css";
+//Import custom Icon size
+@import "../css/icon-style.css";

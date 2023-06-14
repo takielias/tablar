@@ -160,7 +160,7 @@ class LayoutHelper
             $cfg = ['xs' => true];
         }
 
-        // At this point the config should be an array.
+        // At this point, the config should be an array.
 
         if (!is_array($cfg)) {
             return $classes;
@@ -198,7 +198,7 @@ class LayoutHelper
 
         $suffix = $enabled ? 'fixed' : 'not-fixed';
 
-        // Return the responsice class for fixed mode.
+        // Return the responsive class for fixed mode.
 
         return "{$prefix}-{$section}-{$suffix}";
     }
