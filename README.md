@@ -24,6 +24,13 @@ Tabler Dashboard Preset built for Fast Development with Dark Mode. It also conta
 
 Inspired By Laravel Adminlte `jeroennoten/Laravel-AdminLTE`
 
+### Demo
+https://tablar.ebuz.xyz
+```shell
+tablar@ebuz.xyz
+12345678
+```
+
 ### Laravel Tablar CRUD Generator https://github.com/takielias/tablar-crud-generator
 
 ![Tablar Light](https://user-images.githubusercontent.com/38932580/194739188-0034be57-d738-4d0d-bc49-8c96c8b6e89c.png)
@@ -55,7 +62,7 @@ Laravel & Super Fast https://vitejs.dev.
 ## Getting Started
 
 This is an example of how you may give instructions on setting up your project locally. To get a local copy up and
-running follow these simple example steps.
+ running, follow these simple example steps.
 
 ### Prerequisites
 
