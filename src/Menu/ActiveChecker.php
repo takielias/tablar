@@ -131,7 +131,7 @@ class ActiveChecker
             return (bool) preg_match($regex, $this->request->path());
         }
 
-        // If pattern is not a regex, check if the requested url matches the
+        // If a pattern is not a regex, check if the requested url matches the
         // absolute path to the given pattern. When the pattern uses query
         // parameters, compare with the full url request.
 

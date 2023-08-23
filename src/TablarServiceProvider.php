@@ -156,7 +156,7 @@ class TablarServiceProvider extends ServiceProvider
      */
     private static function registerMenu(Dispatcher $events, Repository $config): void
     {
-        // Register a handler for the BuildingMenu event, this handler will add
+        // Register a handler for the BuildingMenu event; this handler will add
         // the menu defined on the config file to the menu builder instance.
 
         $events->listen(
