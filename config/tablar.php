@@ -10,11 +10,11 @@ return [
     |
     */
 
-    'title' => 'Tablar 2.4',
+    'title' => 'Tablar',
     'title_prefix' => '',
     'title_postfix' => '',
     'bottom_title' => 'Tablar',
-    'current_version' => 'v2.4',
+    'current_version' => 'v2.6',
 
 
     /*
