@@ -25,7 +25,7 @@ class HrefFilter implements FilterInterface
     }
 
     /**
-     * Transforms a menu item. Make the href attribute when situable.
+     * Transforms a menu item. Make the href attribute when suitable.
      *
      * @param  array  $item  A menu item
      * @return array The transformed menu item

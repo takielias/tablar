@@ -50,7 +50,7 @@ class GateFilter implements FilterInterface
      */
     protected function isAllowed($item)
     {
-        // Check if there are any permission defined for the item.
+        // Check if there is any permission defined for the item.
 
         if (empty($item['can'])) {
             return true;
@@ -58,7 +58,7 @@ class GateFilter implements FilterInterface
 
         // Read the extra arguments (a db model instance can be used).
 
-        $args = isset($item['model']) ? $item['model'] : [];
+        $args = $item['model'] ?? [];
 
         // Check if the current user can perform the configured permissions.
 

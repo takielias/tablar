@@ -34,7 +34,7 @@ return [
     | Authentication Logo
     |--------------------------------------------------------------------------
     |
-    | Here you can setup an alternative logo to use on your login and register
+    | Here you can set up an alternative logo to use on your login and register
     | screens. When disabled, the admin panel logo will be used instead.
     |
     */
@@ -56,7 +56,7 @@ return [
     |--------------------------------------------------------------------------
     | Here we change the layout of your admin panel.
     |
-    | For detailed instructions you can look the layout section here:
+    | For detailed instructions you can look at the layout section here:
     |
     */
 
@@ -75,7 +75,7 @@ return [
     |
     | Here you can change the look and behavior of the authentication views.
     |
-    | For detailed instructions you can look the auth classes section here:
+    | For detailed instructions, you can look at the auth classes section here:
     |
     */
 
@@ -93,7 +93,7 @@ return [
     |
     | Here you can change the look and behavior of the admin panel.
     |
-    | For detailed instructions you can look the admin panel classes here:
+    | For detailed instructions, you can look at the admin panel classes here:
     |
     */
 
@@ -106,7 +106,7 @@ return [
     |
     | Here we can modify the url settings of the admin panel.
     |
-    | For detailed instructions you can look the urls section here:
+    | For detailed instructions, you can look at the urls section here:
     |
     */
 
@@ -161,13 +161,6 @@ return [
                     'icon' => 'ti ti-article'
                 ]
             ],
-        ],
-        [
-            'text' => 'Contact ',
-            'route' => 'home',
-            'icon' => 'ti ti-address-book',
-            'label' => 4,
-            'label_color' => 'success',
         ],
 
     ],
