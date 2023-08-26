@@ -7,7 +7,13 @@ use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\View\Factory;
-use Laravel\Ui\UiCommand as PresetCommand;
+use TakiElias\Tablar\Console\TablarExportAllCommand;
+use TakiElias\Tablar\Console\TablarExportAssetsCommand;
+use TakiElias\Tablar\Console\TablarExportAuthCommand;
+use TakiElias\Tablar\Console\TablarExportConfigCommand;
+use TakiElias\Tablar\Console\TablarExportJsCommand;
+use TakiElias\Tablar\Console\TablarExportViewsCommand;
+use TakiElias\Tablar\Console\TablarInstallCommand;
 use TakiElias\Tablar\Events\BuildingMenu;
 use TakiElias\Tablar\Http\ViewComposers\TablarComposer;
 
@@ -49,49 +55,9 @@ class TablarServiceProvider extends ServiceProvider
         $this->loadViews();
         $this->loadTranslations();
         $this->loadConfig();
+        $this->registerCommands();
         $this->registerViewComposers($view);
         $this->registerMenu($events, $config);
-
-        PresetCommand::macro('tablar:install', function ($command) {
-            TablarPreset::install();
-            TablarPreset::exportConfig();
-            $command->info('Tablar scaffolding installed & config has been exported successfully.');
-            $command->comment('Please run "npm install" first. Once the installation is done, run "php artisan ui tablar:export-all"');
-        });
-
-        PresetCommand::macro('tablar:export-all', function ($command) {
-            TablarPreset::exportConfig();
-            $command->info('Tablar Config Exported successfully.');
-            TablarPreset::exportAuth();
-            $command->info('Tablar auth scaffolding installed successfully.');
-            TablarPreset::exportAllView();
-            $command->info('Tablar views scaffolding has been exported successfully.');
-        });
-
-        PresetCommand::macro('tablar:export-js', function ($command) {
-            TablarPreset::exportJs();
-            $command->info('Tablar Js Exported successfully.');
-        });
-
-        PresetCommand::macro('tablar:export-config', function ($command) {
-            TablarPreset::exportConfig();
-            $command->info('Tablar Config Exported successfully.');
-        });
-
-        PresetCommand::macro('tablar:export-auth', function ($command) {
-            TablarPreset::exportAuth();
-            $command->info('Tablar auth scaffolding installed successfully.');
-        });
-
-        PresetCommand::macro('tablar:export-views', function ($command) {
-            TablarPreset::exportAllView();
-            $command->info('Tablar views scaffolding has been exported successfully.');
-        });
-
-        PresetCommand::macro('tablar:export-asset', function ($command) {
-            TablarPreset::exportAssets();
-            $command->info('Tablar Assets Exported successfully.');
-        });
 
     }
 
@@ -137,6 +103,24 @@ class TablarServiceProvider extends ServiceProvider
     private function packagePath($path): string
     {
         return __DIR__ . "/../$path";
+    }
+
+    /**
+     * Register the package's artisan commands.
+     *
+     * @return void
+     */
+    private function registerCommands()
+    {
+        $this->commands([
+            TablarInstallCommand::class,
+            TablarExportAllCommand::class,
+            TablarExportConfigCommand::class,
+            TablarExportJsCommand::class,
+            TablarExportAuthCommand::class,
+            TablarExportViewsCommand::class,
+            TablarExportAssetsCommand::class,
+        ]);
     }
 
     /**

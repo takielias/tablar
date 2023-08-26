@@ -94,7 +94,7 @@ php artisan ui tablar:export-all
 ```
 N.B: You may export individual component. For assets.
 ```shell
-php artisan ui tablar:export-asset
+php artisan ui tablar:export-assets
 ```
 For config.
 ```shell
