@@ -94,9 +94,9 @@ class TablarTest extends TestCase
     public function testMenuNavbarLeftFilter()
     {
 
-        // Test with config 'adminlte.layout_topnav' => true.
+        // Test with config 'tablar.layout_topnav' => true.
 
-        config(['adminlte.layout_topnav' => true]);
+        config(['tablar.layout_topnav' => true]);
         $menu = $this->makeTablar()->menu('navbar-left');
 
         $this->assertCount(7, $menu);

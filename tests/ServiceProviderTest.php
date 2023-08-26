@@ -90,41 +90,4 @@ class ServiceProviderTest extends TestCase
         $this->assertEquals('Home', $menu[0]['text']);
     }
 
-    public function ttestBootLoadComponents()
-    {
-        // Check that some of the blade component views are loaded.
-
-        $this->assertTrue(View::exists('adminlte::components.form.input'));
-        $this->assertTrue(View::exists('adminlte::components.form.select2'));
-        $this->assertTrue(View::exists('adminlte::components.widget.card'));
-        $this->assertTrue(View::exists('adminlte::components.tool.modal'));
-
-        // Support of x-components is only available for Laravel >= 7.x
-        // versions. So, check if we can test for component existence first.
-
-        $canCheckComponents = method_exists(
-            'Illuminate\Support\Facade\Blade',
-            'getClassComponentAliases'
-        );
-
-        if (!$canCheckComponents) {
-            return;
-        }
-
-        // Now, check that the class components aliases are registered.
-
-        $aliases = Blade::getClassComponentAliases();
-
-        $this->assertTrue(isset($aliases['adminlte-input']));
-        $this->assertTrue(isset($aliases['adminlte-select2']));
-        $this->assertTrue(isset($aliases['adminlte-card']));
-        $this->assertTrue(isset($aliases['adminlte-modal']));
-    }
-
-    public function ttestBootLoadRoutes()
-    {
-        // Assert the package routes names are registered.
-
-        $this->assertTrue(Route::has('adminlte.darkmode.toggle'));
-    }
 }
