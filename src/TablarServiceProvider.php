@@ -33,7 +33,7 @@ class TablarServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // Bind a singleton instance of the AdminLte class into the service
+        // Bind a singleton instance of the Tablar class into the service
         // container.
 
         $this->app->singleton(Tablar::class, function (Container $app) {

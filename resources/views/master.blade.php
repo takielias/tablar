@@ -17,7 +17,7 @@
     @if(config('tablar','vite'))
         @vite('resources/js/app.js')
     @endif
-    {{-- Custom Stylesheets (post AdminLTE) --}}
+    {{-- Custom Stylesheets (post Tablar) --}}
     @yield('tablar_css')
 </head>
 <body class="@yield('classes_body')" @yield('body_data')>
