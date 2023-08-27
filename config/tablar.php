@@ -144,8 +144,7 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'text' => 'Home ',
-            'route' => 'home',
+            'text' => 'Home',
             'icon' => 'ti ti-home',
             'label' => 4,
             'label_color' => 'success',
