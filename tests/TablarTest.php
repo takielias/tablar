@@ -21,37 +21,21 @@ class TablarTest extends TestCase
     {
         // Add (5) items to the sidebar menu.
 
-        $event->menu->add(['header' => 'header']);
-        $event->menu->add(['text' => 'sidebar', 'url' => 'url']);
-        $event->menu->add(['text' => 'topnavLF', 'url' => 'url', 'topnav' => false]);
-        $event->menu->add(['text' => 'topnavRF', 'url' => 'url', 'topnav_right' => false]);
-        $event->menu->add(['text' => 'topnavUF', 'url' => 'url', 'topnav_user' => false]);
-
-        // Add (1) item to the navbar menu (left section).
-
-        $event->menu->add(['text' => 'topnavLT', 'url' => 'url', 'topnav' => true]);
-
-        // Add (1) item to the navbar menu (right section).
-
-        $event->menu->add(['text' => 'topnavRT', 'url' => 'url', 'topnav_right' => true]);
-
-        // Add (1) item to the navbar menu (user menu section).
-
-        $event->menu->add(['text' => 'topnavUT', 'url' => 'url', 'topnav_user' => true]);
-
-        // Add (1) search bar to the navbar menu.
-
-        $event->menu->add(['text' => 'searchLT', 'type' => 'navbar-search', 'topnav' => true]);
+        $event->menu->add(['text' => 'Home', 'url' => 'url']);
+        $event->menu->add(['text' => 'Support', 'url' => 'url']);
+        $event->menu->add(['text' => 'Contact', 'url' => 'url']);
 
         // Add (1) submenu to the sidebar menu.
 
-        $event->menu->add(['text' => 'submenu', 'submenu' => []]);
+        $event->menu->add(['text' => 'Submenu', 'submenu' => []]);
 
         // Add (1) invalid item.
 
         $event->menu->add(['text' => 'invalid']);
 
-        // Add (1) search bar to the sidebar menu.
+        // Add (1) Setting item.
+
+        $event->menu->add(['text' => 'Settings', 'url' => 'url']);
 
     }
 
@@ -59,76 +43,31 @@ class TablarTest extends TestCase
     {
         $menu = $this->makeTablar()->menu();
 
-        $this->assertCount(11, $menu);
-        $this->assertEquals('header', $menu[0]['header']);
-        $this->assertEquals('sidebar', $menu[1]['text']);
-        $this->assertEquals('topnavLF', $menu[2]['text']);
-        $this->assertEquals('topnavRF', $menu[3]['text']);
-        $this->assertEquals('topnavUF', $menu[4]['text']);
-        $this->assertEquals('topnavLT', $menu[5]['text']);
-        $this->assertEquals('topnavRT', $menu[6]['text']);
-        $this->assertEquals('topnavUT', $menu[7]['text']);
-        $this->assertEquals('searchLT', $menu[8]['text']);
-        $this->assertEquals('submenu', $menu[9]['text']);
-        $this->assertEquals('invalid', $menu[10]['text']);
+        $this->assertCount(6, $menu);
+        $this->assertEquals('Home', $menu[0]['text']);
+        $this->assertEquals('Support', $menu[1]['text']);
+        $this->assertEquals('Contact', $menu[2]['text']);
+        $this->assertEquals('Submenu', $menu[3]['text']);
+        $this->assertEquals('invalid', $menu[4]['text']);
+        $this->assertEquals('Settings', $menu[5]['text']);
     }
 
-    public function testMenuSidebarFilter()
+
+    public function testMenuSettingsFilter()
     {
-        $menu = $this->makeTablar()->menu('sidebar');
+        $menu = $this->makeTablar()->menu('Settings');
 
         $this->assertCount(6, $menu);
-        $this->assertArrayNotHasKey(5, $menu);
-        $this->assertArrayNotHasKey(6, $menu);
         $this->assertArrayNotHasKey(7, $menu);
-        $this->assertArrayNotHasKey(8, $menu);
-        $this->assertArrayNotHasKey(10, $menu);
-        $this->assertEquals('header', $menu[0]['header']);
-        $this->assertEquals('sidebar', $menu[1]['text']);
-        $this->assertEquals('topnavLF', $menu[2]['text']);
-        $this->assertEquals('topnavRF', $menu[3]['text']);
-        $this->assertEquals('topnavUF', $menu[4]['text']);
-        $this->assertEquals('submenu', $menu[9]['text']);
-    }
-
-    public function testMenuNavbarLeftFilter()
-    {
-
-        // Test with config 'tablar.layout_topnav' => true.
-
-        config(['tablar.layout_topnav' => true]);
-        $menu = $this->makeTablar()->menu('navbar-left');
-
-        $this->assertCount(7, $menu);
-        $this->assertArrayNotHasKey(0, $menu);
-        $this->assertArrayNotHasKey(6, $menu);
-        $this->assertArrayNotHasKey(7, $menu);
-        $this->assertArrayNotHasKey(10, $menu);
-        $this->assertEquals('sidebar', $menu[1]['text']);
-        $this->assertEquals('topnavLF', $menu[2]['text']);
-        $this->assertEquals('topnavRF', $menu[3]['text']);
-        $this->assertEquals('topnavUF', $menu[4]['text']);
-        $this->assertEquals('topnavLT', $menu[5]['text']);
-        $this->assertEquals('searchLT', $menu[8]['text']);
-        $this->assertEquals('submenu', $menu[9]['text']);
-    }
-
-    public function testMenuNavbarUserFilter()
-    {
-        $menu = $this->makeTablar()->menu('navbar-user');
-
-        $this->assertCount(1, $menu);
-        $this->assertArrayNotHasKey(0, $menu);
-        $this->assertArrayNotHasKey(1, $menu);
-        $this->assertArrayNotHasKey(2, $menu);
-        $this->assertArrayNotHasKey(3, $menu);
-        $this->assertArrayNotHasKey(4, $menu);
-        $this->assertArrayNotHasKey(5, $menu);
-        $this->assertArrayNotHasKey(6, $menu);
         $this->assertArrayNotHasKey(8, $menu);
         $this->assertArrayNotHasKey(9, $menu);
         $this->assertArrayNotHasKey(10, $menu);
-        $this->assertArrayNotHasKey(11, $menu);
-        $this->assertEquals('topnavUT', $menu[7]['text']);
+        $this->assertEquals('Home', $menu[0]['text']);
+        $this->assertEquals('Support', $menu[1]['text']);
+        $this->assertEquals('Contact', $menu[2]['text']);
+        $this->assertEquals('Submenu', $menu[3]['text']);
+        $this->assertEquals('invalid', $menu[4]['text']);
+        $this->assertEquals('Settings', $menu[5]['text']);
     }
+
 }
