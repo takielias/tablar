@@ -20,8 +20,9 @@
 
 <p align="center">
 
-Tabler Dashboard Preset built for Fast Development with Dark Mode. It also contains Dynamic menu generator that helps to
-maintain the navigation permission easily.
+<br/> 
+
+#### Tabler: A Laravel Dashboard Preset Featuring Dark Mode and Dynamic Menu Generation for Effortless Navigation and Permission Management.
 
 Inspired By Laravel Adminlte `jeroennoten/Laravel-AdminLTE`
 
@@ -45,7 +46,7 @@ tablar@ebuz.xyz
 </p>
 <br><br>
 
-Laravel Table Admin Dashboard Package. It allows you to make beautiful feature righ admin dashboard Template using
+Laravel Table Admin Dashboard Package. It allows you to make beautiful feature rich admin dashboard Template using
 Laravel & Super Fast https://vitejs.dev.
 
 <!-- TABLE OF CONTENTS -->
@@ -489,12 +490,12 @@ If you need to use a custom menu filter, you can add your own menu filters to th
 for example, when you are using a third-party package for authorization (instead of the Laravel's Gate functionality).
 
 In order to provide more details, we are going to show an example of how you can configure
-the [Laratrust Package](https://laratrust.santigarcor.me/). Start by creating your custom filter implementation:
+the [Laratrust Package](https://laratrust.santigarcor.me/). Start by creating your custom filter implementation in `App\Filter`:
 
 ```php
 <?php
 
-namespace MyApp;
+namespace App\Filter;
 
 use TakiElias\Tablar\Menu\Filters\FilterInterface;
 use Laratrust\Laratrust;
@@ -555,7 +556,6 @@ class RolePermissionMenuFilter implements FilterInterface
             }
         } elseif (isset($item['hasRole'])) {
             if (!(Auth::user())->hasRole($item['hasRole'])) {
-                // not a member of any valid hasAnyRole; check if user has been granted explicit permission
                 if (isset($item['hasAnyPermission']) && (Auth::user())->hasAnyPermission($item['hasAnyPermission'])) {
                     return true;
                 } else {
@@ -608,7 +608,7 @@ A **tablar.php** file would be available into your config folder.
 
 ## Contributing
 
-Contributions are what makes the open source community such an amazing place to learn, inspire, and create. Any
+Contributions are what makes the open source community such an amazing place to learn, inspire and create. Any
 contributions you make are **greatly appreciated**.
 
 1. Fork the Project
@@ -631,7 +631,7 @@ Taki Elias - [@takiele](https://twitter.com/takiele) - [https://ebuz.xyz](https:
 
 ## Support on Buy Me A Coffee
 
-Hey dude! Help me out for a cup of ☕!
+Hello!!! Help me out for a cup of ☕!
 
 <a href="https://www.buymeacoffee.com/takielias" target="_blank">
 <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="takielias" /></a>
