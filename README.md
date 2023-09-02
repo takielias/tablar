@@ -22,7 +22,7 @@
 
 <br/> 
 
-#### Tabler: A Laravel Dashboard Preset Featuring Dark Mode and Dynamic Menu Generation for Effortless Navigation and Permission Management.
+#### Tablar: A Laravel Dashboard Preset Featuring Dark Mode and Dynamic Menu Generation for Effortless Navigation and Permission Management.
 
 Inspired By Laravel Adminlte `jeroennoten/Laravel-AdminLTE`
 
