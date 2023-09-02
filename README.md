@@ -73,7 +73,7 @@ running, follow these simple example steps.
 - PHP >= 8.1
 - Fresh Laravel Framework (10.* recommended)
 - Composer
-- Node js >= 16.0
+- Node js >= 18.0
 
 ### Installation
 
@@ -84,7 +84,7 @@ composer require takielias/tablar
 First Install the preset
 
 ```shell
-php artisan ui tablar:install
+php artisan tablar:install
 ```
 
 Now
@@ -96,37 +96,37 @@ npm install
 Finally, export the config, assets & auth scaffolding.
 
 ```shell
-php artisan ui tablar:export-all
+php artisan tablar:export-all
 ```
 
 N.B: You may export individual component. For assets.
 
 ```shell
-php artisan ui tablar:export-assets
+php artisan tablar:export-assets
 ```
 
 For config.
 
 ```shell
-php artisan ui tablar:export-config
+php artisan tablar:export-config
 ```
 
 For Js.
 
 ```shell
-php artisan ui tablar:export-js
+php artisan tablar:export-js
 ```
 
 For auth scaffolding.
 
 ```shell
-php artisan ui tablar:export-auth
+php artisan tablar:export-auth
 ```
 
 For auth views.
 
 ```shell
-php artisan ui tablar:export-views
+php artisan tablar:export-views
 ```
 
 Before staring the server don't forget to run migrate
@@ -230,7 +230,7 @@ Make `display_alert` to `true` from **tablar.php** config file
 Use the below artisan command to export the views
 
 ```shell
-php artisan ui tablar:export-views
+php artisan tablar:export-views
 ```
 
 All view files would be exported to **resources/views/vendor/tablar** directory. You can customize as your requirements.
@@ -241,7 +241,7 @@ Use the below artisan command to export the config file.
 For config.
 
 ```shell
-php artisan ui tablar:export-config
+php artisan tablar:export-config
 ```
 
 You can specify the set of menu items to display in the top navbar. A menu item representing a link should have a text
