@@ -22,7 +22,7 @@
 
 <br/> 
 
-#### Tablar: A Laravel Dashboard Preset Featuring Dark Mode and Dynamic Menu Generation for Effortless Navigation and Permission Management.
+#### Tablar: A Laravel Dashboard Preset Featuring Dark Mode and Dynamic Menu Generation for Effortless Navigation and Fast Development.
 
 Inspired By Laravel Adminlte `jeroennoten/Laravel-AdminLTE`
 
@@ -46,8 +46,8 @@ tablar@ebuz.xyz
 </p>
 <br><br>
 
-Laravel Table Admin Dashboard Package. It allows you to make beautiful feature rich admin dashboard Template using
-Laravel & Super Fast https://vitejs.dev.
+Laravel Tablar Admin Dashboard Package. It allows you to make beautiful feature rich admin dashboard Template using
+Larave, Tabler HTML Template & Super Fast https://vitejs.dev.
 
 <!-- TABLE OF CONTENTS -->
 
