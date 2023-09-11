@@ -7,7 +7,6 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/takielias/tablar.svg?color=rgb%28249%20115%2022%29&style=for-the-badge)](https://packagist.org/packages/takielias/tablar)
 [![Forks](https://img.shields.io/github/forks/takielias/tablar?color=rgb%28134%20115%2022%29&style=for-the-badge)](https://packagist.org/packages/takielias/tablar)
 [![Issues](https://img.shields.io/github/issues/takielias/tablar?color=rgb%28134%20239%20128%29&style=for-the-badge)](https://packagist.org/packages/takielias/tablar)
-![Laravel Version](https://img.shields.io/badge/laravel-^10-rgb(235%2068%2050)?style=for-the-badge&logo=laravel)
 [![Linkedin](https://img.shields.io/badge/-LinkedIn-black.svg?logo=linkedin&color=orange&style=for-the-badge)](https://linkedin.com/in/takielias)
 
 
