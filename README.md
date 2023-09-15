@@ -533,51 +533,28 @@ class RolePermissionMenuFilter implements FilterInterface
             return false;
         }
 
-        if (isset($item['header'])) {
-            $item = $item['header'];
-        }
-
-        return $item;
+        return $item['header'] ?? $item;
     }
 
     protected function isVisible($item)
     {
-        // check if a user is a member of specified role(s)
-        if (isset($item['hasAnyRole'])) {
-            if (!(Auth::user())->hasAnyRole($item['hasAnyRole'])) {
-                // not a member of any valid hasAnyRole; check if user has been granted explicit permission
-                if (isset($item['hasAnyPermission']) && (Auth::user())->hasAnyPermission($item['hasAnyPermission'])) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                return true;
-            }
-        } elseif (isset($item['hasRole'])) {
-            if (!(Auth::user())->hasRole($item['hasRole'])) {
-                if (isset($item['hasAnyPermission']) && (Auth::user())->hasAnyPermission($item['hasAnyPermission'])) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                return true;
-            }
-        } else {
-            // valid hasAnyRole not defined; check if user has been granted explicit permission
-            if (isset($item['hasAnyPermission'])) {
-                // permissions are defined
-                if ((Auth::user())->hasAnyPermission($item['hasAnyPermission'])) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                // no valid hasAnyRole or permissions defined; allow for all users
-                return true;
-            }
+        $user = Auth::user();
+
+        // Check for roles
+        $hasAnyRole = $item['hasAnyRole'] ?? null;
+        $hasRole = $item['hasRole'] ?? null;
+
+        if (($hasAnyRole && $user->hasAnyRole($hasAnyRole)) || ($hasRole && $user->hasRole($hasRole))) {
+            return true;
         }
+
+        return $this->checkPermissions($item, $user) ?? true;
+    }
+
+    protected function checkPermissions($item, $user)
+    {
+        $hasAnyPermission = $item['hasAnyPermission'] ?? null;
+        return $hasAnyPermission ? $user->hasAnyPermission($hasAnyPermission) : null;
     }
 }
 
