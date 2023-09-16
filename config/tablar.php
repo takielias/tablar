@@ -14,7 +14,7 @@ return [
     'title_prefix' => '',
     'title_postfix' => '',
     'bottom_title' => 'Tablar',
-    'current_version' => 'v2.6',
+    'current_version' => 'v2.9',
 
 
     /*
@@ -146,8 +146,7 @@ return [
         [
             'text' => 'Home',
             'icon' => 'ti ti-home',
-            'label' => 4,
-            'label_color' => 'success',
+            'url' => '#'
         ],
         [
             'text' => 'Support',
