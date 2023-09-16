@@ -29,6 +29,14 @@
 ```shell
 composer require takielias/tablar
 ```
+### Demo
+
+https://tablar.ebuz.xyz
+
+```shell
+tablar@ebuz.xyz
+12345678
+```
 
 ## Documentation
 
