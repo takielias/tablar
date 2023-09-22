@@ -13,7 +13,6 @@
 
 @section('body')
     <div class="page">
-        @include('tablar::partials.header.top')
         @include('tablar::partials.navbar.nav')
         <div class="page-wrapper">
             <!-- Page body -->
