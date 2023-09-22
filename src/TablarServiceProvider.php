@@ -14,6 +14,7 @@ use TakiElias\Tablar\Console\TablarExportConfigCommand;
 use TakiElias\Tablar\Console\TablarExportJsCommand;
 use TakiElias\Tablar\Console\TablarExportViewsCommand;
 use TakiElias\Tablar\Console\TablarInstallCommand;
+use TakiElias\Tablar\Console\TablarUpdateCommand;
 use TakiElias\Tablar\Events\BuildingMenu;
 use TakiElias\Tablar\Http\ViewComposers\TablarComposer;
 
@@ -120,6 +121,7 @@ class TablarServiceProvider extends ServiceProvider
             TablarExportAuthCommand::class,
             TablarExportViewsCommand::class,
             TablarExportAssetsCommand::class,
+            TablarUpdateCommand::class,
         ]);
     }
 
