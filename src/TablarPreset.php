@@ -26,6 +26,17 @@ class TablarPreset extends Preset
         static::removeNodeModules();
     }
 
+
+    /**
+     * Update the preset.
+     */
+    public static function update()
+    {
+        static::updatePackages();
+        static::updateAssets();
+        static::removeNodeModules();
+    }
+
     /**
      * Install the preset and auth views.
      */
