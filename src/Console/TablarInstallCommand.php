@@ -16,6 +16,6 @@ class TablarInstallCommand extends Command
         TablarPreset::install();
         TablarPreset::exportConfig();
         $this->info('Tablar scaffolding installed & config has been exported successfully.');
-        $this->comment('Please run "npm install" first. Once the installation is done, run "php artisan ui tablar:export-all"');
+        $this->comment('Please run "npm install" first. Once the installation is done, run "php artisan tablar:export-auth"');
     }
 }
