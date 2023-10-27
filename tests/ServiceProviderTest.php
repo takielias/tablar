@@ -28,6 +28,47 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue(View::exists('tablar::auth.verify'));
         $this->assertTrue(View::exists('tablar::auth.passwords.email'));
         $this->assertTrue(View::exists('tablar::auth.passwords.reset'));
+
+        $this->assertTrue(View::exists('tablar::partials.common.container-xl'));
+        $this->assertTrue(View::exists('tablar::partials.common.logo'));
+        $this->assertTrue(View::exists('tablar::partials.common.search-form'));
+
+        $this->assertTrue(View::exists('tablar::partials.footer.bottom'));
+
+        $this->assertTrue(View::exists('tablar::partials.header.header-button'));
+        $this->assertTrue(View::exists('tablar::partials.header.notifications'));
+        $this->assertTrue(View::exists('tablar::partials.header.page-header'));
+        $this->assertTrue(View::exists('tablar::partials.header.sidebar-top'));
+        $this->assertTrue(View::exists('tablar::partials.header.theme-mode'));
+        $this->assertTrue(View::exists('tablar::partials.header.top'));
+        $this->assertTrue(View::exists('tablar::partials.header.top-right'));
+
+
+        $this->assertTrue(View::exists('tablar::partials.navbar.dropdown-item'));
+        $this->assertTrue(View::exists('tablar::partials.navbar.dropdown-item-link'));
+        $this->assertTrue(View::exists('tablar::partials.navbar.dropend'));
+        $this->assertTrue(View::exists('tablar::partials.navbar.multilevel'));
+        $this->assertTrue(View::exists('tablar::partials.navbar.overlap-topbar'));
+        $this->assertTrue(View::exists('tablar::partials.navbar.search'));
+        $this->assertTrue(View::exists('tablar::partials.navbar.sidebar'));
+        $this->assertTrue(View::exists('tablar::partials.navbar.single-item'));
+        $this->assertTrue(View::exists('tablar::partials.navbar.submenu-dropdown-item'));
+        $this->assertTrue(View::exists('tablar::partials.navbar.topbar'));
+
+
+        $this->assertTrue(View::exists('tablar::layouts.boxed'));
+        $this->assertTrue(View::exists('tablar::layouts.combo'));
+        $this->assertTrue(View::exists('tablar::layouts.condensed'));
+        $this->assertTrue(View::exists('tablar::layouts.fluid'));
+        $this->assertTrue(View::exists('tablar::layouts.fluid-vertical'));
+        $this->assertTrue(View::exists('tablar::layouts.horizontal'));
+        $this->assertTrue(View::exists('tablar::layouts.navbar-overlap'));
+        $this->assertTrue(View::exists('tablar::layouts.navbar-sticky'));
+        $this->assertTrue(View::exists('tablar::layouts.rtl'));
+        $this->assertTrue(View::exists('tablar::layouts.vertical'));
+        $this->assertTrue(View::exists('tablar::layouts.vertical-right'));
+        $this->assertTrue(View::exists('tablar::layouts.vertical-transparent'));
+
     }
 
     public function testBootLoadTranslations()
@@ -52,8 +93,21 @@ class ServiceProviderTest extends TestCase
 
     public function testLayout()
     {
-        $this->assertTrue(Config::has('tablar.layout_class'));
-        $this->assertTrue(in_array(Config::get('tablar.layout_class'), ['default', 'layout-fluid', 'layout-boxed']));
+        $this->assertTrue(Config::has('tablar.layout'));
+        $this->assertTrue(in_array(Config::get('tablar.layout'), [
+            'boxed',
+            'combo',
+            'condensed',
+            'fluid',
+            'fluid-vertical',
+            'navbar-overlap',
+            'horizontal',
+            'navbar-sticky',
+            'rtl',
+            'vertical',
+            'vertical-right',
+            'vertical-transparent',
+        ]));
     }
 
     public function testBootRegisterCommands()
@@ -85,8 +139,7 @@ class ServiceProviderTest extends TestCase
     {
         $tablar = $this->app->make(Tablar::class);
         $menu = $tablar->menu();
-
-        $this->assertCount(2, $menu);
+        $this->assertCount(4, $menu);
         $this->assertEquals('Home', $menu[0]['text']);
     }
 

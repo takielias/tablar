@@ -11,7 +11,7 @@ class LangFilter implements FilterInterface
      *
      * @var Translator
      */
-    protected $translator;
+    protected Translator $translator;
 
     /**
      * The array of menu item properties to translate.

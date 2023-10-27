@@ -7,19 +7,6 @@ use Illuminate\Support\Facades\View;
 
 class LayoutHelper
 {
-    /**
-     * Set of tokens related to screen sizes/breakpoints.
-     *
-     * @var array
-     */
-    protected static $screenBreakpoints = ['xs', 'sm', 'md', 'lg', 'xl'];
-
-    /**
-     * Set of tokens related to sidebar mini config values.
-     *
-     * @var array
-     */
-    protected static $sidebarMiniValues = ['xs', 'md', 'lg'];
 
     /**
      * Get Layout Class.
@@ -28,37 +15,7 @@ class LayoutHelper
      */
     public static function getLayoutClass()
     {
-        return config('tablar.layout_class') || View::getSection('layout_class');
-    }
-
-    /**
-     * Check if the preloader animation is enabled.
-     *
-     * @return bool
-     */
-    public static function isPreloaderEnabled()
-    {
-        return config('tablar.preloader.enabled', false);
-    }
-
-    /**
-     * Check if layout topnav is enabled.
-     *
-     * @return bool
-     */
-    public static function isLayoutTopnavEnabled()
-    {
-        return config('tablar.layout_topnav') || View::getSection('layout_topnav');
-    }
-
-    /**
-     * Check if layout boxed is enabled.
-     *
-     * @return bool
-     */
-    public static function isLayoutBoxedEnabled()
-    {
-        return config('tablar.layout_boxed') || View::getSection('layout_boxed');
+        return config('tablar.layout') || View::getSection('layout');
     }
 
     /**
@@ -71,39 +28,9 @@ class LayoutHelper
         $classes = [];
 
         $classes = array_merge($classes, self::makeLayoutClasses());
-        $classes = array_merge($classes, self::makeSidebarClasses());
-        $classes = array_merge($classes, self::makeRightSidebarClasses());
         $classes = array_merge($classes, self::makeCustomBodyClasses());
 
         return trim(implode(' ', $classes));
-    }
-
-    /**
-     * Make and return the set of data attributes related to the body tag.
-     *
-     * @return string
-     */
-    public static function makeBodyData()
-    {
-        $data = [];
-
-        // Add data related to the "sidebar_scrollbar_theme" configuration.
-
-        $sbTheme = config('tablar.sidebar_scrollbar_theme', 'theme-light');
-
-        if ($sbTheme != 'theme-light') {
-            $data[] = "data-scrollbar-theme={$sbTheme}";
-        }
-
-        // Add data related to the "sidebar_scrollbar_auto_hide" configuration.
-
-        $sbAutoHide = config('tablar.sidebar_scrollbar_auto_hide', 'l');
-
-        if ($sbAutoHide != 'l') {
-            $data[] = "data-scrollbar-auto-hide={$sbAutoHide}";
-        }
-
-        return trim(implode(' ', $data));
     }
 
     /**
@@ -118,131 +45,7 @@ class LayoutHelper
         // Get default Layout Class
 
         if (self::getLayoutClass()) {
-            $classes[] = config('tablar.layout_class');
-        }
-
-        // Add classes related to the "layout_boxed" configuration.
-
-        if (self::isLayoutBoxedEnabled()) {
-            $classes[] = 'layout-boxed';
-        }
-
-        // Add classes related to fixed sidebar layout configuration. The fixed
-        // sidebar is not compatible with layout topnav.
-
-        if (!self::isLayoutTopnavEnabled() && config('tablar.layout_fixed_sidebar')) {
-            $classes[] = 'layout-fixed';
-        }
-
-        // Add classes related to fixed navbar/footer configuration. The fixed
-        // navbar/footer is not compatible with layout boxed.
-
-        if (!self::isLayoutBoxedEnabled()) {
-            $classes = array_merge($classes, self::makeFixedResponsiveClasses('navbar'));
-            $classes = array_merge($classes, self::makeFixedResponsiveClasses('footer'));
-        }
-
-        return $classes;
-    }
-
-    /**
-     * Make the set of classes related to a fixed responsive configuration.
-     *
-     * @param string $section The layout section (navbar or footer)
-     * @return array
-     */
-    private static function makeFixedResponsiveClasses($section)
-    {
-        $classes = [];
-        $cfg = config("tablar.layout_fixed_{$section}");
-
-        if ($cfg === true) {
-            $cfg = ['xs' => true];
-        }
-
-        // At this point, the config should be an array.
-
-        if (!is_array($cfg)) {
-            return $classes;
-        }
-
-        // Make the set of responsive classes in relation to the config.
-
-        foreach ($cfg as $breakpoint => $enabled) {
-            if (in_array($breakpoint, self::$screenBreakpoints)) {
-                $classes[] = self::makeFixedResponsiveClass(
-                    $section, $breakpoint, $enabled
-                );
-            }
-        }
-
-        return $classes;
-    }
-
-    /**
-     * Make a responsive class for the navbar/footer fixed mode on a particular
-     * breakpoint token.
-     *
-     * @param string $section The layout section (navbar or footer)
-     * @param string $bp The screen breakpoint (xs, sm, md, lg, xl)
-     * @param bool $enabled Whether to enable fixed mode (true, false)
-     * @return string
-     */
-    private static function makeFixedResponsiveClass($section, $bp, $enabled)
-    {
-        // Create the class prefix.
-
-        $prefix = ($bp === 'xs') ? 'layout' : "layout-{$bp}";
-
-        // Create the class suffix.
-
-        $suffix = $enabled ? 'fixed' : 'not-fixed';
-
-        // Return the responsive class for fixed mode.
-
-        return "{$prefix}-{$section}-{$suffix}";
-    }
-
-    /**
-     * Make the set of classes related to the main left sidebar configuration.
-     *
-     * @return array
-     */
-    private static function makeSidebarClasses()
-    {
-        $classes = [];
-
-        // Add classes related to the "sidebar_mini" configuration.
-
-        $sidebarMiniCfg = config('tablar.sidebar_mini', 'lg');
-
-        if (in_array($sidebarMiniCfg, self::$sidebarMiniValues)) {
-            $suffix = $sidebarMiniCfg === 'lg' ? '' : "-{$sidebarMiniCfg}";
-            $classes[] = "{$suffix}";
-        }
-
-        // Add classes related to the "sidebar_collapse" configuration.
-
-        if (config('tablar.sidebar_collapse') || View::getSection('sidebar_collapse')) {
-            $classes[] = 'sidebar-collapse';
-        }
-
-        return $classes;
-    }
-
-    /**
-     * Make the set of classes related to the right sidebar configuration.
-     *
-     * @return array
-     */
-    private static function makeRightSidebarClasses()
-    {
-        $classes = [];
-
-        // Add classes related to the "right_sidebar" configuration.
-
-        if (config('tablar.right_sidebar') && config('tablar.right_sidebar_push')) {
-            $classes[] = 'control-sidebar-push';
+            $classes[] = config('tablar.layout');
         }
 
         return $classes;

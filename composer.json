@@ -1,47 +1,48 @@
 {
-  "name": "takielias/tablar",
-  "description": "Laravel 9.* ~ 10.* Front-end preset for Tabler html Template.",
-  "keywords": [
-    "laravel",
-    "preset",
-    "tabler",
-    "bootstrap"
-  ],
-  "license": "MIT",
-  "minimum-stability": "stable",
-  "authors": [
-    {
-      "name": "Taki Elias",
-      "email": "taki.elias@gmail.com"
-    }
-  ],
-  "require": {
-    "illuminate/support": "~9|~10",
-    "laravel/ui": "~4"
-  },
-  "require-dev": {
-    "phpunit/phpunit": ">=9.1",
-    "orchestra/testbench": ">=4.0",
-    "scrutinizer/ocular": "^1.9"
-  },
-  "autoload": {
-    "psr-4": {
-      "TakiElias\\Tablar\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "classmap": [
-      "tests/TestCase.php"
-    ]
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "1.0-dev"
+    "name": "takielias/tablar",
+    "description": "Tablar: A Laravel Dashboard Preset Featuring Dark Mode and Dynamic Menu Generation for Effortless Navigation and Fast Development.",
+    "keywords": [
+        "laravel",
+        "preset",
+        "tabler",
+        "bootstrap",
+        "vite"
+    ],
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Taki Elias",
+            "email": "taki.elias@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~10",
+        "laravel/ui": "~4"
     },
-    "laravel": {
-      "providers": [
-        "TakiElias\\Tablar\\TablarServiceProvider"
-      ]
+    "require-dev": {
+        "phpunit/phpunit": ">=9.1",
+        "orchestra/testbench": ">=4.0",
+        "scrutinizer/ocular": "^1.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "TakiElias\\Tablar\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "TakiElias\\Tablar\\TablarServiceProvider"
+            ]
+        }
     }
-  }
 }

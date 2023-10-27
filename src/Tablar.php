@@ -5,7 +5,6 @@ namespace TakiElias\Tablar;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Events\Dispatcher;
 use TakiElias\Tablar\Events\BuildingMenu;
-use TakiElias\Tablar\Helpers\LayoutHelper;
 use TakiElias\Tablar\Helpers\NavbarItemHelper;
 use TakiElias\Tablar\Helpers\SidebarItemHelper;
 use TakiElias\Tablar\Menu\Builder;
@@ -22,7 +21,7 @@ class Tablar
      *
      * @var array
      */
-    protected $menu;
+    protected array $menu;
 
     /**
      * The event dispatcher instance.
@@ -37,7 +36,7 @@ class Tablar
      *
      * @var array
      */
-    protected $filters;
+    protected array $filters;
 
     /**
      * The application service container.
@@ -52,7 +51,7 @@ class Tablar
      *
      * @var array
      */
-    protected $menuFilterMap;
+    protected array $menuFilterMap;
 
     /**
      * Constructor.
@@ -153,7 +152,7 @@ class Tablar
      */
     private function navbarLeftFilter($item): bool
     {
-        if (LayoutHelper::isLayoutTopnavEnabled() && SidebarItemHelper::isValidItem($item)) {
+        if (SidebarItemHelper::isValidItem($item)) {
             return NavbarItemHelper::isAcceptedItem($item);
         }
 

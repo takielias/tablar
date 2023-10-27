@@ -12,7 +12,7 @@ class HrefFilter implements FilterInterface
      *
      * @var UrlGenerator
      */
-    protected $urlGenerator;
+    protected UrlGenerator $urlGenerator;
 
     /**
      * Constructor.

@@ -1,6 +1,16 @@
-//Tabler Core Scss
+// ---------------------------------------
+// Tablar styles and configuration
+// ---------------------------------------
+
+// Default (LTR) Tabler Styles.
+// DISABLE this line if you want to enable Right-to-Left (RTL) support.
 @import "../../node_modules/@tabler/core/src/scss/tabler";
-//Tabler Webfont Icon
+
+// ENABLE the following line for Right-to-Left (RTL) support.
+// @import "../../node_modules/@tabler/core/dist/css/tabler.rtl.css";
+
+// Tabler Webfont Icons
 @import "../../node_modules/@tabler/icons-webfont/tabler-icons.css";
-//Import custom Icon size
+
+// Custom Icon Sizes and Styles
 @import "../css/icon-style.css";

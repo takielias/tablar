@@ -9,18 +9,7 @@
 
 @section('classes_body', $layoutHelper->makeBodyClasses())
 
-@section('body_data', $layoutHelper->makeBodyData())
-
-@section('body')
-    <div class="page">
-        @include('tablar::partials.navbar.nav')
-        <div class="page-wrapper">
-            <!-- Page body -->
-            @yield('content')
-            @include('tablar::partials.footer.bottom')
-        </div>
-    </div>
-@stop
+@includeIf('tablar::layouts.'. config('tablar.layout'))
 
 @section('tablar_js')
     @stack('js')

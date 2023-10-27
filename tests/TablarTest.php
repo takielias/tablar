@@ -44,12 +44,7 @@ class TablarTest extends TestCase
         $menu = $this->makeTablar()->menu();
 
         $this->assertCount(6, $menu);
-        $this->assertEquals('Home', $menu[0]['text']);
-        $this->assertEquals('Support', $menu[1]['text']);
-        $this->assertEquals('Contact', $menu[2]['text']);
-        $this->assertEquals('Submenu', $menu[3]['text']);
-        $this->assertEquals('invalid', $menu[4]['text']);
-        $this->assertEquals('Settings', $menu[5]['text']);
+        $this->extracted($menu);
     }
 
 
@@ -62,6 +57,15 @@ class TablarTest extends TestCase
         $this->assertArrayNotHasKey(8, $menu);
         $this->assertArrayNotHasKey(9, $menu);
         $this->assertArrayNotHasKey(10, $menu);
+        $this->extracted($menu);
+    }
+
+    /**
+     * @param array $menu
+     * @return void
+     */
+    public function extracted(array $menu): void
+    {
         $this->assertEquals('Home', $menu[0]['text']);
         $this->assertEquals('Support', $menu[1]['text']);
         $this->assertEquals('Contact', $menu[2]['text']);

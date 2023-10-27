@@ -11,7 +11,7 @@ class BuildingMenu
      *
      * @var Builder
      */
-    public $menu;
+    public Builder $menu;
 
     /**
      * Create a new event instance.

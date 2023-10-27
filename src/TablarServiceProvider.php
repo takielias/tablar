@@ -25,7 +25,7 @@ class TablarServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $pkgPrefix = 'tablar';
+    protected string $packagePrefix = 'tablar';
 
     /**
      * Register the package services.
@@ -70,7 +70,7 @@ class TablarServiceProvider extends ServiceProvider
     private function loadViews(): void
     {
         $viewsPath = $this->packagePath('resources/views');
-        $this->loadViewsFrom($viewsPath, $this->pkgPrefix);
+        $this->loadViewsFrom($viewsPath, $this->packagePrefix);
     }
 
     /**
@@ -81,7 +81,7 @@ class TablarServiceProvider extends ServiceProvider
     private function loadTranslations(): void
     {
         $translationsPath = $this->packagePath('resources/lang');
-        $this->loadTranslationsFrom($translationsPath, $this->pkgPrefix);
+        $this->loadTranslationsFrom($translationsPath, $this->packagePrefix);
     }
 
     /**
@@ -92,7 +92,7 @@ class TablarServiceProvider extends ServiceProvider
     private function loadConfig(): void
     {
         $configPath = $this->packagePath('config/tablar.php');
-        $this->mergeConfigFrom($configPath, $this->pkgPrefix);
+        $this->mergeConfigFrom($configPath, $this->packagePrefix);
     }
 
     /**
@@ -111,7 +111,7 @@ class TablarServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    private function registerCommands()
+    private function registerCommands(): void
     {
         $this->commands([
             TablarInstallCommand::class,
