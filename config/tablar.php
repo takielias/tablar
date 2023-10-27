@@ -14,7 +14,7 @@ return [
     'title_prefix' => '',
     'title_postfix' => '',
     'bottom_title' => 'Tablar',
-    'current_version' => 'v2.9',
+    'current_version' => 'v4.0',
 
 
     /*
@@ -42,7 +42,7 @@ return [
     'auth_logo' => [
         'enabled' => false,
         'img' => [
-            'path' => 'assets/logo.svg',
+            'path' => 'assets/tablar-logo.png',
             'alt' => 'Auth Logo',
             'class' => '',
             'width' => 50,
@@ -60,32 +60,12 @@ return [
     |
     */
 
-    'layout_topnav' => true,
-    'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
+    'layout' => 'horizontal',
+    //boxed, combo, condensed, fluid, fluid-vertical, horizontal, navbar-overlap, navbar-sticky, rtl, vertical, vertical-right, vertical-transparent
+
     'layout_light_sidebar' => null,
-    'layout_fixed_navbar' => null,
-    'layout_fixed_footer' => null,
-    'layout_dark_mode' => null,
-    'layout_class' => 'default', //layout-fluid, layout-boxed, default is also available
-
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Views Classes
-    |--------------------------------------------------------------------------
-    |
-    | Here you can change the look and behavior of the authentication views.
-    |
-    | For detailed instructions, you can look at the auth classes section here:
-    |
-    */
-
-    'classes_auth_card' => 'card-outline card-primary',
-    'classes_auth_header' => '',
-    'classes_auth_body' => '',
-    'classes_auth_footer' => '',
-    'classes_auth_icon' => '',
-    'classes_auth_btn' => 'btn-flat btn-primary',
+    'layout_light_topbar' => true,
+    'layout_enable_top_header' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -147,17 +127,47 @@ return [
         [
             'text' => 'Home',
             'icon' => 'ti ti-home',
-            'url' => '#'
+            'url' => 'home'
         ],
+
         [
-            'text' => 'Support',
+            'text' => 'Support 1',
             'url' => '#',
             'icon' => 'ti ti-help',
+            'active' => ['support1'],
             'submenu' => [
                 [
                     'text' => 'Ticket',
-                    'url' => '#',
-                    'icon' => 'ti ti-article'
+                    'url' => 'support1',
+                    'icon' => 'ti ti-article',
+                ]
+            ],
+        ],
+
+        [
+            'text' => 'Support 2',
+            'url' => '#',
+            'icon' => 'ti ti-help',
+            'active' => ['support2'],
+            'submenu' => [
+                [
+                    'text' => 'Ticket',
+                    'url' => 'support2',
+                    'icon' => 'ti ti-article',
+                ]
+            ],
+        ],
+
+        [
+            'text' => 'Support 3',
+            'url' => '#',
+            'icon' => 'ti ti-help',
+            'active' => ['support3'],
+            'submenu' => [
+                [
+                    'text' => 'Ticket',
+                    'url' => 'support3',
+                    'icon' => 'ti ti-article',
                 ]
             ],
         ],

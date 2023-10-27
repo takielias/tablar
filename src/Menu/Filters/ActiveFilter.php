@@ -12,7 +12,7 @@ class ActiveFilter implements FilterInterface
      *
      * @var ActiveChecker
      */
-    protected $activeChecker;
+    protected ActiveChecker $activeChecker;
 
     /**
      * Constructor.

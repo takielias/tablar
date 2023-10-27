@@ -1,6 +1,9 @@
 <!-- Sidebar -->
-<aside class="navbar navbar-vertical navbar-expand-lg"
-       data-bs-theme="{{ config('tablar.layout_light_sidebar') ? 'light' : 'dark' }}">
+<aside class="{{$layoutData['cssClasses'] ?? 'navbar navbar-vertical navbar-expand-lg'}}"
+       @if(config('tablar.layout_light_sidebar') !== null)
+           data-bs-theme="{{ config('tablar.layout_light_sidebar') ? 'light' : 'dark' }}"
+    @endif
+>
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
                 aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
@@ -151,4 +154,6 @@
     </div>
 </aside>
 
-@include('tablar::partials.header.sidebar-top')
+@if(config('tablar.layout_enable_top_header'))
+    @include('tablar::partials.header.sidebar-top')
+@endif

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Routing\Route;
+use TakiElias\Tablar\Menu\Builder;
 
 class BuilderTest extends TestCase
 {
@@ -79,13 +80,7 @@ class BuilderTest extends TestCase
         $builder->addAfter('home', ['text' => 'About', 'url' => '/about']);
         $builder->addAfter('home', ['text' => 'Profile', 'url' => '/profile']);
 
-        $this->assertCount(3, $builder->menu);
-        $this->assertEquals('Home', $builder->menu[0]['text']);
-        $this->assertEquals('/', $builder->menu[0]['url']);
-        $this->assertEquals('Profile', $builder->menu[1]['text']);
-        $this->assertEquals('/profile', $builder->menu[1]['url']);
-        $this->assertEquals('About', $builder->menu[2]['text']);
-        $this->assertEquals('/about', $builder->menu[2]['url']);
+        $this->multipleItemTests($builder);
     }
 
     public function testAddAfterMultipleItemsAtOnce()
@@ -99,13 +94,7 @@ class BuilderTest extends TestCase
             ['text' => 'About', 'url' => '/about']
         );
 
-        $this->assertCount(3, $builder->menu);
-        $this->assertEquals('Home', $builder->menu[0]['text']);
-        $this->assertEquals('/', $builder->menu[0]['url']);
-        $this->assertEquals('Profile', $builder->menu[1]['text']);
-        $this->assertEquals('/profile', $builder->menu[1]['url']);
-        $this->assertEquals('About', $builder->menu[2]['text']);
-        $this->assertEquals('/about', $builder->menu[2]['url']);
+        $this->multipleItemTests($builder);
     }
 
     public function testAddAfterOneSubItem()
@@ -457,7 +446,7 @@ class BuilderTest extends TestCase
 
         $builder->add(
             [
-                'text'    => 'Home',
+                'text' => 'Home',
                 'submenu' => [
                     ['text' => 'About', 'url' => '/about'],
                 ],
@@ -476,11 +465,11 @@ class BuilderTest extends TestCase
 
         $builder->add(
             [
-                'text'    => 'Home',
+                'text' => 'Home',
                 'submenu' => [
                     [
-                        'text'    => 'About',
-                        'url'     => '/about',
+                        'text' => 'About',
+                        'url' => '/about',
                         'submenu' => [
                             ['text' => 'Test', 'url' => '/test'],
                         ],
@@ -542,11 +531,11 @@ class BuilderTest extends TestCase
 
         $builder->add(
             [
-                'text'    => 'Menu',
+                'text' => 'Menu',
                 'submenu' => [
                     [
-                        'text'  => 'About',
-                        'url'   => '/about',
+                        'text' => 'About',
+                        'url' => '/about',
                     ],
                 ],
             ]
@@ -563,11 +552,11 @@ class BuilderTest extends TestCase
 
         $builder->add(
             [
-                'text'    => 'Menu',
+                'text' => 'Menu',
                 'submenu' => [
                     [
-                        'text'    => 'About',
-                        'route'   => 'pages.about',
+                        'text' => 'About',
+                        'route' => 'pages.about',
                     ],
                 ],
             ]
@@ -583,8 +572,8 @@ class BuilderTest extends TestCase
 
         $builder->add(
             [
-                'text'    => 'Menu',
-                'url'     => '#',
+                'text' => 'Menu',
+                'url' => '#',
                 'submenu' => [
                     ['url' => 'home'],
                 ],
@@ -653,13 +642,13 @@ class BuilderTest extends TestCase
         $builder->add(
             [
                 'text' => 'About',
-                'url'  => 'about',
-                'can'  => 'show-about',
+                'url' => 'about',
+                'can' => 'show-about',
             ],
             [
                 'text' => 'Home',
-                'url'  => '/',
-                'can'  => 'show-home',
+                'url' => '/',
+                'can' => 'show-home',
             ]
         );
 
@@ -682,8 +671,8 @@ class BuilderTest extends TestCase
         $builder->add(
             [
                 'text' => 'Home',
-                'url'  => '/',
-                'can'  => 'show-home',
+                'url' => '/',
+                'can' => 'show-home',
             ]
         );
 
@@ -709,11 +698,11 @@ class BuilderTest extends TestCase
         $builder = $this->makeMenuBuilder('http://example.com', $gate);
 
         $builder->add(
-            ['text' => 'LinkA', 'url'  => 'link_a', 'can'  => false],
-            ['text' => 'LinkB', 'url'  => 'link_b', 'can'  => 1024],
-            ['text' => 'LinkC', 'url'  => 'link_c', 'can'  => ''],
-            ['text' => 'LinkD', 'url'  => 'link_d', 'can'  => []],
-            ['text' => 'LinkE', 'url'  => 'link_e']
+            ['text' => 'LinkA', 'url' => 'link_a', 'can' => false],
+            ['text' => 'LinkB', 'url' => 'link_b', 'can' => 1024],
+            ['text' => 'LinkC', 'url' => 'link_c', 'can' => ''],
+            ['text' => 'LinkD', 'url' => 'link_d', 'can' => []],
+            ['text' => 'LinkE', 'url' => 'link_e']
         );
 
         $this->assertCount(5, $builder->menu);
@@ -751,13 +740,13 @@ class BuilderTest extends TestCase
         $builder->add(
             [
                 'text' => 'Users',
-                'url'  => 'users',
-                'can'  => ['show-users', 'edit-user'],
+                'url' => 'users',
+                'can' => ['show-users', 'edit-user'],
             ],
             [
                 'text' => 'Settings',
-                'url'  => 'settings',
-                'can'  => ['show-settings'],
+                'url' => 'settings',
+                'can' => ['show-settings'],
             ]
         );
 
@@ -786,11 +775,11 @@ class BuilderTest extends TestCase
         $builder->add(
             [
                 'header' => 'HEADER',
-                'can'  => 'show-header',
+                'can' => 'show-header',
             ],
             [
                 'header' => 'SETTINGS',
-                'can'  => 'show-settings',
+                'can' => 'show-settings',
             ]
         );
 
@@ -804,14 +793,7 @@ class BuilderTest extends TestCase
         $builder = $this->makeMenuBuilder('http://example.com');
         $builder->add(['header' => 'Profile']);
         $builder->add(['text' => 'Profile', 'url' => '/profile', 'label' => 'LABELS']);
-        $builder->add(['text' => 'Blog', 'url' => '/blog']);
-        $builder->add(['header' => 'TEST']);
-
-//        dd($builder->menu);
-
-        $this->assertCount(4, $builder->menu);
-        $this->assertEquals('Profile', $builder->menu[0]['header']);
-        $this->assertEquals('Profile', $builder->menu[1]['text']);
+        $this->menuTest($builder);
         $this->assertEquals('LABELS', $builder->menu[1]['label']);
         $this->assertEquals('Blog', $builder->menu[2]['text']);
         $this->assertEquals('TEST', $builder->menu[3]['header']);
@@ -819,11 +801,7 @@ class BuilderTest extends TestCase
         $builder = $this->makeMenuBuilder('http://example.com', null, 'de');
         $builder->add(['header' => 'Profile']);
         $builder->add(['text' => 'Profile', 'url' => '/profile', 'label' => 'Labels']);
-        $builder->add(['text' => 'Blog', 'url' => '/blog']);
-        $builder->add(['header' => 'TEST']);
-        $this->assertCount(4, $builder->menu);
-        $this->assertEquals('Profile', $builder->menu[0]['header']);
-        $this->assertEquals('Profile', $builder->menu[1]['text']);
+        $this->menuTest($builder);
         $this->assertEquals('Labels', $builder->menu[1]['label']);
         $this->assertEquals('Blog', $builder->menu[2]['text']);
         $this->assertEquals('TEST', $builder->menu[3]['header']);
@@ -941,5 +919,36 @@ class BuilderTest extends TestCase
         $this->assertStringContainsString('active', $builder->menu[0]['class']);
         $this->assertStringContainsString('foo-class', $builder->menu[0]['class']);
         $this->assertStringContainsString('bar-class', $builder->menu[0]['class']);
+    }
+
+    /**
+     * @param Builder $builder
+     * @return void
+     */
+    public function multipleItemTests(Builder $builder): void
+    {
+        $this->assertCount(3, $builder->menu);
+        $this->assertEquals('Home', $builder->menu[0]['text']);
+        $this->assertEquals('/', $builder->menu[0]['url']);
+        $this->assertEquals('Profile', $builder->menu[1]['text']);
+        $this->assertEquals('/profile', $builder->menu[1]['url']);
+        $this->assertEquals('About', $builder->menu[2]['text']);
+        $this->assertEquals('/about', $builder->menu[2]['url']);
+    }
+
+    /**
+     * @param Builder $builder
+     * @return void
+     */
+    public function menuTest(Builder $builder): void
+    {
+        $builder->add(['text' => 'Blog', 'url' => '/blog']);
+        $builder->add(['header' => 'TEST']);
+
+//        dd($builder->menu);
+
+        $this->assertCount(4, $builder->menu);
+        $this->assertEquals('Profile', $builder->menu[0]['header']);
+        $this->assertEquals('Profile', $builder->menu[1]['text']);
     }
 }
