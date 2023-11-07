@@ -138,7 +138,7 @@ class TablarPreset extends Preset
             "tinymce" => "^6.4.2",
             "tom-select" => "^2.2.2",
             "laravel-vite-plugin" => "^0.8.0",
-            "sass" => "^1.62.1",
+            "sass" => "~1.64.2",
             "sass-loader" => "^13.3.1",
             "vite" => "^4.0.0",
             "axios" => "^1.1.2",
