@@ -1,14 +1,16 @@
-<body>
 @php
     $layoutData['cssClasses'] =  'navbar navbar-expand-md d-print-none';
 @endphp
-<div class="page">
-    <!-- Top Navbar -->
-    @include('tablar::partials.navbar.topbar', $layoutData)
-    <div class="page-wrapper">
-        <!-- Page Content -->
-        @yield('content')
-        @include('tablar::partials.footer.bottom')
+@section('body')
+    <body>
+    <div class="page">
+        <!-- Top Navbar -->
+        @include('tablar::partials.navbar.topbar', $layoutData)
+        <div class="page-wrapper">
+            <!-- Page Content -->
+            @yield('content')
+            @include('tablar::partials.footer.bottom')
+        </div>
     </div>
-</div>
-</body>
+    </body>
+@stop
