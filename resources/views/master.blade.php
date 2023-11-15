@@ -24,9 +24,9 @@
             {{-- Custom Stylesheets (post Tablar) --}}
             @yield('tablar_css')
         </head>
-        <body class="@yield('classes_body')" @yield('body_data')>
+
         @yield('body')
         @include('tablar::extra.modal')
         @yield('tablar_js')
-        </body>
+
         </html>
