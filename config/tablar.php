@@ -14,7 +14,7 @@ return [
     'title_prefix' => '',
     'title_postfix' => '',
     'bottom_title' => 'Tablar',
-    'current_version' => 'v4.0',
+    'current_version' => 'v4.8',
 
 
     /*
@@ -49,6 +49,13 @@ return [
             'height' => 50,
         ],
     ],
+
+    /*
+     *
+     * Default path is 'resources/vendor/tablar' as null. Set your custom path here If you need.
+     */
+
+    'views_path' => null,
 
     /*
     |--------------------------------------------------------------------------

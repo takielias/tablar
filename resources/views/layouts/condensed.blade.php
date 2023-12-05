@@ -5,7 +5,7 @@
     <body>
     <div class="page">
         <!-- Top Navbar -->
-        @include('tablar::partials.navbar.topbar')
+        @include('tablar::partials.navbar.condensed-top')
         <div class="page-wrapper">
             <!-- Page Content -->
             @yield('content')

@@ -2,6 +2,7 @@
 
 namespace TakiElias\Tablar;
 
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Container\Container;
@@ -50,6 +51,7 @@ class TablarServiceProvider extends ServiceProvider
      * Bootstrap the package's services.
      *
      * @return void
+     * @throws FileNotFoundException
      */
     public function boot(Factory $view, Dispatcher $events, Repository $config): void
     {
@@ -62,16 +64,41 @@ class TablarServiceProvider extends ServiceProvider
 
     }
 
+
     /**
      * Load the package views.
      *
      * @return void
+     * @throws FileNotFoundException
      */
     private function loadViews(): void
     {
-        $viewsPath = $this->packagePath('resources/views');
-        $this->loadViewsFrom($viewsPath, $this->packagePrefix);
+        // Get the views path from the config file
+        $tablarViewPath = config('tablar.views_path');
+
+        // Check if a custom path is provided
+        if ($tablarViewPath) {
+            // Adjust the custom path
+            $customViewPath = preg_replace('#^resources[\/\.]#', '', $tablarViewPath);
+            $customViewPath = str_replace('.', '/', $customViewPath);
+            $fullPath = resource_path($customViewPath);
+
+            // Check if the adjusted path is a valid directory
+            if (is_dir($fullPath)) {
+                $this->callAfterResolving('view', function ($view) use ($fullPath) {
+                    $view->addNamespace($this->packagePrefix, $fullPath);
+                });
+            } else {
+                // Throw a FileNotFoundException if the path is not valid
+                throw new FileNotFoundException("Custom view path not found : $fullPath");
+            }
+        } else {
+            // Use the default package views path
+            $viewsPath = $this->packagePath('resources/views');
+            $this->loadViewsFrom($viewsPath, $this->packagePrefix);
+        }
     }
+
 
     /**
      * Load the package translations.
