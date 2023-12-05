@@ -9,7 +9,6 @@ use TakiElias\Tablar\Helpers\NavbarItemHelper;
 use TakiElias\Tablar\Helpers\SidebarItemHelper;
 use TakiElias\Tablar\Menu\Builder;
 
-
 /**
  *
  */
@@ -107,7 +106,7 @@ class Tablar
      *
      * @return array The set of menu items
      */
-    protected function buildMenu()
+    protected function buildMenu(): array
     {
         // Create the menu builder instance.
 
@@ -128,7 +127,7 @@ class Tablar
      *
      * @return array The set of filters that will apply on each menu item
      */
-    protected function buildFilters()
+    protected function buildFilters(): array
     {
         return array_map([$this->container, 'make'], $this->filters);
     }

@@ -14,7 +14,7 @@ return [
     'title_prefix' => '',
     'title_postfix' => '',
     'bottom_title' => 'Tablar',
-    'current_version' => 'v4.0',
+    'current_version' => 'v4.8',
 
 
     /*
@@ -51,6 +51,13 @@ return [
     ],
 
     /*
+     *
+     * Default path is 'resources/vendor/tablar' as null. Set your custom path here If you need.
+     */
+
+    'views_path' => null,
+
+    /*
     |--------------------------------------------------------------------------
     | Layout
     |--------------------------------------------------------------------------
@@ -60,7 +67,7 @@ return [
     |
     */
 
-    'layout' => 'horizontal',
+    'layout' => 'condensed',
     //boxed, combo, condensed, fluid, fluid-vertical, horizontal, navbar-overlap, navbar-sticky, rtl, vertical, vertical-right, vertical-transparent
 
     'layout_light_sidebar' => null,
