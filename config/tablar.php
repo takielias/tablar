@@ -52,7 +52,7 @@ return [
 
     /*
      *
-     * Default path is 'resources/vendor/tablar' as null. Set your custom path here If you need.
+     * Default path is 'resources/views/vendor/tablar' as null. Set your custom path here If you need.
      */
 
     'views_path' => null,
