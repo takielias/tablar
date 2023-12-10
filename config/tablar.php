@@ -76,6 +76,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Sticky Navbar for Top Nav
+    |--------------------------------------------------------------------------
+    |
+    | Here you can enable/disable the sticky functionality of Top Navigation Bar.
+    |
+    | For detailed instructions, you can look at the Top Navigation Bar classes here:
+    |
+    */
+
+    'sticky_top_nav_bar' => false,
+
+    /*
+    |--------------------------------------------------------------------------
     | Admin Panel Classes
     |--------------------------------------------------------------------------
     |

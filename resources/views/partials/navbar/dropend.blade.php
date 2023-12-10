@@ -4,6 +4,16 @@
         <a class="dropdown-item dropdown-toggle" href=""
            data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button"
            aria-expanded="false">
+
+            @if(isset($item['icon']))
+                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                        <!-- Download SVG icon from http://tabler-icons.io/i/package -->
+              <i class="{{ $item['icon'] ?? '' }} {{
+                isset($item['icon_color']) ? 'text-' . $item['icon_color'] : ''
+            }}"></i>
+            </span>
+            @endif
+
             {{ $item['text'] }}
             {{-- Label (optional) --}}
             @isset($item['label'])
