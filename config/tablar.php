@@ -52,7 +52,7 @@ return [
 
     /*
      *
-     * Default path is 'resources/vendor/tablar' as null. Set your custom path here If you need.
+     * Default path is 'resources/views/vendor/tablar' as null. Set your custom path here If you need.
      */
 
     'views_path' => null,
@@ -73,6 +73,19 @@ return [
     'layout_light_sidebar' => null,
     'layout_light_topbar' => true,
     'layout_enable_top_header' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Sticky Navbar for Top Nav
+    |--------------------------------------------------------------------------
+    |
+    | Here you can enable/disable the sticky functionality of Top Navigation Bar.
+    |
+    | For detailed instructions, you can look at the Top Navigation Bar classes here:
+    |
+    */
+
+    'sticky_top_nav_bar' => false,
 
     /*
     |--------------------------------------------------------------------------

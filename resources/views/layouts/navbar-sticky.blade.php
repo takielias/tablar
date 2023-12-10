@@ -6,7 +6,7 @@
     <div class="page">
         <!-- Top Navbar -->
         <div class="sticky-top">
-            @include('tablar::partials.navbar.topbar', $layoutData)
+            @include('tablar::partials.navbar.topbar')
         </div>
         <div class="page-wrapper">
             <!-- Page Content -->
