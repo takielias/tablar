@@ -1,7 +1,10 @@
 <?php
 
+namespace TakiElias\Tablar\Tests\Menu;
+
 use Illuminate\Routing\Route;
 use TakiElias\Tablar\Menu\Builder;
+use TakiElias\Tablar\Tests\TestCase;
 
 class BuilderTest extends TestCase
 {

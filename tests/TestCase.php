@@ -1,12 +1,18 @@
 <?php
 
+namespace TakiElias\Tablar\Tests;
+
 use Illuminate\Auth\Access\Gate;
 use Illuminate\Auth\GenericUser;
+use Illuminate\Container\Container;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Events\Dispatcher;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Illuminate\Routing\RouteCollection;
 use Illuminate\Routing\UrlGenerator;
+use Illuminate\Translation\FileLoader;
+use Illuminate\Translation\Translator;
 use TakiElias\Tablar\Tablar;
 use TakiElias\Tablar\Menu\ActiveChecker;
 use TakiElias\Tablar\Menu\Builder;
@@ -53,9 +59,9 @@ class TestCase extends BaseTestCase
 
     protected function makeTranslator($locale = 'en')
     {
-        $translationLoader = new Illuminate\Translation\FileLoader(new Illuminate\Filesystem\Filesystem, 'resources/lang/');
+        $translationLoader = new FileLoader(new  Filesystem, 'resources/lang/');
 
-        $this->translator = new Illuminate\Translation\Translator($translationLoader, $locale);
+        $this->translator = new  Translator($translationLoader, $locale);
         $this->translator->addNamespace('tablar', 'resources/lang/');
 
         return $this->translator;
@@ -101,7 +107,7 @@ class TestCase extends BaseTestCase
 
     protected function makeContainer()
     {
-        return new Illuminate\Container\Container();
+        return new  Container();
     }
 
     protected function getDispatcher()

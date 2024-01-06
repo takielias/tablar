@@ -1,5 +1,7 @@
 <?php
 
+namespace TakiElias\Tablar\Tests;
+
 use TakiElias\Tablar\Events\BuildingMenu;
 
 class TablarTest extends TestCase
