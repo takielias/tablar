@@ -1,5 +1,13 @@
 <?php
 
+namespace TakiElias\Tablar\Tests;
+
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\View;
+
 use TakiElias\Tablar\Tablar;
 
 class ServiceProviderTest extends TestCase

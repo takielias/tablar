@@ -1,5 +1,9 @@
 <?php
 
+namespace TakiElias\Tablar\Tests\Menu;
+
+use TakiElias\Tablar\Tests\TestCase;
+
 class ActiveCheckerTest extends TestCase
 {
     public function testExact()

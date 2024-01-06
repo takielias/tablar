@@ -31,6 +31,9 @@
         }
     },
     "autoload-dev": {
+        "psr-4": {
+            "TakiElias\\Tablar\\Tests\\": "tests/"
+        },
         "classmap": [
             "tests/TestCase.php"
         ]
