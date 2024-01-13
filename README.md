@@ -42,7 +42,8 @@ tablar@ebuz.xyz
 
 For step-by-step instructions on installation and usage, check out the [documentation](https://tablar.ebuz.xyz/docs)
 
-<br>
+## Blade UI Kit
+ Introducing [Tablar kit](https://github.com/takielias/tablar-kit), designed to enhance your Laravel Tablar dashboard.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
