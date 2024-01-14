@@ -22,7 +22,11 @@
 
 <br/> 
 
-#### Tablar: A Laravel Dashboard Preset Featuring Dark Mode and Dynamic Menu Generation for Effortless Navigation and Fast Development.
+## Tablar: A Laravel Dashboard Preset Featuring Dark Mode and Dynamic Menu Generation for Effortless Navigation and Fast Development.
+
+### Tablar Installation : Setting Up Laravel Tablar in Minutes
+
+[![Tablar](https://img.youtube.com/vi/ka26mSdmvIQ/0.jpg)](https://www.youtube.com/watch?v=ka26mSdmvIQ)
 
 ### Installation
 
