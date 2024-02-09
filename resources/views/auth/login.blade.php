@@ -87,8 +87,10 @@
                 </div>
             </div>
         </div>
-        <div class="text-center text-muted mt-3">
-            Don't have account yet? <a href="{{route('register')}}" tabindex="-1">Sign up</a>
-        </div>
+        @if(Route::has('register'))
+            <div class="text-center text-muted mt-3">
+                Don't have account yet? <a href="{{route('register')}}" tabindex="-1">Sign up</a>
+            </div>
+        @endif
     </div>
 @endsection
