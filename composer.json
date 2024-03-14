@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "illuminate/support": "~10",
+        "illuminate/support": "~10|~11",
         "laravel/ui": "~4"
     },
     "require-dev": {
