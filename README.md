@@ -38,7 +38,7 @@ Get it [here](https://laravel-news.com/tablar-laravel-dashboard-preset)
 ### Installation
 
 ```shell
-composer require takielias/tablar
+composer require takielias/tablar:"^10"
 ```
 ### Demo
 
