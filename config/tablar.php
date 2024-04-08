@@ -228,4 +228,18 @@ return [
     */
 
     'vite' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Livewire
+    |--------------------------------------------------------------------------
+    |
+    | Here we can enable the Livewire support.
+    |
+    | For detailed instructions you can look the livewire here:
+    | https://livewire.laravel.com
+    |
+    */
+
+    'livewire' => false,
 ];
