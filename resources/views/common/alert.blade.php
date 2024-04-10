@@ -11,3 +11,10 @@
         <div class="text-muted">{{Session('error')}}</div>
     </div>
 @endif
+@if ($errors->any())
+    @foreach ($errors->all() as $error)
+        <div class="alert alert-danger" role="alert">
+            <div class="text-muted">{{$error}}</div>
+        </div>
+    @endforeach
+@endif
