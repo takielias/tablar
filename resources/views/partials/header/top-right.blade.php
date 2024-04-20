@@ -4,7 +4,7 @@
            aria-label="Open user menu">
             <span class="avatar">SE</span>
             <div class="d-none d-xl-block ps-2">
-                <div>{{Str::firstAndLast(Auth()->user()->name)}}</div>
+                <div>{{Auth()->user()->name}}</div>
                 <div class="mt-1 small text-muted">Software Engineer</div>
             </div>
         </a>
