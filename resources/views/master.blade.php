@@ -15,7 +15,7 @@
         @yield('title_postfix', config('tablar.title_postfix', ''))
     </title>
 
-    <!-- CSS files -->
+    <!-- CSS/JS files -->
     @if(config('tablar','vite'))
         @vite('resources/js/app.js')
     @endif
