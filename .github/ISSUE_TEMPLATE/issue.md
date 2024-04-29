@@ -1,6 +1,6 @@
 ---
 name: Issue
-about: Describe this issue template's purpose here.
+about: Describe any issue regarding this package
 title: "[Issue]"
 labels: ''
 assignees: ''
