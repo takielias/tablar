@@ -29,21 +29,25 @@ class TablarInstallCommand extends Command
 
     protected function checkController(): void
     {
+        if (version_compare(app()->version(), '11.0', '>=')) {
 
-        $filePath = app_path('Http/Controllers/Controller.php');
-        $newBaseClass = '\\Illuminate\\Routing\\Controller';
+            $this->info('Running on Laravel 11.');
 
-        $fileContents = file_get_contents($filePath);
-        if (!str_contains($fileContents, 'extends ' . $newBaseClass)) {
-            $fileContents = preg_replace(
-                '/class Controller\s*(extends \\\\?[a-zA-Z0-9_\\\\]+)?\s*\{/',
-                "class Controller extends $newBaseClass\n{",
-                $fileContents
-            );
-            file_put_contents($filePath, $fileContents);
-            $this->info("The Controller class has been modified to extend $newBaseClass.");
-        } else {
-            $this->info("No changes made. The Controller class already extends $newBaseClass.");
+            $filePath = app_path('Http/Controllers/Controller.php');
+            $newBaseClass = '\\Illuminate\\Routing\\Controller';
+
+            $fileContents = file_get_contents($filePath);
+            if (!str_contains($fileContents, 'extends ' . $newBaseClass)) {
+                $fileContents = preg_replace(
+                    '/class Controller\s*(extends \\\\?[a-zA-Z0-9_\\\\]+)?\s*\{/',
+                    "class Controller extends $newBaseClass\n{",
+                    $fileContents
+                );
+                file_put_contents($filePath, $fileContents);
+                $this->info("The Controller class has been modified to extend $newBaseClass.");
+            } else {
+                $this->info("No changes made. The Controller class already extends $newBaseClass.");
+            }
         }
 
     }
