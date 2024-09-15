@@ -14,14 +14,28 @@
         @yield('title', config('tablar.title', 'Tablar'))
         @yield('title_postfix', config('tablar.title_postfix', ''))
     </title>
-    <!-- CSS files -->
+
+    <!-- CSS/JS files -->
     @if(config('tablar','vite'))
         @vite('resources/js/app.js')
     @endif
+
+    {{-- Livewire Styles --}}
+    @if(config('tablar.livewire'))
+        @livewireStyles
+    @endif
+
     {{-- Custom Stylesheets (post Tablar) --}}
     @yield('tablar_css')
+
 </head>
 @yield('body')
 @include('tablar::extra.modal')
+
+{{-- Livewire Script --}}
+@if(config('tablar.livewire'))
+    @livewireScripts
+@endif
+
 @yield('tablar_js')
 </html>

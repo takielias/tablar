@@ -130,7 +130,7 @@ class TablarPreset extends Preset
             "countup.js" => "^2.6.2",
             "dropzone" => "^6.0.0-beta.2",
             "fslightbox" => "^3.4.1",
-            "jsvectormap" => "^1.5.3",
+            "jsvectormap" => "1.5.3",
             "list.js" => "^2.3.1",
             "litepicker" => "^2.0.12",
             "nouislider" => "^15.7.0",
