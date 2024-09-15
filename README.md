@@ -42,8 +42,13 @@ Please check the corresponding branch for the documentation.
 
 ## [Demo Project](https://github.com/takielias/tablar-demo-project)
 
-### Live Demo
+### Installation
 
+```shell
+composer require takielias/tablar
+```
+  
+### Live Demo
 https://tablar.ebuz.xyz
 
 ```shell
