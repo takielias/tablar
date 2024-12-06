@@ -10,6 +10,9 @@
 @section('classes_body', $layoutHelper->makeBodyClasses())
 
 @section('layout')
+    @if(config('tablar','display_alert'))
+        @include('tablar::partials.common.alerts-container')
+    @endif
     @if(isset($layout))
         @includeIf('tablar::layouts.' . $layout)
     @else
