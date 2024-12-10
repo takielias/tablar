@@ -30,12 +30,12 @@
             <div class="dropdown-divider"></div>
             <a href="{{$setting_url}}" class="dropdown-item">Settings</a>
             <a class="dropdown-item"
-               href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+               href="#" onclick="event.preventDefault(); document.getElementById('logout-form-{{ uniqid('logout-form-') }}').submit();">
                 <i class="fa fa-fw fa-power-off text-red"></i>
                 {{ __('tablar::tablar.log_out') }}
             </a>
 
-            <form id="logout-form" action="{{ $logout_url }}" method="POST" style="display: none;">
+            <form id="logout-form-{{ uniqid('logout-form-') }}" action="{{ $logout_url }}" method="POST" style="display: none;">
                 @if(config('tablar.logout_method'))
                     {{ method_field(config('tablar.logout_method')) }}
                 @endif
