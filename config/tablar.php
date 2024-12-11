@@ -131,6 +131,28 @@ return [
     */
     'display_alert' => false,
 
+    'alerts' => [
+        'default_position' => [
+            'top' => '10px',
+            'right' => '10px',
+        ],
+        'positions_by_layout' => [
+            'boxed' => ['top' => '10px', 'right' => '10px'],
+            'combo' => ['top' => '80px', 'right' => '20px'],
+            'condensed' => ['top' => '10px', 'right' => '10px'],
+            'fluid' => ['top' => '10px', 'right' => '10px'],
+            'horizontal' => ['top' => '10px', 'right' => '10px'],
+            'navbar-overlap' => ['top' => '10px', 'right' => '10px'],
+            'navbar-sticky' => ['top' => '10px', 'right' => '10px'],
+            'rtl' => ['top' => '20px', 'right' => 'unset', 'left' => '20px'],
+            'vertical' => ['top' => '10px', 'right' => '10px'],
+            'vertical-right' => ['top' => '10px', 'right' => '10px'],
+            'vertical-transparent' => ['top' => '10px', 'right' => '10px'],
+        ],
+        'default_duration' => 5,
+        'dismissible' => true,
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Menu Items
