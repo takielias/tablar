@@ -14,7 +14,7 @@ return [
     'title_prefix' => '',
     'title_postfix' => '',
     'bottom_title' => 'Tablar',
-    'current_version' => 'v4.8',
+    'current_version' => 'v11.11',
 
 
     /*
