@@ -159,6 +159,7 @@ class TablarPreset extends Preset
             '@tabler/icons-webfont',
             'apexcharts',
             'countup.js',
+            'choices.js',
             'dropzone',
             'fslightbox',
             'jsvectormap',
