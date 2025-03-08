@@ -122,10 +122,10 @@ class TablarPreset extends Preset
         return array_merge([
             "jquery" => "3.7.*",
             "bootstrap" => "5.3.3",
-            '@tabler/core' => '1.0.0',
+            '@tabler/core' => '1.1.1',
             "@popperjs/core" => "^2.11.8",
-            "@tabler/icons" => "^3.30.0",
-            "@tabler/icons-webfont" => "^2.32.0",
+            "@tabler/icons" => "^3.31.0",
+            "@tabler/icons-webfont" => "^3.31.0",
             "apexcharts" => "^3.40.0",
             "countup.js" => "^2.8.0",
             "dropzone" => "^6.0.0-beta.2",
@@ -148,6 +148,7 @@ class TablarPreset extends Preset
             "sass-loader" => "^16.0.1",
             "vite" => "^5.0.0",
             "axios" => "^1.7.4",
+            "vite-plugin-static-copy" => "~1.0.5",
         ], Arr::except($packages, [
             'axios',
             'postcss',
@@ -173,6 +174,7 @@ class TablarPreset extends Preset
             'laravel-vite-plugin',
             'sass',
             'sass-loader',
+            'vite-plugin-static-copy',
             'vite'
         ]));
     }
