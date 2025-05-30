@@ -99,7 +99,7 @@ class TablarPreset extends Preset
     {
 
         tap(new Filesystem, function ($filesystem) {
-            collect($filesystem->allFiles(base_path('node_modules/@tabler/icons-webfont/fonts')))
+            collect($filesystem->allFiles(base_path('node_modules/@tabler/icons-webfont/dist/fonts')))
                 ->each(function (SplFileInfo $file) use ($filesystem) {
                     $filesystem->copy(
                         $file->getPathname(),
@@ -135,13 +135,11 @@ class TablarPreset extends Preset
             "fslightbox" => "^3.6.0",
             "jsvectormap" => "^1.6.0",
             "fullcalendar" => "^6.1.17",
-            "hugerte" => "^1.0.9",
             "signature_pad" => "^5.0.7",
             "list.js" => "^2.3.1",
             "litepicker" => "^2.0.12",
             "nouislider" => "^15.8.1",
             "plyr" => "^3.7.8",
-            "tinymce" => "^7.6.1",
             "tom-select" => "^2.4.3",
             "@melloware/coloris" => "^0.24.2",
             "typed.js" => "^2.1.0",
@@ -151,29 +149,10 @@ class TablarPreset extends Preset
             "sass-loader" => "^16.0.1",
             "vite" => "^5.0.0",
             "axios" => "^1.7.4",
-            "vite-plugin-static-copy" => "~1.0.5",
+            "vite-plugin-static-copy" => "~3.0.0",
         ], Arr::except($packages, [
             'axios',
             'postcss',
-            'jquery',
-            'bootstrap',
-            '@tabler/core',
-            '@popperjs/core',
-            '@tabler/icons',
-            '@tabler/icons-webfont',
-            'apexcharts',
-            'countup.js',
-            'choices.js',
-            'dropzone',
-            'fslightbox',
-            'jsvectormap',
-            'list.js',
-            'litepicker',
-            'nouislider',
-            'plyr',
-            'imask',
-            'tinymce',
-            'tom-select',
             'laravel-vite-plugin',
             'sass',
             'sass-loader',
