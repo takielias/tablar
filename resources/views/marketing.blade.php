@@ -10,7 +10,7 @@
 @section('classes_body', $layoutHelper->makeBodyClasses())
 
 @section('layout')
-    @include('layouts.marketing')
+    @include('tablar::layouts.marketing')
 @show
 
 @section('tablar_js')
