@@ -63,7 +63,7 @@ class ClassesFilter implements FilterInterface
         // need to add the class to sidebar submenu items only.
 
         if (SidebarItemHelper::isValidItem($item) && $item['active']) {
-            $classes[] = 'menu-open';
+            $classes[] = 'show';
         }
 
         return $classes;
