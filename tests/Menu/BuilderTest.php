@@ -585,7 +585,7 @@ class BuilderTest extends TestCase
 
         $this->assertTrue($builder->menu[0]['active']);
         $this->assertEquals('active', $builder->menu[0]['class']);
-        $this->assertEquals('menu-open', $builder->menu[0]['submenu_class']);
+        $this->assertEquals('show', $builder->menu[0]['submenu_class']);
     }
 
     public function testTopNavActiveClass()
