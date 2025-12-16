@@ -4,14 +4,11 @@ namespace TakiElias\Tablar;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
-use Laravel\Ui\Presets\Preset;
+use TakiElias\Tablar\Support\Preset;
 use Illuminate\Support\Arr;
 use Illuminate\Container\Container;
 use SplFileInfo;
 
-/**
- *
- */
 class TablarPreset extends Preset
 {
     /**
@@ -114,10 +111,11 @@ class TablarPreset extends Preset
      * Update the given package array.
      *
      * @param array $packages
+     * @param string $configurationKey
      *
      * @return array
      */
-    protected static function updatePackageArray(array $packages): array
+    protected static function updatePackageArray(array $packages, string $configurationKey = 'devDependencies'): array
     {
         return array_merge([
             "jquery" => "3.7.*",
@@ -221,7 +219,7 @@ class TablarPreset extends Preset
         tap(new Filesystem, function ($filesystem) {
             $filesystem->copyDirectory(__DIR__ . '/stubs/resources/views', resource_path('views'));
 
-            collect($filesystem->allFiles(base_path('vendor/laravel/ui/stubs/migrations')))
+            collect($filesystem->allFiles(__DIR__ . '/stubs/migrations'))
                 ->each(function (SplFileInfo $file) use ($filesystem) {
                     $filesystem->copy(
                         $file->getPathname(),
@@ -238,17 +236,33 @@ class TablarPreset extends Preset
      */
     protected static function scaffoldController(): void
     {
+        // Ensure Auth controllers directory exists
         if (!is_dir($directory = app_path('Http/Controllers/Auth'))) {
             mkdir($directory, 0755, true);
         }
 
         $filesystem = new Filesystem;
 
-        collect($filesystem->allFiles(base_path('vendor/laravel/ui/stubs/Auth')))
+        // Copy auth controllers from our stubs
+        collect($filesystem->allFiles(__DIR__ . '/stubs/controllers/Auth'))
             ->each(function (SplFileInfo $file) use ($filesystem) {
                 $filesystem->copy(
                     $file->getPathname(),
                     app_path('Http/Controllers/Auth/' . Str::replaceLast('.stub', '.php', $file->getFilename()))
+                );
+            });
+
+        // Ensure Auth requests directory exists
+        if (!is_dir($directory = app_path('Http/Requests/Auth'))) {
+            mkdir($directory, 0755, true);
+        }
+
+        // Copy request classes from our stubs
+        collect($filesystem->allFiles(__DIR__ . '/stubs/requests/Auth'))
+            ->each(function (SplFileInfo $file) use ($filesystem) {
+                $filesystem->copy(
+                    $file->getPathname(),
+                    app_path('Http/Requests/Auth/' . Str::replaceLast('.stub', '.php', $file->getFilename()))
                 );
             });
     }
