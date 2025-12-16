@@ -1,4 +1,4 @@
-<a class="dropdown-item" href="{{ $item['href']??'' }}">
+<a class="dropdown-item {{ $item['class'] }}" href="{{ $item['href']??'' }}">
     @if(isset($item['icon']))
         <span class="nav-link-icon d-md-none d-lg-inline-block">
                         <!-- Download SVG icon from http://tabler-icons.io/i/package -->
