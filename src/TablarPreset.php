@@ -210,9 +210,13 @@ class TablarPreset extends Preset
     {
         file_put_contents(app_path('Http/Controllers/HomeController.php'), static::compileControllerStub());
 
+        // Copy auth routes file
+        copy(__DIR__ . '/stubs/routes/auth.php', base_path('routes/auth.php'));
+
+        // Add route includes to web.php
         file_put_contents(
             base_path('routes/web.php'),
-            "Auth::routes();\n\nRoute::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');\n\n",
+            "require __DIR__.'/auth.php';\n\nRoute::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');\n\n",
             FILE_APPEND
         );
 

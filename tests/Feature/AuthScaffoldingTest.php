@@ -202,4 +202,60 @@ class AuthScaffoldingTest extends TestCase
             'composer.json should conflict with laravel/breeze'
         );
     }
+
+    public function test_auth_routes_stub_exists(): void
+    {
+        $authRoutesPath = __DIR__ . '/../../src/stubs/routes/auth.php';
+
+        $this->assertFileExists($authRoutesPath, 'Auth routes stub should exist');
+
+        $content = $this->files->get($authRoutesPath);
+
+        // Should not use Auth::routes()
+        $this->assertStringNotContainsString(
+            'Auth::routes()',
+            $content,
+            'Auth routes should not use Auth::routes()'
+        );
+
+        // Should define explicit routes
+        $this->assertStringContainsString('Route::get(\'login\'', $content);
+        $this->assertStringContainsString('Route::post(\'login\'', $content);
+        $this->assertStringContainsString('Route::get(\'register\'', $content);
+        $this->assertStringContainsString('Route::post(\'register\'', $content);
+        $this->assertStringContainsString('Route::post(\'logout\'', $content);
+
+        // Should reference new controllers
+        $this->assertStringContainsString('AuthenticatedSessionController', $content);
+        $this->assertStringContainsString('RegisteredUserController', $content);
+        $this->assertStringContainsString('PasswordResetLinkController', $content);
+    }
+
+    public function test_scaffold_auth_does_not_use_auth_routes(): void
+    {
+        $tablarPresetPath = __DIR__ . '/../../src/TablarPreset.php';
+
+        $content = $this->files->get($tablarPresetPath);
+
+        // Should not append Auth::routes() to web.php
+        $this->assertStringNotContainsString(
+            'Auth::routes()',
+            $content,
+            'TablarPreset should not use Auth::routes()'
+        );
+
+        // Should copy auth routes file
+        $this->assertStringContainsString(
+            "'/stubs/routes/auth.php'",
+            $content,
+            'TablarPreset should copy auth routes file'
+        );
+
+        // Should require auth.php in web.php
+        $this->assertStringContainsString(
+            "require __DIR__.'/auth.php'",
+            $content,
+            'TablarPreset should add require for auth routes'
+        );
+    }
 }
