@@ -3,6 +3,7 @@
 namespace TakiElias\Tablar\Tests\Menu;
 
 use Illuminate\Routing\Route;
+use PHPUnit\Framework\Attributes\DataProvider;
 use TakiElias\Tablar\Menu\Builder;
 use TakiElias\Tablar\Tests\TestCase;
 
@@ -92,7 +93,8 @@ class BuilderTest extends TestCase
 
         $builder->add(['text' => 'Home', 'url' => '/', 'key' => 'home']);
 
-        $builder->addAfter('home',
+        $builder->addAfter(
+            'home',
             ['text' => 'Profile', 'url' => '/profile'],
             ['text' => 'About', 'url' => '/about']
         );
@@ -199,7 +201,8 @@ class BuilderTest extends TestCase
 
         $builder->add(['text' => 'Profile', 'url' => '/profile', 'key' => 'profile']);
 
-        $builder->addBefore('profile',
+        $builder->addBefore(
+            'profile',
             ['text' => 'Home', 'url' => '/'],
             ['text' => 'About', 'url' => '/about']
         );
@@ -262,7 +265,8 @@ class BuilderTest extends TestCase
 
         $builder->add(['text' => 'Home', 'url' => '/', 'key' => 'home']);
 
-        $builder->addIn('home',
+        $builder->addIn(
+            'home',
             ['text' => 'Profile', 'url' => '/profile'],
             ['text' => 'About', 'url' => '/about']
         );
@@ -569,8 +573,10 @@ class BuilderTest extends TestCase
         $this->assertStringContainsString('active', $builder->menu[0]['submenu'][0]['class']);
     }
 
-    public function testSubmenuActiveWithHash()
+    #[DataProvider('submenuLayoutProvider')]
+    public function testSubmenuActiveWithHash($layout, $expectsShow)
     {
+        config(['tablar.layout' => $layout]);
         $builder = $this->makeMenuBuilder('http://example.com/home');
 
         $builder->add(
@@ -585,7 +591,29 @@ class BuilderTest extends TestCase
 
         $this->assertTrue($builder->menu[0]['active']);
         $this->assertEquals('active', $builder->menu[0]['class']);
-        $this->assertEquals('show', $builder->menu[0]['submenu_class']);
+        if ($expectsShow) {
+            $this->assertEquals('show', $builder->menu[0]['submenu_class']);
+        } else {
+            $this->assertEquals('', $builder->menu[0]['submenu_class']);
+        }
+    }
+
+    public static function submenuLayoutProvider()
+    {
+        return [
+            ['boxed', false],
+            ['combo', true],
+            ['condensed', false],
+            ['fluid', false],
+            ['fluid-vertical', true],
+            ['horizontal', false],
+            ['navbar-overlap', false],
+            ['navbar-sticky', false],
+            ['rtl', false],
+            ['vertical', true],
+            ['vertical-right', true],
+            ['vertical-transparent', true],
+        ];
     }
 
     public function testTopNavActiveClass()
@@ -948,7 +976,7 @@ class BuilderTest extends TestCase
         $builder->add(['text' => 'Blog', 'url' => '/blog']);
         $builder->add(['header' => 'TEST']);
 
-//        dd($builder->menu);
+        //        dd($builder->menu);
 
         $this->assertCount(4, $builder->menu);
         $this->assertEquals('Profile', $builder->menu[0]['header']);
