@@ -62,7 +62,17 @@ class ClassesFilter implements FilterInterface
         // Add the menu-open class when a sidebar submenu is active. Note we
         // need to add the class to sidebar submenu items only.
 
-        if (SidebarItemHelper::isValidItem($item) && $item['active']) {
+        $menuLayout = config('tablar.layout');
+
+        $needToShow = [
+            'fluid-vertical',
+            'combo',
+            'vertical',
+            'vertical-right',
+            'vertical-transparent'
+        ];
+
+        if (SidebarItemHelper::isValidItem($item) && $item['active'] && in_array($menuLayout, $needToShow, true)) {
             $classes[] = 'show';
         }
 
