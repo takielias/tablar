@@ -66,4 +66,18 @@ class PackageVersionsTest extends BaseTestCase
         $this->assertSame('^3.41.0', $packages['@tabler/icons'] ?? null);
         $this->assertSame('^3.41.0', $packages['@tabler/icons-webfont'] ?? null);
     }
+
+    public function test_sass_embedded_present(): void
+    {
+        $packages = $this->packageArray();
+        $this->assertArrayHasKey('sass-embedded', $packages);
+        $this->assertSame('^1.99.0', $packages['sass-embedded']);
+    }
+
+    public function test_legacy_sass_keys_absent(): void
+    {
+        $packages = $this->packageArray();
+        $this->assertArrayNotHasKey('sass', $packages, 'Replace `sass` with `sass-embedded` for Vite 8 compatibility.');
+        $this->assertArrayNotHasKey('sass-loader', $packages, 'sass-loader is webpack-specific and unused under Vite.');
+    }
 }
