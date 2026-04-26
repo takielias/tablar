@@ -80,4 +80,19 @@ class PackageVersionsTest extends BaseTestCase
         $this->assertArrayNotHasKey('sass', $packages, 'Replace `sass` with `sass-embedded` for Vite 8 compatibility.');
         $this->assertArrayNotHasKey('sass-loader', $packages, 'sass-loader is webpack-specific and unused under Vite.');
     }
+
+    public function test_jquery_targets_v4(): void
+    {
+        $this->assertSame('^4.0.0', $this->packageArray()['jquery'] ?? null);
+    }
+
+    public function test_apexcharts_targets_v5(): void
+    {
+        $this->assertSame('^5.10.0', $this->packageArray()['apexcharts'] ?? null);
+    }
+
+    public function test_typed_js_targets_v3(): void
+    {
+        $this->assertSame('^3.0.0', $this->packageArray()['typed.js'] ?? null);
+    }
 }

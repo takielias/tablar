@@ -118,13 +118,13 @@ class TablarPreset extends Preset
     protected static function updatePackageArray(array $packages, string $configurationKey = 'devDependencies'): array
     {
         return array_merge([
-            "jquery" => "3.7.*",
+            "jquery" => "^4.0.0",
             "bootstrap" => "5.3.8",
             '@tabler/core' => '1.4.0',
             "@popperjs/core" => "^2.11.8",
             "@tabler/icons" => "^3.41.0",
             "@tabler/icons-webfont" => "^3.41.0",
-            "apexcharts" => "^3.54.1",
+            "apexcharts" => "^5.10.0",
             "countup.js" => "^2.9.0",
             "dropzone" => "^6.0.0-beta.2",
             "autosize" => "^6.0.1",
@@ -140,7 +140,7 @@ class TablarPreset extends Preset
             "plyr" => "^3.8.3",
             "tom-select" => "^2.4.3",
             "@melloware/coloris" => "^0.25.0",
-            "typed.js" => "^2.1.0",
+            "typed.js" => "^3.0.0",
             "imask" => "^7.6.1",
             "laravel-vite-plugin" => "^3.0.0",
             "sass-embedded" => "^1.99.0",
