@@ -43,6 +43,13 @@ Please check the corresponding branch for the documentation.
 
 ## [Demo Project](https://github.com/takielias/tablar-demo-project)
 
+### Requirements
+
+- PHP **8.3+**
+- Laravel **11.x / 12.x / 13.x**
+- Node **20.19+** or **22.12+** (Vite 8 minimum; Node 22 LTS recommended)
+- Composer 2.x
+
 ### Installation
 
 ```shell
