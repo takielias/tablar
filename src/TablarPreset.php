@@ -145,7 +145,7 @@ class TablarPreset extends Preset
             "laravel-vite-plugin" => "^1.0",
             "sass" => "~1.64.2",
             "sass-loader" => "^16.0.1",
-            "vite" => "^5.0.0",
+            "vite" => "^8.0.0",
             "axios" => "^1.7.4",
             "vite-plugin-static-copy" => "~3.0.0",
         ], Arr::except($packages, [
