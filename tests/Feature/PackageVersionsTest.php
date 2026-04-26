@@ -47,4 +47,23 @@ class PackageVersionsTest extends BaseTestCase
             $this->assertStringNotContainsString($forbidden, $vite, "Vite constraint must not contain {$forbidden}");
         }
     }
+
+    public function test_laravel_vite_plugin_targets_v3(): void
+    {
+        $packages = $this->packageArray();
+        $this->assertSame('^3.0.0', $packages['laravel-vite-plugin'] ?? null);
+    }
+
+    public function test_vite_plugin_static_copy_targets_v4(): void
+    {
+        $packages = $this->packageArray();
+        $this->assertSame('^4.0.0', $packages['vite-plugin-static-copy'] ?? null);
+    }
+
+    public function test_tabler_icons_at_3_41(): void
+    {
+        $packages = $this->packageArray();
+        $this->assertSame('^3.41.0', $packages['@tabler/icons'] ?? null);
+        $this->assertSame('^3.41.0', $packages['@tabler/icons-webfont'] ?? null);
+    }
 }
