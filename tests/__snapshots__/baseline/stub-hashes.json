@@ -175,5 +175,5 @@
     "resources\/views\/home.blade.php": "3a9ee77d9983cde9a3d9d83b066ad3d585c2ae603baf7d96bc31e8f256f04042",
     "resources\/views\/welcome.blade.php": "6d96ae1d90a61a0af1fea0e3feb97473266b7343c8038b586396dba7944a8379",
     "routes\/auth.php": "4860e9d688166ba829f7f61405f0da576e7c10b35c981f4202bd84476662e26e",
-    "vite.config.js": "6e537e138631b968e5fdf48bc2f3f689d4392d5c4c35b0f78431c000b90d6bc2"
+    "vite.config.js": "acb094aba71183f5e9449cc502382c218a3ee9a56e6c908d97eea8c453d7eb48"
 }

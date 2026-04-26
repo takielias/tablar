@@ -1,6 +1,6 @@
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import {viteStaticCopy} from 'vite-plugin-static-copy'
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
     plugins: [
@@ -12,25 +12,13 @@ export default defineConfig({
             targets: [
                 {
                     src: 'node_modules/@tabler/core/dist/img',
-                    dest: '../dist'
+                    dest: '../dist',
                 },
                 {
                     src: 'node_modules/@tabler/icons-webfont/dist/fonts',
-                    dest: '../build/assets'
-                }
-            ]
-        })
+                    dest: '../build/assets',
+                },
+            ],
+        }),
     ],
-    server: {
-        hmr: {
-            host: 'localhost',
-            protocol: 'ws',
-            port: 3000
-        }
-    },
-    build: {
-        commonjsOptions: {
-            transformMixedEsModules: true
-        }
-    }
 });
