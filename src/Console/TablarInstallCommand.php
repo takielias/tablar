@@ -7,24 +7,30 @@ use TakiElias\Tablar\TablarPreset;
 
 class TablarInstallCommand extends Command
 {
-    protected $signature = 'tablar:install';
+    protected $signature = 'tablar:install {--no-credits : Suppress the GitHub-star credits line}';
 
     protected $description = 'Install Tablar scaffolding and export config';
 
-    public function handle()
+    public function handle(): int
     {
         TablarPreset::install();
         TablarPreset::exportConfig();
-        $this->info('Tablar scaffolding installed & config has been exported successfully.');
-        $this->newLine();
+
         $this->checkController();
-        $this->comment('Tablar is now installed 🚀');
+
+        $major = (int) explode('.', app()->version())[0];
+
         $this->newLine();
-        $this->comment('Run "npm install" first. Once the installation is done, run "php artisan tablar:export-auth"');
-        $this->newLine();
-        $this->line('Please Show your support ❤️ for Tablar by giving us a star on GitHub ⭐️');
-        $this->info('https://github.com/takielias/tablar');
-        $this->newLine(2);
+        $this->info("✅ Tablar installed (Laravel {$major}).");
+        $this->line('Next: npm install && npm run dev');
+        $this->line('Then: php artisan tablar:export-auth');
+
+        if (! $this->option('no-credits')) {
+            $this->newLine();
+            $this->line('⭐️  Star us on GitHub: https://github.com/takielias/tablar');
+        }
+
+        return self::SUCCESS;
     }
 
     protected function checkController(): void
