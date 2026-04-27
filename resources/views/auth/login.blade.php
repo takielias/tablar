@@ -3,7 +3,7 @@
 @section('content')
     <div class="container container-tight py-4">
         <div class="text-center mb-1 mt-5">
-            <a href="" class="navbar-brand navbar-brand-autodark">
+            <a href="{{ url('/') }}" class="navbar-brand navbar-brand-autodark">
                 <img src="{{asset(config('tablar.auth_logo.img.path','assets/logo.svg'))}}" height="36"
                      alt=""></a>
         </div>
