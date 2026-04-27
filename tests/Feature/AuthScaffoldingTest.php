@@ -203,15 +203,15 @@ class AuthScaffoldingTest extends TestCase
         );
 
         $this->assertArrayHasKey(
-            'laravel/ui',
-            $composer['conflict'] ?? [],
-            'composer.json should conflict with laravel/ui — Tablar ships its own auth views.'
-        );
-
-        $this->assertArrayHasKey(
             'laravel/jetstream',
             $composer['conflict'] ?? [],
             'composer.json should conflict with laravel/jetstream — overlapping auth scaffold.'
+        );
+
+        $this->assertArrayNotHasKey(
+            'laravel/ui',
+            $composer['conflict'] ?? [],
+            'laravel/ui must not appear in conflict block — purged per user 2026-04-27.'
         );
     }
 

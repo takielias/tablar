@@ -26,7 +26,6 @@
     },
     "conflict": {
         "laravel/breeze": "*",
-        "laravel/ui": "*",
         "laravel/jetstream": "*"
     },
     "autoload": {
