@@ -11,6 +11,8 @@ class CiWorkflowsContractTest extends TestCase
 
     private const LINT_WORKFLOW = __DIR__.'/../../.github/workflows/lint.yml';
 
+    private const FRESH_INSTALL_WORKFLOW = __DIR__.'/../../.github/workflows/fresh-install.yml';
+
     protected function getPackageProviders($app): array
     {
         return [TablarServiceProvider::class];
@@ -87,5 +89,29 @@ class CiWorkflowsContractTest extends TestCase
         $lint = file_get_contents(self::LINT_WORKFLOW);
 
         $this->assertStringContainsString('composer validate --strict', $lint);
+    }
+
+    public function test_fresh_install_workflow_exists(): void
+    {
+        $this->assertFileExists(self::FRESH_INSTALL_WORKFLOW);
+    }
+
+    public function test_fresh_install_workflow_provisions_l11_l12_l13(): void
+    {
+        $yaml = file_get_contents(self::FRESH_INSTALL_WORKFLOW);
+
+        foreach (['11.*', '12.*', '13.*'] as $laravel) {
+            $this->assertStringContainsString($laravel, $yaml, "fresh-install must cover Laravel {$laravel}.");
+        }
+    }
+
+    public function test_fresh_install_workflow_runs_doctor_and_curls_root(): void
+    {
+        $yaml = file_get_contents(self::FRESH_INSTALL_WORKFLOW);
+
+        $this->assertStringContainsString('php artisan tablar:install --force', $yaml);
+        $this->assertStringContainsString('php artisan tablar:doctor', $yaml);
+        $this->assertStringContainsString('Welcome to Tablar', $yaml, 'Smoke must assert the welcome page renders.');
+        $this->assertStringContainsString('npm run build', $yaml);
     }
 }

@@ -1,0 +1,85 @@
+name: fresh-install
+
+# End-to-end smoke: provision a stock Laravel app, install Tablar from
+# the current ref, run the install command, build assets, and confirm
+# the app boots. Catches "works on my machine" regressions in the
+# install flow that the unit/feature suites cannot detect.
+
+on:
+  push:
+    branches: [ master, "[0-9]+.x" ]
+  pull_request:
+    branches: [ master, "[0-9]+.x" ]
+  workflow_dispatch:
+
+jobs:
+  fresh-install:
+    name: Laravel ${{ matrix.laravel }} fresh install
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        laravel: [ '11.*', '12.*', '13.*' ]
+
+    steps:
+      - name: Check out the package
+        uses: actions/checkout@v4
+        with:
+          path: tablar
+
+      - name: Setup PHP 8.3
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, intl
+          coverage: none
+          tools: composer:v2
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Create stock Laravel app
+        run: composer create-project "laravel/laravel:${{ matrix.laravel }}" fresh-app --no-interaction --prefer-dist
+
+      - name: Wire Tablar via path repository
+        working-directory: fresh-app
+        run: |
+          composer config repositories.tablar path ../tablar
+          composer require "takielias/tablar:*@dev" --no-interaction
+
+      - name: Run tablar:install
+        working-directory: fresh-app
+        run: php artisan tablar:install --force --no-credits
+
+      - name: Install + build npm assets
+        working-directory: fresh-app
+        run: |
+          npm install
+          npm run build
+
+      - name: Boot the app and curl /
+        working-directory: fresh-app
+        run: |
+          touch database/database.sqlite
+          php artisan config:clear
+          php artisan migrate --force
+          php artisan serve --host=127.0.0.1 --port=8000 > server.log 2>&1 &
+          sleep 4
+          status=$(curl -s -o response.html -w "%{http_code}" http://127.0.0.1:8000/)
+          echo "HTTP status: $status"
+          test "$status" = "200"
+          grep -q 'Welcome to Tablar' response.html
+
+      - name: tablar:doctor exit code
+        working-directory: fresh-app
+        run: php artisan tablar:doctor
+
+      - name: Upload server log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: server-log-${{ matrix.laravel }}
+          path: fresh-app/server.log

@@ -63,4 +63,41 @@ class ReadmeImageLinksTest extends TestCase
             'Migrate old github user-attachment screenshots into local screenshots/ dir.'
         );
     }
+
+    public function test_readme_carries_actions_status_badges(): void
+    {
+        $readme = file_get_contents(self::README);
+
+        $this->assertStringContainsString(
+            'actions/workflows/tests.yml/badge.svg',
+            $readme,
+            'README must show the GitHub Actions tests badge so reviewers can see CI status.'
+        );
+        $this->assertStringContainsString(
+            'actions/workflows/lint.yml/badge.svg',
+            $readme,
+            'README must show the GitHub Actions lint badge.'
+        );
+    }
+
+    public function test_readme_advertises_supported_runtimes(): void
+    {
+        $readme = file_get_contents(self::README);
+
+        $this->assertMatchesRegularExpression(
+            '/packagist\/dependency-v\/takielias\/tablar\/php/',
+            $readme,
+            'README must show the dynamic packagist PHP dependency badge.'
+        );
+        $this->assertMatchesRegularExpression(
+            '/Laravel-11.+12.+13/',
+            $readme,
+            'README must advertise Laravel 11/12/13 support.'
+        );
+        $this->assertMatchesRegularExpression(
+            '/packagist\/l\/takielias\/tablar/',
+            $readme,
+            'README must show the license badge.'
+        );
+    }
 }
