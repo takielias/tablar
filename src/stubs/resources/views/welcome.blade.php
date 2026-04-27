@@ -41,9 +41,6 @@
             </div>
         </div>
 
-        <div class="text-center text-secondary mt-4">
-            Laravel v{{ Illuminate\Foundation\Application::VERSION }}
-        </div>
     </div>
 </div>
 @endsection

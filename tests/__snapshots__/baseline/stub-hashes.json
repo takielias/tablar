@@ -173,7 +173,7 @@
     "resources\/views\/auth\/register.blade.php": "98f63e24eea351cd977dc796e671cb813c6c476447e880b1bc0b969b364af52f",
     "resources\/views\/auth\/verify.blade.php": "5a096fd69e273689a792c9b9ed491140f5e471999dd4af2fed0b5ca8ceca9f46",
     "resources\/views\/home.blade.php": "a6dda1a08530d2a9b8d3902b49420e281ea6c917a8a5eeb0a4ef4efe17843828",
-    "resources\/views\/welcome.blade.php": "2448d9876d7d29b769881c2d8640e493db0fcf125e90307efa3f0d0c1904b1d3",
+    "resources\/views\/welcome.blade.php": "9845dbfb86ed8fb5bc4216620f3f63592f16bcf029d8db459f40b481b0826d1e",
     "routes\/auth.php": "ae97a0c4ed28bd79ac0ff8c3a11539489518e1da4f17a3cf7a2b606b96dfd765",
     "vite.config.js": "5fcf18c36dc62aff33313c8fac9e6844a0d7949a50224499c33a9a294c940e9b"
 }
