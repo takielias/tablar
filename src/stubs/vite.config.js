@@ -21,4 +21,22 @@ export default defineConfig({
             ],
         }),
     ],
+    css: {
+        preprocessorOptions: {
+            scss: {
+                // Tabler core's sass triggers Dart Sass 1.80+ deprecations
+                // (@import, legacy color funcs, /-as-division). Silence the
+                // third-party noise; the package source is clean.
+                quietDeps: true,
+                silenceDeprecations: [
+                    'import',
+                    'global-builtin',
+                    'color-functions',
+                    'legacy-js-api',
+                    'slash-div',
+                    'if-function',
+                ],
+            },
+        },
+    },
 });
