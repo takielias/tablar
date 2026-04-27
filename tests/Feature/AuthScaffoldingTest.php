@@ -201,6 +201,18 @@ class AuthScaffoldingTest extends TestCase
             $composer['conflict'] ?? [],
             'composer.json should conflict with laravel/breeze'
         );
+
+        $this->assertArrayHasKey(
+            'laravel/ui',
+            $composer['conflict'] ?? [],
+            'composer.json should conflict with laravel/ui — Tablar ships its own auth views.'
+        );
+
+        $this->assertArrayHasKey(
+            'laravel/jetstream',
+            $composer['conflict'] ?? [],
+            'composer.json should conflict with laravel/jetstream — overlapping auth scaffold.'
+        );
     }
 
     public function test_auth_routes_stub_exists(): void

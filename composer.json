@@ -25,7 +25,9 @@
         "orchestra/testbench": "^9.0|^10.0|^11.0"
     },
     "conflict": {
-        "laravel/breeze": "*"
+        "laravel/breeze": "*",
+        "laravel/ui": "*",
+        "laravel/jetstream": "*"
     },
     "autoload": {
         "psr-4": {
