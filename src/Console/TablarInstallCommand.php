@@ -31,26 +31,60 @@ class TablarInstallCommand extends Command
     {
         $major = (int) explode('.', app()->version())[0];
 
-        if ($major >= 11) {
-
-            $this->info("Running on Laravel {$major}.");
-
-            $filePath = app_path('Http/Controllers/Controller.php');
-            $newBaseClass = '\\Illuminate\\Routing\\Controller';
-
-            $fileContents = file_get_contents($filePath);
-            if (! str_contains($fileContents, 'extends '.$newBaseClass)) {
-                $fileContents = preg_replace(
-                    '/class Controller\s*(extends \\\\?[a-zA-Z0-9_\\\\]+)?\s*\{/',
-                    "class Controller extends $newBaseClass\n{",
-                    $fileContents
-                );
-                file_put_contents($filePath, $fileContents);
-                $this->info("The Controller class has been modified to extend $newBaseClass.");
-            } else {
-                $this->info("No changes made. The Controller class already extends $newBaseClass.");
-            }
+        if ($major < 11) {
+            return;
         }
 
+        $this->info("Running on Laravel {$major}.");
+
+        $filePath = app_path('Http/Controllers/Controller.php');
+        $fileContents = file_get_contents($filePath);
+
+        $result = $this->patchControllerSource($fileContents);
+        $newBaseClass = self::TARGET_BASE_CONTROLLER;
+
+        if ($result === null) {
+            $this->info("No changes made. The Controller class already extends {$newBaseClass}.");
+
+            return;
+        }
+
+        file_put_contents($filePath, $result);
+        $this->info("The Controller class has been modified to extend {$newBaseClass}.");
+    }
+
+    public const TARGET_BASE_CONTROLLER = '\\Illuminate\\Routing\\Controller';
+
+    /**
+     * Patch an `app/Http/Controllers/Controller.php` source so it extends
+     * \Illuminate\Routing\Controller. Returns null when no change is needed
+     * (already extending that base, or no `class Controller` declaration).
+     *
+     * Handles all post-L10 streamlined skeletons:
+     *   - `class Controller {}`           (legacy)
+     *   - `abstract class Controller {}`  (L11/L12/L13 default — `abstract` preserved)
+     *   - `class Controller extends X {}` (already-extending other class — overwritten)
+     */
+    public function patchControllerSource(string $source): ?string
+    {
+        $target = self::TARGET_BASE_CONTROLLER;
+
+        if (str_contains($source, 'extends '.$target)) {
+            return null;
+        }
+
+        $patched = preg_replace_callback(
+            '/(?P<prefix>(?:abstract\s+)?)class\s+Controller\s*(?:extends\s+\\\\?[a-zA-Z0-9_\\\\]+)?\s*\{/',
+            fn (array $m): string => "{$m['prefix']}class Controller extends {$target}\n{",
+            $source,
+            1,
+            $count
+        );
+
+        if ($patched === null || $count === 0) {
+            return null;
+        }
+
+        return $patched;
     }
 }
