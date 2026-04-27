@@ -31,8 +31,6 @@ class ActiveChecker
 
     /**
      * Constructor.
-     *
-     * @param  UrlGenerator  $url
      */
     public function __construct(UrlGenerator $url)
     {
@@ -44,9 +42,9 @@ class ActiveChecker
 
         $this->tests = [
             'submenu' => [$this, 'containsActive'],
-            'active'  => [$this, 'isExplicitActive'],
-            'href'    => [$this, 'checkPattern'],
-            'url'     => [$this, 'checkPattern'],
+            'active' => [$this, 'isExplicitActive'],
+            'href' => [$this, 'checkPattern'],
+            'url' => [$this, 'checkPattern'],
         ];
     }
 

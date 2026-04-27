@@ -4,4 +4,6 @@ exportAuth
 exportConfig
 exportJs
 install
+reset
 update
+useCommand

@@ -2,12 +2,12 @@
 
 namespace TakiElias\Tablar;
 
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Support\ServiceProvider;
 use TakiElias\Tablar\Console\TablarExportAllCommand;
 use TakiElias\Tablar\Console\TablarExportAssetsCommand;
 use TakiElias\Tablar\Console\TablarExportAuthCommand;
@@ -23,15 +23,11 @@ class TablarServiceProvider extends ServiceProvider
 {
     /**
      * The prefix to use for register/load the package resources.
-     *
-     * @var string
      */
     protected string $packagePrefix = 'tablar';
 
     /**
      * Register the package services.
-     *
-     * @return void
      */
     public function register(): void
     {
@@ -50,7 +46,6 @@ class TablarServiceProvider extends ServiceProvider
     /**
      * Bootstrap the package's services.
      *
-     * @return void
      * @throws FileNotFoundException
      */
     public function boot(Factory $view, Dispatcher $events, Repository $config): void
@@ -64,11 +59,9 @@ class TablarServiceProvider extends ServiceProvider
 
     }
 
-
     /**
      * Load the package views.
      *
-     * @return void
      * @throws FileNotFoundException
      */
     private function loadViews(): void
@@ -99,11 +92,8 @@ class TablarServiceProvider extends ServiceProvider
         }
     }
 
-
     /**
      * Load the package translations.
-     *
-     * @return void
      */
     private function loadTranslations(): void
     {
@@ -113,8 +103,6 @@ class TablarServiceProvider extends ServiceProvider
 
     /**
      * Load the package config.
-     *
-     * @return void
      */
     private function loadConfig(): void
     {
@@ -125,18 +113,15 @@ class TablarServiceProvider extends ServiceProvider
     /**
      * Get the absolute path to some package resource.
      *
-     * @param string $path The relative path to the resource
-     * @return string
+     * @param  string  $path  The relative path to the resource
      */
     private function packagePath($path): string
     {
-        return __DIR__ . "/../$path";
+        return __DIR__."/../$path";
     }
 
     /**
      * Register the package's artisan commands.
-     *
-     * @return void
      */
     private function registerCommands(): void
     {
@@ -154,8 +139,6 @@ class TablarServiceProvider extends ServiceProvider
 
     /**
      * Register the package's view composers.
-     *
-     * @return void
      */
     private function registerViewComposers(Factory $view): void
     {
@@ -164,8 +147,6 @@ class TablarServiceProvider extends ServiceProvider
 
     /**
      * Register the menu events handlers.
-     *
-     * @return void
      */
     private static function registerMenu(Dispatcher $events, Repository $config): void
     {
@@ -181,5 +162,4 @@ class TablarServiceProvider extends ServiceProvider
             }
         );
     }
-
 }

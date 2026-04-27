@@ -6,42 +6,42 @@ use TakiElias\Tablar\Tests\TestCase;
 
 class ActiveCheckerTest extends TestCase
 {
-    public function testExact()
+    public function test_exact()
     {
         $checker = $this->makeActiveChecker('http://example.com/about');
 
         $this->assertTrue($checker->isActive(['url' => 'about']));
     }
 
-    public function testRoot()
+    public function test_root()
     {
         $checker = $this->makeActiveChecker('http://example.com');
 
         $this->assertTrue($checker->isActive(['url' => '/']));
     }
 
-    public function testNotActive()
+    public function test_not_active()
     {
         $checker = $this->makeActiveChecker('http://example.com/about');
 
         $this->assertFalse($checker->isActive(['url' => 'home']));
     }
 
-    public function testStringNotActive()
+    public function test_string_not_active()
     {
         $checker = $this->makeActiveChecker();
 
         $this->assertFalse($checker->isActive('HEADER'));
     }
 
-    public function testSub()
+    public function test_sub()
     {
         $checker = $this->makeActiveChecker('http://example.com/about/sub');
 
         $this->assertTrue($checker->isActive(['url' => 'about/sub']));
     }
 
-    public function testSubmenu()
+    public function test_submenu()
     {
         $checker = $this->makeActiveChecker('http://example.com/home');
 
@@ -57,7 +57,7 @@ class ActiveCheckerTest extends TestCase
         $this->assertTrue($isActive);
     }
 
-    public function testMultiLevelSubmenu()
+    public function test_multi_level_submenu()
     {
         $checker = $this->makeActiveChecker('http://example.com/home');
 
@@ -79,7 +79,7 @@ class ActiveCheckerTest extends TestCase
         $this->assertTrue($isActive);
     }
 
-    public function testExplicitActive()
+    public function test_explicit_active()
     {
         $checker = $this->makeActiveChecker('http://example.com/home');
 
@@ -90,7 +90,7 @@ class ActiveCheckerTest extends TestCase
         $this->assertFalse($isActive);
     }
 
-    public function testExplicitActiveRegex()
+    public function test_explicit_active_regex()
     {
         $checker = $this->makeActiveChecker('http://example.com/home/sub');
 
@@ -107,7 +107,7 @@ class ActiveCheckerTest extends TestCase
         $this->assertFalse($isActive);
     }
 
-    public function testExplicitOverridesDefault()
+    public function test_explicit_overrides_default()
     {
         $checker = $this->makeActiveChecker('http://example.com/admin/users');
 
@@ -115,7 +115,7 @@ class ActiveCheckerTest extends TestCase
         $this->assertFalse($isActive);
     }
 
-    public function testFullUrl()
+    public function test_full_url()
     {
         $checker = $this->makeActiveChecker('http://example.com/about');
 
@@ -123,7 +123,7 @@ class ActiveCheckerTest extends TestCase
         $this->assertTrue($isActive);
     }
 
-    public function testFullUrlSub()
+    public function test_full_url_sub()
     {
         $checker = $this->makeActiveChecker('http://example.com/about/sub');
 
@@ -131,7 +131,7 @@ class ActiveCheckerTest extends TestCase
         $this->assertTrue($isActive);
     }
 
-    public function testHttps()
+    public function test_https()
     {
         $checker = $this->makeActiveChecker('https://example.com/about');
 
@@ -142,7 +142,7 @@ class ActiveCheckerTest extends TestCase
         $this->assertTrue($isActive);
     }
 
-    public function testParams()
+    public function test_params()
     {
         $checker = $this->makeActiveChecker('http://example.com/menu?param=option');
 
@@ -152,7 +152,7 @@ class ActiveCheckerTest extends TestCase
         $this->assertFalse($checker->isActive(['active' => ['menu?param=foo']]));
     }
 
-    public function testSubParams()
+    public function test_sub_params()
     {
         $checker = $this->makeActiveChecker('http://example.com/menu/item1?param=option');
 
@@ -160,7 +160,7 @@ class ActiveCheckerTest extends TestCase
         $this->assertTrue($checker->isActive(['active' => ['menu/*']]));
     }
 
-    public function testExplicitActiveRegexEvaluation()
+    public function test_explicit_active_regex_evaluation()
     {
         $checker = $this->makeActiveChecker('http://example.com/posts/1');
 
@@ -168,7 +168,7 @@ class ActiveCheckerTest extends TestCase
         $this->assertFalse($checker->isActive(['active' => ['regex:@^post/[0-9]+$@']]));
     }
 
-    public function testActivefallbackToUrl()
+    public function test_activefallback_to_url()
     {
         $checker = $this->makeActiveChecker('http://example.com/home');
 
@@ -183,7 +183,7 @@ class ActiveCheckerTest extends TestCase
         $this->assertTrue($isActive);
     }
 
-    public function testWithForcedScheme()
+    public function test_with_forced_scheme()
     {
         $checker = $this->makeActiveChecker('http://example.com/about', 'https');
 

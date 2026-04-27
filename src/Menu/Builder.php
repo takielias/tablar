@@ -8,27 +8,23 @@ use TakiElias\Tablar\Helpers\MenuItemHelper;
 class Builder
 {
     protected const ADD_AFTER = 0;
+
     protected const ADD_BEFORE = 1;
+
     protected const ADD_INSIDE = 2;
 
     /**
      * The set of menu items.
-     *
-     * @var array
      */
     public array $menu = [];
 
     /**
      * The set of filters applied to menu items.
-     *
-     * @var array
      */
     private array $filters;
 
     /**
      * Constructor.
-     *
-     * @param array $filters
      */
     public function __construct(array $filters = [])
     {
@@ -38,13 +34,13 @@ class Builder
     /**
      * Add new items at the end of the menu.
      *
-     * @param mixed $newItems Items to be added
+     * @param  mixed  $newItems  Items to be added
      */
     public function add(...$newItems): void
     {
         $items = $this->transformItems($newItems);
 
-        if (!empty($items)) {
+        if (! empty($items)) {
             array_push($this->menu, ...$items);
         }
     }
@@ -52,8 +48,8 @@ class Builder
     /**
      * Add new items after a specific menu item.
      *
-     * @param mixed $itemKey The key that represents the specific menu item
-     * @param mixed $newItems Items to be added
+     * @param  mixed  $itemKey  The key that represents the specific menu item
+     * @param  mixed  $newItems  Items to be added
      */
     public function addAfter($itemKey, ...$newItems): void
     {
@@ -63,8 +59,8 @@ class Builder
     /**
      * Add new items before a specific menu item.
      *
-     * @param mixed $itemKey The key that represents the specific menu item
-     * @param mixed $newItems Items to be added
+     * @param  mixed  $itemKey  The key that represents the specific menu item
+     * @param  mixed  $newItems  Items to be added
      */
     public function addBefore($itemKey, ...$newItems): void
     {
@@ -74,8 +70,8 @@ class Builder
     /**
      * Add new submenu items inside a specific menu item.
      *
-     * @param mixed $itemKey The key that represents the specific menu item
-     * @param mixed $newItems Items to be added
+     * @param  mixed  $itemKey  The key that represents the specific menu item
+     * @param  mixed  $newItems  Items to be added
      */
     public function addIn($itemKey, ...$newItems): void
     {
@@ -85,13 +81,13 @@ class Builder
     /**
      * Remove a specific menu item.
      *
-     * @param mixed $itemKey The key of the menu item to remove
+     * @param  mixed  $itemKey  The key of the menu item to remove
      */
     public function remove($itemKey): void
     {
         // Find the specific menu item. Return if not found.
 
-        if (!($itemPath = $this->findItem($itemKey, $this->menu))) {
+        if (! ($itemPath = $this->findItem($itemKey, $this->menu))) {
             return;
         }
 
@@ -109,18 +105,17 @@ class Builder
     /**
      * Check if exists a menu item with the specified key.
      *
-     * @param mixed $itemKey The key of the menu item to check for
-     * @return bool
+     * @param  mixed  $itemKey  The key of the menu item to check for
      */
     public function itemKeyExists(mixed $itemKey): bool
     {
-        return (bool)$this->findItem($itemKey, $this->menu);
+        return (bool) $this->findItem($itemKey, $this->menu);
     }
 
     /**
      * Transform the items by applying the filters.
      *
-     * @param array $items An array with items to be transformed
+     * @param  array  $items  An array with items to be transformed
      * @return array Array with the new transformed items
      */
     protected function transformItems(array $items): array
@@ -134,8 +129,8 @@ class Builder
     /**
      * Find a menu item by the item key and return the path to it.
      *
-     * @param mixed $itemKey The key of the item to find
-     * @param array $items The array to look up for the item
+     * @param  mixed  $itemKey  The key of the item to find
+     * @param  array  $items  The array to look up for the item
      * @return mixed Array with the path sequence, or empty array if not found
      */
     protected function findItem($itemKey, $items): mixed
@@ -164,14 +159,14 @@ class Builder
     /**
      * Apply all the available filters to a menu item.
      *
-     * @param mixed $item A menu item
+     * @param  mixed  $item  A menu item
      * @return mixed A new item with all the filters applied
      */
     protected function applyFilters($item): mixed
     {
         // Filters are only applied to array type menu items.
 
-        if (!is_array($item)) {
+        if (! is_array($item)) {
             return $item;
         }
 
@@ -190,7 +185,7 @@ class Builder
             // If the item is not allowed to be shown, there is no sense to
             // continue applying the filters.
 
-            if (!MenuItemHelper::isAllowed($item)) {
+            if (! MenuItemHelper::isAllowed($item)) {
                 return $item;
             }
 
@@ -204,15 +199,15 @@ class Builder
      * Add new items to the menu in a particular place, relative to a
      * specific menu item.
      *
-     * @param mixed $itemKey The key that represents the specific menu item
-     * @param int $where Where to add the new items
-     * @param mixed $items Items to be added
+     * @param  mixed  $itemKey  The key that represents the specific menu item
+     * @param  int  $where  Where to add the new items
+     * @param  mixed  $items  Items to be added
      */
     protected function addItem($itemKey, $where, ...$items)
     {
         // Find the specific menu item. Return if not found.
 
-        if (!($itemPath = $this->findItem($itemKey, $this->menu))) {
+        if (! ($itemPath = $this->findItem($itemKey, $this->menu))) {
             return;
         }
 

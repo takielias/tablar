@@ -2,8 +2,12 @@
 
 namespace TakiElias\Tablar\Tests\Feature;
 
+use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\ServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
+use TakiElias\Tablar\Tablar;
+use TakiElias\Tablar\TablarPreset;
 use TakiElias\Tablar\TablarServiceProvider;
 
 /**
@@ -18,6 +22,7 @@ use TakiElias\Tablar\TablarServiceProvider;
 class SnapshotBaselineTest extends BaseTestCase
 {
     private string $baselineDir;
+
     private string $packageRoot;
 
     protected function getPackageProviders($app): array
@@ -34,7 +39,7 @@ class SnapshotBaselineTest extends BaseTestCase
 
     public function test_artisan_command_signatures_unchanged(): void
     {
-        $kernel = $this->app->make(\Illuminate\Contracts\Console\Kernel::class);
+        $kernel = $this->app->make(Kernel::class);
         $all = array_keys($kernel->all());
         $tablar = array_values(array_filter($all, fn ($n) => str_starts_with($n, 'tablar:')));
         sort($tablar);
@@ -85,7 +90,7 @@ class SnapshotBaselineTest extends BaseTestCase
 
     public function test_tablar_class_public_api_unchanged(): void
     {
-        $reflection = new \ReflectionClass(\TakiElias\Tablar\Tablar::class);
+        $reflection = new \ReflectionClass(Tablar::class);
         $methods = array_map(fn ($m) => $m->getName(), $reflection->getMethods(\ReflectionMethod::IS_PUBLIC));
         sort($methods);
         $this->assertSnapshot('tablar-class-methods.txt', implode("\n", $methods)."\n");
@@ -93,7 +98,7 @@ class SnapshotBaselineTest extends BaseTestCase
 
     public function test_tablar_preset_static_api_unchanged(): void
     {
-        $reflection = new \ReflectionClass(\TakiElias\Tablar\TablarPreset::class);
+        $reflection = new \ReflectionClass(TablarPreset::class);
         $methods = array_map(
             fn ($m) => $m->getName(),
             array_filter(
@@ -107,7 +112,7 @@ class SnapshotBaselineTest extends BaseTestCase
 
     public function test_publish_tags_unchanged(): void
     {
-        $tags = \Illuminate\Support\ServiceProvider::publishableGroups();
+        $tags = ServiceProvider::publishableGroups();
         sort($tags);
         $this->assertSnapshot('publish-tags.txt', implode("\n", $tags)."\n");
     }

@@ -24,7 +24,7 @@ class AuthScaffoldingTest extends TestCase
 
     public function test_auth_controller_stubs_exist(): void
     {
-        $stubsPath = __DIR__ . '/../../src/stubs/controllers/Auth';
+        $stubsPath = __DIR__.'/../../src/stubs/controllers/Auth';
 
         $expectedControllers = [
             'AuthenticatedSessionController.stub',
@@ -40,7 +40,7 @@ class AuthScaffoldingTest extends TestCase
 
         foreach ($expectedControllers as $controller) {
             $this->assertFileExists(
-                $stubsPath . '/' . $controller,
+                $stubsPath.'/'.$controller,
                 "Auth controller stub {$controller} should exist"
             );
         }
@@ -48,7 +48,7 @@ class AuthScaffoldingTest extends TestCase
 
     public function test_auth_request_stubs_exist(): void
     {
-        $stubsPath = __DIR__ . '/../../src/stubs/requests/Auth';
+        $stubsPath = __DIR__.'/../../src/stubs/requests/Auth';
 
         $expectedRequests = [
             'LoginRequest.stub',
@@ -57,7 +57,7 @@ class AuthScaffoldingTest extends TestCase
 
         foreach ($expectedRequests as $request) {
             $this->assertFileExists(
-                $stubsPath . '/' . $request,
+                $stubsPath.'/'.$request,
                 "Auth request stub {$request} should exist"
             );
         }
@@ -65,14 +65,14 @@ class AuthScaffoldingTest extends TestCase
 
     public function test_migration_stub_exists(): void
     {
-        $migrationPath = __DIR__ . '/../../src/stubs/migrations/2014_10_12_100000_create_password_resets_table.php';
+        $migrationPath = __DIR__.'/../../src/stubs/migrations/2014_10_12_100000_create_password_resets_table.php';
 
         $this->assertFileExists($migrationPath, 'Password reset migration should exist');
     }
 
     public function test_controller_stubs_reference_tablar_views(): void
     {
-        $stubsPath = __DIR__ . '/../../src/stubs/controllers/Auth';
+        $stubsPath = __DIR__.'/../../src/stubs/controllers/Auth';
 
         $files = $this->files->allFiles($stubsPath);
 
@@ -100,7 +100,7 @@ class AuthScaffoldingTest extends TestCase
 
     public function test_no_laravel_ui_references_in_stubs(): void
     {
-        $stubsPath = __DIR__ . '/../../src/stubs/controllers/Auth';
+        $stubsPath = __DIR__.'/../../src/stubs/controllers/Auth';
 
         $files = $this->files->allFiles($stubsPath);
 
@@ -117,7 +117,7 @@ class AuthScaffoldingTest extends TestCase
 
     public function test_preset_base_class_exists(): void
     {
-        $presetPath = __DIR__ . '/../../src/Support/Preset.php';
+        $presetPath = __DIR__.'/../../src/Support/Preset.php';
 
         $this->assertFileExists($presetPath, 'Internal Preset base class should exist');
 
@@ -131,7 +131,7 @@ class AuthScaffoldingTest extends TestCase
 
     public function test_tablar_preset_uses_internal_preset(): void
     {
-        $tablarPresetPath = __DIR__ . '/../../src/TablarPreset.php';
+        $tablarPresetPath = __DIR__.'/../../src/TablarPreset.php';
 
         $content = $this->files->get($tablarPresetPath);
 
@@ -150,14 +150,14 @@ class AuthScaffoldingTest extends TestCase
         );
 
         // Should reference internal stubs, not vendor/laravel/ui
-        $this->assertStringContainsString(
-            "__DIR__ . '/stubs/migrations'",
+        $this->assertMatchesRegularExpression(
+            "/__DIR__\s*\.\s*'\/stubs\/migrations'/",
             $content,
             'TablarPreset should reference internal migration stubs'
         );
 
-        $this->assertStringContainsString(
-            "__DIR__ . '/stubs/controllers/Auth'",
+        $this->assertMatchesRegularExpression(
+            "/__DIR__\s*\.\s*'\/stubs\/controllers\/Auth'/",
             $content,
             'TablarPreset should reference internal controller stubs'
         );
@@ -171,7 +171,7 @@ class AuthScaffoldingTest extends TestCase
 
     public function test_composer_json_does_not_require_laravel_ui(): void
     {
-        $composerPath = __DIR__ . '/../../composer.json';
+        $composerPath = __DIR__.'/../../composer.json';
 
         $content = $this->files->get($composerPath);
         $composer = json_decode($content, true);
@@ -185,7 +185,7 @@ class AuthScaffoldingTest extends TestCase
 
     public function test_composer_json_has_breeze_conflict(): void
     {
-        $composerPath = __DIR__ . '/../../composer.json';
+        $composerPath = __DIR__.'/../../composer.json';
 
         $content = $this->files->get($composerPath);
         $composer = json_decode($content, true);
@@ -205,7 +205,7 @@ class AuthScaffoldingTest extends TestCase
 
     public function test_auth_routes_stub_exists(): void
     {
-        $authRoutesPath = __DIR__ . '/../../src/stubs/routes/auth.php';
+        $authRoutesPath = __DIR__.'/../../src/stubs/routes/auth.php';
 
         $this->assertFileExists($authRoutesPath, 'Auth routes stub should exist');
 
@@ -233,7 +233,7 @@ class AuthScaffoldingTest extends TestCase
 
     public function test_scaffold_auth_does_not_use_auth_routes(): void
     {
-        $tablarPresetPath = __DIR__ . '/../../src/TablarPreset.php';
+        $tablarPresetPath = __DIR__.'/../../src/TablarPreset.php';
 
         $content = $this->files->get($tablarPresetPath);
 

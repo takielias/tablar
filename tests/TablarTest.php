@@ -6,7 +6,7 @@ use TakiElias\Tablar\Events\BuildingMenu;
 
 class TablarTest extends TestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -41,7 +41,7 @@ class TablarTest extends TestCase
 
     }
 
-    public function testMenuWithoutFilters()
+    public function test_menu_without_filters()
     {
         $menu = $this->makeTablar()->menu();
 
@@ -49,8 +49,7 @@ class TablarTest extends TestCase
         $this->extracted($menu);
     }
 
-
-    public function testMenuSettingsFilter()
+    public function test_menu_settings_filter()
     {
         $menu = $this->makeTablar()->menu('Settings');
 
@@ -62,10 +61,6 @@ class TablarTest extends TestCase
         $this->extracted($menu);
     }
 
-    /**
-     * @param array $menu
-     * @return void
-     */
     public function extracted(array $menu): void
     {
         $this->assertEquals('Home', $menu[0]['text']);
@@ -75,5 +70,4 @@ class TablarTest extends TestCase
         $this->assertEquals('invalid', $menu[4]['text']);
         $this->assertEquals('Settings', $menu[5]['text']);
     }
-
 }

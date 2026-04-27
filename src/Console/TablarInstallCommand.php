@@ -7,12 +7,16 @@ use TakiElias\Tablar\TablarPreset;
 
 class TablarInstallCommand extends Command
 {
-    protected $signature = 'tablar:install {--no-credits : Suppress the GitHub-star credits line}';
+    protected $signature = 'tablar:install
+        {--force : Overwrite user-modified files without prompting}
+        {--no-credits : Suppress the GitHub-star credits line}';
 
     protected $description = 'Install Tablar scaffolding and export config';
 
     public function handle(): int
     {
+        TablarPreset::useCommand($this, force: (bool) $this->option('force'));
+
         TablarPreset::install();
         TablarPreset::exportConfig();
 
