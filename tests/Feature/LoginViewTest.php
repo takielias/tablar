@@ -88,9 +88,14 @@ class LoginViewTest extends TestCase
 
         $this->assertStringContainsString('data-password-toggle', $layout, 'Auth layout must wire a click handler for [data-password-toggle].');
         $this->assertMatchesRegularExpression(
-            "/input\.type\s*=\s*showing\s*\?\s*['\"]password['\"]\s*:\s*['\"]text['\"]/",
+            "/input\.type\s*=\s*input\.type\s*===\s*['\"]password['\"]\s*\?\s*['\"]text['\"]\s*:\s*['\"]password['\"]/",
             $layout,
-            'Handler must flip input.type between password and text.'
+            'Handler must flip input.type unconditionally on every click.'
+        );
+        $this->assertStringContainsString(
+            'input[type="text"]',
+            $layout,
+            'Selector must include input[type="text"] so re-clicks still find the input after the first toggle.'
         );
         $this->assertStringContainsString('addEventListener', $layout);
         $this->assertStringContainsString('event.target.closest', $layout, 'Use event delegation rather than per-element listeners.');

@@ -28,11 +28,13 @@
 
         var group = trigger.closest('.input-group');
         if (!group) return;
-        var input = group.querySelector('input[type="password"], input[data-password-input]');
+        // After the first toggle, input.type flips to "text" — include that
+        // case in the selector so the second click finds it again.
+        var input = group.querySelector('input[data-password-input], input[type="password"], input[type="text"]');
         if (!input) return;
 
+        input.type = input.type === 'password' ? 'text' : 'password';
         var showing = input.type === 'text';
-        input.type = showing ? 'password' : 'text';
 
         var eye = trigger.querySelector('[data-icon-show]');
         var eyeOff = trigger.querySelector('[data-icon-hide]');
