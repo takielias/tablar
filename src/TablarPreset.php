@@ -187,7 +187,6 @@ class TablarPreset extends Preset
             'countup.js' => '^2.9.0',
             'dropzone' => '^6.0.0-beta.2',
             'autosize' => '^6.0.1',
-            'choices.js' => '^11.1.0',
             'star-rating.js' => '^4.3.1',
             'fslightbox' => '^3.7.4',
             'jsvectormap' => '^1.7.0',
@@ -208,10 +207,12 @@ class TablarPreset extends Preset
             'vite-plugin-static-copy' => '^4.0.0',
         ], Arr::except($packages, [
             'axios',
-            'postcss',
+            'choices.js',
             'laravel-vite-plugin',
+            'postcss',
             'sass',
             'sass-loader',
+            'select2',
             'vite-plugin-static-copy',
             'vite',
         ]));

@@ -95,4 +95,39 @@ class PackageVersionsTest extends BaseTestCase
     {
         $this->assertSame('^3.0.0', $this->packageArray()['typed.js'] ?? null);
     }
+
+    public function test_duplicate_select_libs_dropped(): void
+    {
+        $packages = $this->packageArray();
+
+        $this->assertArrayNotHasKey('choices.js', $packages, 'Drop choices.js — tom-select is the canonical select replacement.');
+        $this->assertArrayNotHasKey('select2', $packages, 'Drop select2 — jQuery dep, superseded by tom-select.');
+        $this->assertArrayHasKey('tom-select', $packages, 'tom-select must remain as the canonical select replacement.');
+    }
+
+    public function test_no_choices_references_in_stubs(): void
+    {
+        $stubsDir = realpath(__DIR__.'/../../src/stubs');
+
+        $iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($stubsDir, \FilesystemIterator::SKIP_DOTS));
+
+        $offenders = [];
+        foreach ($iterator as $file) {
+            if (! $file->isFile()) {
+                continue;
+            }
+            if (! in_array($file->getExtension(), ['js', 'ts', 'php', 'blade', 'scss', 'css'], true)) {
+                continue;
+            }
+            $contents = @file_get_contents($file->getPathname());
+            if ($contents !== false && preg_match('/(choices\.js|select2)/i', $contents)) {
+                $offenders[] = $file->getPathname();
+            }
+        }
+
+        $this->assertEmpty(
+            $offenders,
+            'Stubs must not reference choices.js or select2: '.implode(', ', $offenders)
+        );
+    }
 }
