@@ -21,10 +21,10 @@ class AuthLogoLinkTest extends TestCase
     public static function authViewProvider(): array
     {
         return [
-            'login'    => [self::VIEWS_DIR.'/login.blade.php'],
+            'login' => [self::VIEWS_DIR.'/login.blade.php'],
             'register' => [self::VIEWS_DIR.'/register.blade.php'],
-            'forgot'   => [self::VIEWS_DIR.'/passwords/email.blade.php'],
-            'reset'    => [self::VIEWS_DIR.'/passwords/reset.blade.php'],
+            'forgot' => [self::VIEWS_DIR.'/passwords/email.blade.php'],
+            'reset' => [self::VIEWS_DIR.'/passwords/reset.blade.php'],
         ];
     }
 
