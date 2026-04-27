@@ -1,3 +1,4 @@
+tablar:doctor
 tablar:export-all
 tablar:export-assets
 tablar:export-auth

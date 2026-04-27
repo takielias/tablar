@@ -8,6 +8,7 @@ use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\ServiceProvider;
+use TakiElias\Tablar\Console\TablarDoctorCommand;
 use TakiElias\Tablar\Console\TablarExportAllCommand;
 use TakiElias\Tablar\Console\TablarExportAssetsCommand;
 use TakiElias\Tablar\Console\TablarExportAuthCommand;
@@ -127,6 +128,7 @@ class TablarServiceProvider extends ServiceProvider
     {
         $this->commands([
             TablarInstallCommand::class,
+            TablarDoctorCommand::class,
             TablarExportAllCommand::class,
             TablarExportConfigCommand::class,
             TablarExportJsCommand::class,
