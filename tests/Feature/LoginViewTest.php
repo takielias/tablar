@@ -71,4 +71,28 @@ class LoginViewTest extends TestCase
             'Install stub should extend the package login layout, not duplicate the form markup.'
         );
     }
+
+    public function test_password_toggle_button_wired(): void
+    {
+        $source = file_get_contents(self::PUBLISHED_VIEW);
+
+        $this->assertStringContainsString('data-password-toggle', $source, 'Eye anchor must carry data-password-toggle hook for the JS handler.');
+        $this->assertStringContainsString('data-icon-show', $source, 'Eye-open SVG must be marked data-icon-show.');
+        $this->assertStringContainsString('data-icon-hide', $source, 'Eye-closed SVG must be marked data-icon-hide.');
+        $this->assertStringContainsString('aria-label="Show password"', $source, 'Toggle anchor must have an accessible aria-label.');
+    }
+
+    public function test_auth_layout_handles_password_toggle(): void
+    {
+        $layout = file_get_contents(__DIR__.'/../../resources/views/auth/layout.blade.php');
+
+        $this->assertStringContainsString('data-password-toggle', $layout, 'Auth layout must wire a click handler for [data-password-toggle].');
+        $this->assertMatchesRegularExpression(
+            "/input\.type\s*=\s*showing\s*\?\s*['\"]password['\"]\s*:\s*['\"]text['\"]/",
+            $layout,
+            'Handler must flip input.type between password and text.'
+        );
+        $this->assertStringContainsString('addEventListener', $layout);
+        $this->assertStringContainsString('event.target.closest', $layout, 'Use event delegation rather than per-element listeners.');
+    }
 }

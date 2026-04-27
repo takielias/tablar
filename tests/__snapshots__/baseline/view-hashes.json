@@ -1,6 +1,6 @@
 {
-    "auth\/layout.blade.php": "a98ac2704687a63b8ccdc1fd9f74e30eca39a464948640780565e3d9ca059feb",
-    "auth\/login.blade.php": "df5250f3156ef50fd3dd79f9d0da38ab8a417311dc77b837534e821214b1ae77",
+    "auth\/layout.blade.php": "cf052ea9affd24e8ad2dd03cc0e0152eb0155adb880549f2039d725ee106250e",
+    "auth\/login.blade.php": "cacbe4bffe3e1514c3b233d5140f6c4a87f4a6ab55eab7827cc4bde550e44e7b",
     "auth\/passwords\/email.blade.php": "5081d30a16b4018ce3d9834b5b2785702d5b982ff583ce87a80936204306e7b7",
     "auth\/passwords\/reset.blade.php": "819cde1d8561ac3628e321de5535075975a051541ebd1096547f6543b87fe54b",
     "auth\/register.blade.php": "d1ddfe324db5c7560ebf35b21b28bcf60755f5a505cb7ac04b295174b0309926",
