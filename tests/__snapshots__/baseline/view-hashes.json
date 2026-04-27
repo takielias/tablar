@@ -1,8 +1,8 @@
 {
     "auth\/layout.blade.php": "c3787c7bf23178b5157c71258085ed118b60be2b303495c776a0c6653b616095",
     "auth\/login.blade.php": "a7a67d92cae299b087f0ab03201e15f066698389229bfaa509e96e13569af320",
-    "auth\/passwords\/email.blade.php": "32fb77197afba4cf4f829c3b4089044c3db988a6a3ae869cb2df7e85816c8ede",
-    "auth\/passwords\/reset.blade.php": "d9d6c9dc2849fd37175f1470092dced77dedc01c5be0526a738e4884aaf2afd8",
+    "auth\/passwords\/email.blade.php": "778ee4668846128a5ca2e7dd119bf6d4408cb2cbb40caa102a285493aedce1c2",
+    "auth\/passwords\/reset.blade.php": "aa377ea7b38c6547c1bccfb4bf4d08bf32ce83d7994bb0d3c6b6f035df512393",
     "auth\/register.blade.php": "0ef2e69e302df57c9245a8e84f4a6bc7f0de9ffa6d9e77ed6379c817ab3f7445",
     "auth\/verify.blade.php": "29c9a1c9a66121d9538e6b0e4bd4ca2829cb948d96d45c16c041cc8871917405",
     "common\/alert.blade.php": "022ca37e45374588cd68fa56e156953cdbd36ad44d54d07f8cb28e6551aca208",
