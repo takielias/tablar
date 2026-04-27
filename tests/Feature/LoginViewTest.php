@@ -24,7 +24,7 @@ class LoginViewTest extends TestCase
     {
         return [
             'published view' => [self::PUBLISHED_VIEW],
-            'install stub'   => [self::STUB],
+            'install stub' => [self::STUB],
         ];
     }
 
