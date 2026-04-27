@@ -29,15 +29,17 @@ class TablarInstallCommand extends Command
 
     protected function checkController(): void
     {
-        if (version_compare(app()->version(), '11.0', '>=')) {
+        $major = (int) explode('.', app()->version())[0];
 
-            $this->info('Running on Laravel 11.');
+        if ($major >= 11) {
+
+            $this->info("Running on Laravel {$major}.");
 
             $filePath = app_path('Http/Controllers/Controller.php');
             $newBaseClass = '\\Illuminate\\Routing\\Controller';
 
             $fileContents = file_get_contents($filePath);
-            if (!str_contains($fileContents, 'extends ' . $newBaseClass)) {
+            if (! str_contains($fileContents, 'extends '.$newBaseClass)) {
                 $fileContents = preg_replace(
                     '/class Controller\s*(extends \\\\?[a-zA-Z0-9_\\\\]+)?\s*\{/',
                     "class Controller extends $newBaseClass\n{",
