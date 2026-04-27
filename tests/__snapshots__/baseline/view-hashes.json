@@ -3,7 +3,7 @@
     "auth\/login.blade.php": "cacbe4bffe3e1514c3b233d5140f6c4a87f4a6ab55eab7827cc4bde550e44e7b",
     "auth\/passwords\/email.blade.php": "5081d30a16b4018ce3d9834b5b2785702d5b982ff583ce87a80936204306e7b7",
     "auth\/passwords\/reset.blade.php": "819cde1d8561ac3628e321de5535075975a051541ebd1096547f6543b87fe54b",
-    "auth\/register.blade.php": "5c26f89b5a2ef7c6507d8c189aefecaa3b60ce853063d5d46726c24418d78821",
+    "auth\/register.blade.php": "afefc5e48c9580b701f1bed6e314cd1ee0e48252b9cbb4632e7076488dd1ed00",
     "auth\/verify.blade.php": "29c9a1c9a66121d9538e6b0e4bd4ca2829cb948d96d45c16c041cc8871917405",
     "common\/alert.blade.php": "022ca37e45374588cd68fa56e156953cdbd36ad44d54d07f8cb28e6551aca208",
     "error.blade.php": "873dbf075a2429f0d037a564f1417c579e959c919b70a81ae502fc6fb6e1249e",

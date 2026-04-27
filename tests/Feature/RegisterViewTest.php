@@ -59,4 +59,13 @@ class RegisterViewTest extends TestCase
         $this->assertStringNotContainsString('brand-github', $source);
         $this->assertStringNotContainsString('brand-twitter', $source);
     }
+
+    public function test_no_terms_and_policy_checkbox(): void
+    {
+        $source = $this->source();
+
+        $this->assertStringNotContainsString('terms and policy', $source, 'Drop the placeholder ToS checkbox — the package does not ship a terms page.');
+        $this->assertStringNotContainsString('Agree the', $source);
+        $this->assertStringNotContainsString('type="checkbox"', $source, 'Register form should not render any checkboxes by default.');
+    }
 }
