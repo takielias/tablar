@@ -28,12 +28,17 @@ class FooterPartialTest extends TestCase
         $this->assertStringNotContainsString('&copy; 2022', $source, 'Stale year hardcode must be gone.');
     }
 
-    public function test_keeps_source_code_and_sponsor_links(): void
+    public function test_no_hardcoded_maintainer_buttons(): void
     {
         $source = $this->source();
 
-        $this->assertStringContainsString('Source code', $source);
-        $this->assertStringContainsString('Sponsor', $source);
+        // Phase 9: Source code / Sponsor are now driven by
+        // config('tablar.footer_buttons') so a fresh install ships zero
+        // maintainer-branded chrome. The footer partial must not hardcode them.
+        $this->assertStringNotContainsString('Source code', $source);
+        $this->assertStringNotContainsString('Sponsor', $source);
+        $this->assertStringNotContainsString('buymeacoffee', $source);
+        $this->assertStringNotContainsString('github.com/takielias/tablar', $source);
     }
 
     public function test_keeps_version_link(): void
