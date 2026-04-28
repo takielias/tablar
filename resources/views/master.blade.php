@@ -6,21 +6,53 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    {{-- Theme bootstrap — runs before any CSS to prevent FOUC. --}}
+    {{-- Theme bootstrap — runs before any CSS to prevent FOUC.
+         Supports 'light', 'dark', and 'auto' (follows prefers-color-scheme). --}}
     <script>
         (function () {
-            var saved = localStorage.getItem('tablar.theme');
-            var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            document.documentElement.setAttribute('data-bs-theme', theme);
+            var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+            function resolve(value) {
+                if (value === 'auto' || !value) {
+                    return media && media.matches ? 'dark' : 'light';
+                }
+                return value;
+            }
+
+            function apply(value) {
+                document.documentElement.setAttribute('data-bs-theme', resolve(value));
+            }
+
+            apply(localStorage.getItem('tablar.theme') || 'auto');
+
+            if (media && typeof media.addEventListener === 'function') {
+                media.addEventListener('change', function () {
+                    var current = localStorage.getItem('tablar.theme') || 'auto';
+                    if (current === 'auto') {
+                        apply(current);
+                    }
+                });
+            }
+
+            window.addEventListener('tablar:theme-change', function (e) {
+                if (e && e.detail && typeof e.detail.value === 'string') {
+                    apply(e.detail.value);
+                }
+            });
+
+            // Legacy click toggle (preserved): clicking any element with
+            // data-bs-theme-value updates localStorage and re-applies the theme.
+            document.addEventListener('click', function (e) {
+                var trigger = e.target.closest('[data-bs-theme-value]');
+                if (!trigger || trigger.tagName === 'INPUT' || trigger.tagName === 'LABEL') {
+                    return;
+                }
+                e.preventDefault();
+                var value = trigger.getAttribute('data-bs-theme-value');
+                localStorage.setItem('tablar.theme', value);
+                apply(value);
+            });
         })();
-        document.addEventListener('click', function (e) {
-            var trigger = e.target.closest('[data-bs-theme-value]');
-            if (!trigger) return;
-            e.preventDefault();
-            var value = trigger.getAttribute('data-bs-theme-value');
-            document.documentElement.setAttribute('data-bs-theme', value);
-            localStorage.setItem('tablar.theme', value);
-        });
     </script>
 
     {{-- Custom Meta Tags --}}
