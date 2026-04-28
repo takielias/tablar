@@ -37,9 +37,9 @@ class Phase9ConfigDefaultsTest extends TestCase
         $this->assertSame('settings', $this->config()['setting_url'] ?? null);
     }
 
-    public function test_notifications_disabled_by_default(): void
+    public function test_notifications_enabled_by_default(): void
     {
-        $this->assertFalse($this->config()['enable_notifications'] ?? null);
+        $this->assertTrue($this->config()['enable_notifications'] ?? null);
     }
 
     public function test_header_buttons_ship_with_source_and_sponsor(): void

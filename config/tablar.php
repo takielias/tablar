@@ -149,7 +149,7 @@ return [
     |
     */
 
-    'enable_notifications' => false,
+    'enable_notifications' => true,
 
     'header_buttons' => [
         ['name' => 'Source code', 'url' => 'https://github.com/takielias/tablar', 'icon' => 'ti ti-brand-github'],
