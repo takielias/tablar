@@ -42,13 +42,31 @@ class Phase9ConfigDefaultsTest extends TestCase
         $this->assertFalse($this->config()['enable_notifications'] ?? null);
     }
 
-    public function test_header_buttons_defaults_to_empty_array(): void
+    public function test_header_buttons_ship_with_source_and_sponsor(): void
     {
-        $this->assertSame([], $this->config()['header_buttons'] ?? null);
+        $buttons = $this->config()['header_buttons'] ?? [];
+
+        $this->assertNotEmpty($buttons, 'Default header_buttons should ship with Source code + Sponsor; users empty the array to hide.');
+
+        $names = array_column($buttons, 'name');
+        $this->assertContains('Source code', $names);
+        $this->assertContains('Sponsor', $names);
+
+        foreach ($buttons as $btn) {
+            $this->assertArrayHasKey('url', $btn);
+            $this->assertArrayHasKey('icon', $btn);
+            $this->assertStringStartsWith('ti ', $btn['icon'], 'Icon should be a Tabler icon class.');
+        }
     }
 
-    public function test_footer_buttons_defaults_to_empty_array(): void
+    public function test_footer_buttons_ship_with_source_and_sponsor(): void
     {
-        $this->assertSame([], $this->config()['footer_buttons'] ?? null);
+        $buttons = $this->config()['footer_buttons'] ?? [];
+
+        $this->assertNotEmpty($buttons);
+
+        $names = array_column($buttons, 'name');
+        $this->assertContains('Source code', $names);
+        $this->assertContains('Sponsor', $names);
     }
 }

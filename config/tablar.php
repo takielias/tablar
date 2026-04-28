@@ -152,11 +152,13 @@ return [
     'enable_notifications' => false,
 
     'header_buttons' => [
-        // ['name' => 'Source code', 'url' => 'https://github.com/me/repo', 'icon' => 'ti ti-brand-github'],
+        ['name' => 'Source code', 'url' => 'https://github.com/takielias/tablar', 'icon' => 'ti ti-brand-github'],
+        ['name' => 'Sponsor', 'url' => 'https://www.buymeacoffee.com/takielias', 'icon' => 'ti ti-heart text-pink'],
     ],
 
     'footer_buttons' => [
-        // ['name' => 'Source code', 'url' => 'https://github.com/me/repo', 'icon' => 'ti ti-brand-github'],
+        ['name' => 'Source code', 'url' => 'https://github.com/takielias/tablar', 'icon' => 'ti ti-brand-github'],
+        ['name' => 'Sponsor', 'url' => 'https://www.buymeacoffee.com/takielias', 'icon' => 'ti ti-heart text-pink'],
     ],
 
     /*
