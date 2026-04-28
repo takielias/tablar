@@ -13,6 +13,8 @@ return [
     'i_already_have_a_membership' => 'I already have a membership',
     'sign_in' => 'Sign In',
     'log_out' => 'Log Out',
+    'profile' => 'Profile',
+    'settings' => 'Settings',
     'toggle_navigation' => 'Toggle navigation',
     'login_message' => 'Sign in to start your session',
     'register_message' => 'Register a new membership',
