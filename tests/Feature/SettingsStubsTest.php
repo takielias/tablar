@@ -86,12 +86,16 @@ class SettingsStubsTest extends TestCase
 
         $this->assertStringContainsString("@extends('tablar::page')", $source);
         $this->assertStringContainsString("__('Appearance')", $source);
-        $this->assertStringContainsString("__('Update password')", $source);
+        $this->assertStringContainsString("__('Password')", $source);
         $this->assertStringContainsString("__('Delete account')", $source);
         $this->assertStringContainsString("@include('tablar::partials.settings.appearance')", $source);
         $this->assertStringContainsString("route('settings.password')", $source);
         $this->assertStringContainsString("route('settings.destroy')", $source);
-        $this->assertStringContainsString('border-danger', $source, 'Delete card uses border-danger styling.');
+        $this->assertStringContainsString('nav-tabs', $source, 'Settings now uses Tabler tabs (nav-tabs).');
+        $this->assertStringContainsString('id="tab-appearance"', $source);
+        $this->assertStringContainsString('id="tab-password"', $source);
+        $this->assertStringContainsString('id="tab-danger"', $source);
+        $this->assertStringContainsString('alert alert-danger', $source, 'Danger tab uses an alert-danger callout.');
     }
 
     public function test_soft_deletes_migration_exists(): void

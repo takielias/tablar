@@ -180,7 +180,7 @@
     "resources\/views\/auth\/verify.blade.php": "5a096fd69e273689a792c9b9ed491140f5e471999dd4af2fed0b5ca8ceca9f46",
     "resources\/views\/home.blade.php": "a6dda1a08530d2a9b8d3902b49420e281ea6c917a8a5eeb0a4ef4efe17843828",
     "resources\/views\/profile\/show.blade.php": "a459df1e7622513eef6f65d4558d67ab7a8bf7772e85bb9aece20110ba28437a",
-    "resources\/views\/settings\/show.blade.php": "763e1fa0a1fd5ee65ab2b21f5aed9ee2873b9eee6aef07582af04bf98ed554c0",
+    "resources\/views\/settings\/show.blade.php": "e11675f089bf60b35dffe25701072a2f4b07ce713820ab464bf1b431872edc15",
     "resources\/views\/welcome.blade.php": "9845dbfb86ed8fb5bc4216620f3f63592f16bcf029d8db459f40b481b0826d1e",
     "routes\/auth.php": "4d0454252af083156f6a26dba91bb93324fe463cc4e9d5122c71bface62ab214",
     "vite.config.js": "5fcf18c36dc62aff33313c8fac9e6844a0d7949a50224499c33a9a294c940e9b"
