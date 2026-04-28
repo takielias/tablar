@@ -3,7 +3,21 @@
 @section('title', __('Settings'))
 
 @section('content')
-    <div class="container container-tight py-4">
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <h2 class="page-title">{{ __('Settings') }}</h2>
+                <div class="text-secondary mt-1">
+                    {{ __('Manage appearance, password, and account state.') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="container-xl">
         @if (session('status') === 'password-updated')
             <div class="alert alert-success" role="alert">
                 {{ __('Password updated.') }}
@@ -11,7 +25,7 @@
         @endif
 
         {{-- Appearance --}}
-        <div class="card card-md mb-3">
+        <div class="card mb-3">
             <div class="card-body">
                 <h3 class="card-title mb-3">{{ __('Appearance') }}</h3>
                 <p class="text-secondary mb-3">{{ __('Choose how Tablar looks. System follows your operating system.') }}</p>
@@ -20,7 +34,7 @@
         </div>
 
         {{-- Update password --}}
-        <div class="card card-md mb-3">
+        <div class="card mb-3">
             <div class="card-body">
                 <h3 class="card-title mb-3">{{ __('Update password') }}</h3>
 
@@ -75,7 +89,7 @@
         </div>
 
         {{-- Delete account --}}
-        <div class="card card-md border-danger">
+        <div class="card border-danger">
             <div class="card-body">
                 <h3 class="card-title text-danger mb-3">{{ __('Delete account') }}</h3>
                 <p class="text-secondary mb-3">
@@ -107,4 +121,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

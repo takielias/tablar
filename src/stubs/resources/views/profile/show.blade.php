@@ -3,17 +3,29 @@
 @section('title', __('Profile'))
 
 @section('content')
-    <div class="container container-tight py-4">
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <h2 class="page-title">{{ __('Profile') }}</h2>
+                <div class="text-secondary mt-1">
+                    {{ __('Update your personal details.') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="container-xl">
         @if (session('status') === 'profile-updated')
             <div class="alert alert-success" role="alert">
                 {{ __('Profile updated.') }}
             </div>
         @endif
 
-        <div class="card card-md">
+        <div class="card">
             <div class="card-body">
-                <h2 class="h2 mb-4">{{ __('Profile') }}</h2>
-
                 <form method="POST" action="{{ route('profile.update') }}" autocomplete="off">
                     @csrf
                     @method('PATCH')
@@ -51,4 +63,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

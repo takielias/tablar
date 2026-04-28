@@ -179,8 +179,8 @@
     "resources\/views\/auth\/register.blade.php": "98f63e24eea351cd977dc796e671cb813c6c476447e880b1bc0b969b364af52f",
     "resources\/views\/auth\/verify.blade.php": "5a096fd69e273689a792c9b9ed491140f5e471999dd4af2fed0b5ca8ceca9f46",
     "resources\/views\/home.blade.php": "a6dda1a08530d2a9b8d3902b49420e281ea6c917a8a5eeb0a4ef4efe17843828",
-    "resources\/views\/profile\/show.blade.php": "3750442d9865fa1648ae3c43edf08a751803fbd1ce92a6ff44eaff4608f78c49",
-    "resources\/views\/settings\/show.blade.php": "5e4768ae0741f6cd01feb24f4cf8f88f8a453bed15298b7f12bf7c3c02c8a197",
+    "resources\/views\/profile\/show.blade.php": "a459df1e7622513eef6f65d4558d67ab7a8bf7772e85bb9aece20110ba28437a",
+    "resources\/views\/settings\/show.blade.php": "763e1fa0a1fd5ee65ab2b21f5aed9ee2873b9eee6aef07582af04bf98ed554c0",
     "resources\/views\/welcome.blade.php": "9845dbfb86ed8fb5bc4216620f3f63592f16bcf029d8db459f40b481b0826d1e",
     "routes\/auth.php": "4d0454252af083156f6a26dba91bb93324fe463cc4e9d5122c71bface62ab214",
     "vite.config.js": "5fcf18c36dc62aff33313c8fac9e6844a0d7949a50224499c33a9a294c940e9b"
