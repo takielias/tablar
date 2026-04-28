@@ -23,13 +23,18 @@
 <script>
     (function () {
         var saved = localStorage.getItem('tablar.theme') || 'auto';
-        var current = document.querySelector('[data-bs-theme-value="' + saved + '"]');
+        // Restrict to inputs in case the topbar toggle anchors also use
+        // data-bs-theme-value — those don't fire 'change' events.
+        var current = document.querySelector('input[data-bs-theme-value="' + saved + '"]');
         if (current) {
             current.checked = true;
         }
 
-        document.querySelectorAll('[data-bs-theme-value]').forEach(function (el) {
+        document.querySelectorAll('input[data-bs-theme-value]').forEach(function (el) {
             el.addEventListener('change', function () {
+                if (! el.checked) {
+                    return;
+                }
                 var value = el.getAttribute('data-bs-theme-value');
                 localStorage.setItem('tablar.theme', value);
                 window.dispatchEvent(new CustomEvent('tablar:theme-change', { detail: { value: value } }));

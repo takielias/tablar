@@ -23,7 +23,7 @@
     "layouts\/vertical-transparent.blade.php": "e9000cc9f9ad4e5a1b60eff506be2f68d1f80f09d003f628f3e45572ddf8b8de",
     "layouts\/vertical.blade.php": "24133811e9c812fe20bc43500e6d17e012ddef4abfb2713aff410b760ea24faf",
     "marketing.blade.php": "f8d54b455fb6f1a010c8e1c4501f5326a765d94b41db1c4b463c2c0148bc28c4",
-    "master.blade.php": "c42dc95544141c48538491ca282d251b4ee33e8261608ba0ffc12bf1c735d404",
+    "master.blade.php": "97ea4d3605a55ca416e971c683637b3007371a14bed9a4d85b602e311e010077",
     "page.blade.php": "6e6a9d534cc3ce2aaf47a13e13aa02ce43c9238011cf77245a1314eb7679d825",
     "pagination.blade.php": "1fa96dbf69e0d81f4812fb1fb7ba73fa286e3f3911503d6da61b894ba9a96bf3",
     "partials\/common\/condensed-container-xl.blade.php": "1b6f2aed636e33d8ea4b4b4312bedbe886d987064c9f586e33b2a80f5324aa8d",
@@ -51,5 +51,5 @@
     "partials\/navbar\/submenu-dropdown-item.blade.php": "6775f9baec3adec5b39ce34605c38385e398a7c58764f232ed17b8a1d36719d5",
     "partials\/navbar\/top-bar.blade.php": "43d6f1ddad7ac6279e803d6dd19762459c9972ff4379de8a7b42eab80090cc73",
     "partials\/navbar\/topbar.blade.php": "00e79e960035786e620d6e565df39dda219c48a6f3f1b3d1448cf73b3a0250d1",
-    "partials\/settings\/appearance.blade.php": "c63220e28bd45df3e3fb3cbebb856722355efe59e0ecfb94327d9ffde31979ab"
+    "partials\/settings\/appearance.blade.php": "8eacc97a916c1e74f1ea6739377850ed59df567313f44282dd491f18ea36498d"
 }
