@@ -125,8 +125,8 @@ return [
     'register_url' => 'register',
     'password_reset_url' => 'password.request',
     'password_email_url' => 'password.email',
-    'profile_url' => false,
-    'setting_url' => false,
+    'profile_url' => 'profile',
+    'setting_url' => 'settings',
 
     /*
     |--------------------------------------------------------------------------
@@ -137,6 +137,27 @@ return [
     |
     */
     'display_alert' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Chrome (notifications, header & footer buttons)
+    |--------------------------------------------------------------------------
+    |
+    | Toggle the notifications dropdown and customise top-bar / footer
+    | buttons. Each button is `['name' => ..., 'url' => ..., 'icon' => 'ti ti-*']`.
+    | Empty arrays render no buttons.
+    |
+    */
+
+    'enable_notifications' => false,
+
+    'header_buttons' => [
+        // ['name' => 'Source code', 'url' => 'https://github.com/me/repo', 'icon' => 'ti ti-brand-github'],
+    ],
+
+    'footer_buttons' => [
+        // ['name' => 'Source code', 'url' => 'https://github.com/me/repo', 'icon' => 'ti ti-brand-github'],
+    ],
 
     /*
     |--------------------------------------------------------------------------

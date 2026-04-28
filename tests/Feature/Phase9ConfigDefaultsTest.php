@@ -1,0 +1,54 @@
+<?php
+
+namespace TakiElias\Tablar\Tests\Feature;
+
+use Orchestra\Testbench\TestCase;
+use TakiElias\Tablar\TablarServiceProvider;
+
+/**
+ * Locks the phase-9 chrome defaults: profile/setting URLs point at the
+ * shipped routes, notifications opt-in, and header/footer button arrays
+ * default to empty so a fresh install ships no maintainer-branded chrome.
+ */
+class Phase9ConfigDefaultsTest extends TestCase
+{
+    private const CONFIG = __DIR__.'/../../config/tablar.php';
+
+    protected function getPackageProviders($app): array
+    {
+        return [TablarServiceProvider::class];
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function config(): array
+    {
+        return require self::CONFIG;
+    }
+
+    public function test_profile_url_defaults_to_profile_route_name(): void
+    {
+        $this->assertSame('profile', $this->config()['profile_url'] ?? null);
+    }
+
+    public function test_setting_url_defaults_to_settings_route_name(): void
+    {
+        $this->assertSame('settings', $this->config()['setting_url'] ?? null);
+    }
+
+    public function test_notifications_disabled_by_default(): void
+    {
+        $this->assertFalse($this->config()['enable_notifications'] ?? null);
+    }
+
+    public function test_header_buttons_defaults_to_empty_array(): void
+    {
+        $this->assertSame([], $this->config()['header_buttons'] ?? null);
+    }
+
+    public function test_footer_buttons_defaults_to_empty_array(): void
+    {
+        $this->assertSame([], $this->config()['footer_buttons'] ?? null);
+    }
+}
