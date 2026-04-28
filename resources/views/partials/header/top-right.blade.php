@@ -14,31 +14,20 @@
             @php( $profile_url = View::getSection('profile_url') ?? config('tablar.profile_url', 'profile') )
             @php( $setting_url = View::getSection('setting_url') ?? config('tablar.setting_url', 'settings') )
 
-            @if (config('tablar.use_route_url', true))
-                @php( $profile_url = ($profile_url && Route::has($profile_url)) ? route($profile_url) : null )
-                @php( $logout_url = ($logout_url && Route::has($logout_url)) ? route($logout_url) : '' )
-                @php( $setting_url = ($setting_url && Route::has($setting_url)) ? route($setting_url) : null )
-            @else
-                @php( $profile_url = $profile_url ? url($profile_url) : null )
-                @php( $logout_url = $logout_url ? url($logout_url) : '' )
-                @php( $setting_url = $setting_url ? url($setting_url) : null )
-            @endif
+            @php( $useRoute = config('tablar.use_route_url', true) )
+            @php( $profile_url = $profile_url ? (($useRoute && Route::has($profile_url)) ? route($profile_url) : url($profile_url)) : '' )
+            @php( $setting_url = $setting_url ? (($useRoute && Route::has($setting_url)) ? route($setting_url) : url($setting_url)) : '' )
+            @php( $logout_url = $logout_url ? (($useRoute && Route::has($logout_url)) ? route($logout_url) : url($logout_url)) : '' )
 
-            @if ($profile_url)
-                <a href="{{ $profile_url }}" class="dropdown-item">
-                    <i class="ti ti-user me-2"></i>
-                    {{ __('tablar::tablar.profile') }}
-                </a>
-            @endif
-            @if ($setting_url)
-                <a href="{{ $setting_url }}" class="dropdown-item">
-                    <i class="ti ti-settings me-2"></i>
-                    {{ __('tablar::tablar.settings') }}
-                </a>
-            @endif
-            @if ($profile_url || $setting_url)
-                <div class="dropdown-divider"></div>
-            @endif
+            <a href="{{ $profile_url }}" class="dropdown-item">
+                <i class="ti ti-user me-2"></i>
+                {{ __('tablar::tablar.profile') }}
+            </a>
+            <a href="{{ $setting_url }}" class="dropdown-item">
+                <i class="ti ti-settings me-2"></i>
+                {{ __('tablar::tablar.settings') }}
+            </a>
+            <div class="dropdown-divider"></div>
             <a class="dropdown-item"
                href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="ti ti-logout me-2 text-red"></i>
