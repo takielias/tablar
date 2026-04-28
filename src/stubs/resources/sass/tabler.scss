@@ -34,3 +34,19 @@
 
 // Custom Icon Sizes and Styles
 @import "../css/icon-style.css";
+
+// Reserve scrollbar gutter so opening a Bootstrap modal doesn't shift
+// the layout. Two-part fix:
+//   1. `scrollbar-gutter: stable` on <html> reserves the scrollbar column
+//      permanently so the OS scrollbar disappearing/appearing doesn't reflow.
+//   2. Bootstrap's `body.modal-open` ALSO sets `padding-right: <sb-width>px`
+//      to compensate for the (now non-existent) lost scrollbar — that
+//      padding still shifts the page. Force it to zero.
+html {
+    scrollbar-gutter: stable;
+    overflow-y: scroll;
+}
+
+body.modal-open {
+    padding-right: 0 !important;
+}
