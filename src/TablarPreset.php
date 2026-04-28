@@ -106,7 +106,53 @@ class TablarPreset extends Preset
     public static function exportAuth(): void
     {
         static::scaffoldController();
+        static::scaffoldProfileAndSettings();
         static::scaffoldAuth();
+    }
+
+    /**
+     * Publish the Profile + Settings controller, request, and view stubs.
+     *
+     * Stubs land alongside the user's existing Breeze-style auth controllers
+     * so the dropdown links to /profile and /settings resolve immediately
+     * after `tablar:install`.
+     */
+    protected static function scaffoldProfileAndSettings(): void
+    {
+        $filesystem = new Filesystem;
+
+        $controllerStubs = [
+            'ProfileController.stub' => app_path('Http/Controllers/ProfileController.php'),
+            'SettingsController.stub' => app_path('Http/Controllers/SettingsController.php'),
+        ];
+
+        foreach ($controllerStubs as $stub => $destination) {
+            $source = __DIR__.'/stubs/controllers/'.$stub;
+
+            if (! file_exists($source)) {
+                continue;
+            }
+
+            $filesystem->ensureDirectoryExists(dirname($destination));
+            static::safeCopy($source, $destination);
+        }
+
+        $requestStubs = [
+            'UpdateProfileRequest.stub' => app_path('Http/Requests/UpdateProfileRequest.php'),
+            'UpdatePasswordRequest.stub' => app_path('Http/Requests/UpdatePasswordRequest.php'),
+            'DeleteAccountRequest.stub' => app_path('Http/Requests/DeleteAccountRequest.php'),
+        ];
+
+        foreach ($requestStubs as $stub => $destination) {
+            $source = __DIR__.'/stubs/requests/'.$stub;
+
+            if (! file_exists($source)) {
+                continue;
+            }
+
+            $filesystem->ensureDirectoryExists(dirname($destination));
+            static::safeCopy($source, $destination);
+        }
     }
 
     /**
