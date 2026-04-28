@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -60,4 +61,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('profile', [ProfileController::class, 'show'])->name('profile');
     Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
+
+    Route::get('settings', [SettingsController::class, 'show'])->name('settings');
+    Route::put('settings/password', [SettingsController::class, 'updatePassword'])->name('settings.password');
+    Route::delete('settings', [SettingsController::class, 'destroy'])->name('settings.destroy');
 });

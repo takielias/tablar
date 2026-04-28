@@ -21,6 +21,7 @@ class TablarInstallCommand extends Command
         TablarPreset::exportConfig();
 
         $this->checkController();
+        $this->patchUserModelForSoftDeletes();
 
         $major = (int) explode('.', app()->version())[0];
 
@@ -35,6 +36,25 @@ class TablarInstallCommand extends Command
         }
 
         return self::SUCCESS;
+    }
+
+    protected function patchUserModelForSoftDeletes(): void
+    {
+        $filePath = app_path('Models/User.php');
+
+        if (! file_exists($filePath)) {
+            return;
+        }
+
+        $source = file_get_contents($filePath);
+        $patched = $this->patchUserModelSource($source);
+
+        if ($patched === null) {
+            return;
+        }
+
+        file_put_contents($filePath, $patched);
+        $this->info('Added SoftDeletes trait to App\\Models\\User.');
     }
 
     protected function checkController(): void
@@ -64,6 +84,84 @@ class TablarInstallCommand extends Command
     }
 
     public const TARGET_BASE_CONTROLLER = '\\Illuminate\\Routing\\Controller';
+
+    public const SOFT_DELETES_IMPORT = 'use Illuminate\\Database\\Eloquent\\SoftDeletes;';
+
+    /**
+     * Patch an `app/Models/User.php` source so the model uses the
+     * SoftDeletes trait. Idempotent: returns null when the import + trait
+     * are already present.
+     *
+     * Handles both single-line and multi-line trait usages, e.g.
+     *   `use HasFactory, Notifiable;`
+     *   `use HasFactory;\n    use Notifiable;`
+     */
+    public function patchUserModelSource(string $source): ?string
+    {
+        $hasImport = str_contains($source, self::SOFT_DELETES_IMPORT);
+        $hasTraitUse = (bool) preg_match('/use\s+[^;]*\bSoftDeletes\b[^;]*;/', $this->classBody($source));
+
+        if ($hasImport && $hasTraitUse) {
+            return null;
+        }
+
+        $patched = $source;
+
+        if (! $hasImport) {
+            $patched = preg_replace_callback(
+                '/^(use\s+[^;]+;\n)(?!use\s+)/m',
+                function (array $m): string {
+                    return $m[1].self::SOFT_DELETES_IMPORT."\n";
+                },
+                $patched,
+                1,
+                $count
+            );
+
+            if ($patched === null || $count === 0) {
+                return null;
+            }
+        }
+
+        if (! $hasTraitUse) {
+            $patched = preg_replace_callback(
+                '/(class\s+User\s+extends\s+[^\{]+\{)([\s\S]*?)(use\s+[^;]+;)/',
+                function (array $m): string {
+                    $existing = $m[3];
+
+                    if (preg_match('/use\s+([^;]+);/', $existing, $traitMatch)) {
+                        $traits = preg_split('/\s*,\s*/', trim($traitMatch[1]));
+                        if (! in_array('SoftDeletes', $traits, true)) {
+                            $traits[] = 'SoftDeletes';
+                        }
+                        $newUse = 'use '.implode(', ', $traits).';';
+
+                        return $m[1].$m[2].$newUse;
+                    }
+
+                    return $m[0];
+                },
+                $patched,
+                1,
+                $count
+            );
+
+            if ($patched === null || $count === 0) {
+                return null;
+            }
+        }
+
+        return $patched;
+    }
+
+    private function classBody(string $source): string
+    {
+        if (preg_match('/class\s+User\s+extends\s+[^\{]+\{([\s\S]*)\}/', $source, $m)) {
+            return $m[1];
+        }
+
+        return $source;
+    }
 
     /**
      * Patch an `app/Http/Controllers/Controller.php` source so it extends
