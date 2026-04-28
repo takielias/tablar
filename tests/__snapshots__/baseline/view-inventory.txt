@@ -50,3 +50,4 @@ partials/navbar/single-item.blade.php
 partials/navbar/submenu-dropdown-item.blade.php
 partials/navbar/top-bar.blade.php
 partials/navbar/topbar.blade.php
+partials/settings/appearance.blade.php

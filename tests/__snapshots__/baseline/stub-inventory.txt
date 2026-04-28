@@ -158,9 +158,15 @@ controllers/Auth/PasswordResetLinkController.stub
 controllers/Auth/RegisteredUserController.stub
 controllers/Auth/VerifyEmailController.stub
 controllers/HomeController.stub
+controllers/ProfileController.stub
+controllers/SettingsController.stub
+migrations/2014_10_12_100000_add_soft_deletes_to_users_table.php
 migrations/2014_10_12_100000_create_password_resets_table.php
 requests/Auth/LoginRequest.stub
 requests/Auth/ProfileUpdateRequest.stub
+requests/DeleteAccountRequest.stub
+requests/UpdatePasswordRequest.stub
+requests/UpdateProfileRequest.stub
 resources/css/icon-style.css
 resources/js/app.js
 resources/js/bootstrap.js
@@ -172,6 +178,8 @@ resources/views/auth/passwords/reset.blade.php
 resources/views/auth/register.blade.php
 resources/views/auth/verify.blade.php
 resources/views/home.blade.php
+resources/views/profile/show.blade.php
+resources/views/settings/show.blade.php
 resources/views/welcome.blade.php
 routes/auth.php
 vite.config.js

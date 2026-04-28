@@ -4,7 +4,10 @@ classes_body
 current_version
 dashboard_url
 display_alert
+enable_notifications
 filters
+footer_buttons
+header_buttons
 layout
 layout_enable_top_header
 layout_light_sidebar

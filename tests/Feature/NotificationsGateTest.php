@@ -26,11 +26,11 @@ class NotificationsGateTest extends TestCase
     public static function gatedPartialProvider(): array
     {
         return [
-            'sidebar'                  => [self::VIEWS_DIR.'/partials/navbar/sidebar.blade.php'],
-            'overlap-topbar'           => [self::VIEWS_DIR.'/partials/navbar/overlap-topbar.blade.php'],
-            'container-xl'             => [self::VIEWS_DIR.'/partials/common/container-xl.blade.php'],
-            'condensed-container-xl'   => [self::VIEWS_DIR.'/partials/common/condensed-container-xl.blade.php'],
-            'sidebar-top'              => [self::VIEWS_DIR.'/partials/header/sidebar-top.blade.php'],
+            'sidebar' => [self::VIEWS_DIR.'/partials/navbar/sidebar.blade.php'],
+            'overlap-topbar' => [self::VIEWS_DIR.'/partials/navbar/overlap-topbar.blade.php'],
+            'container-xl' => [self::VIEWS_DIR.'/partials/common/container-xl.blade.php'],
+            'condensed-container-xl' => [self::VIEWS_DIR.'/partials/common/condensed-container-xl.blade.php'],
+            'sidebar-top' => [self::VIEWS_DIR.'/partials/header/sidebar-top.blade.php'],
         ];
     }
 
