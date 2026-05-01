@@ -4,10 +4,8 @@ namespace TakiElias\Tablar\Helpers;
 
 use Illuminate\Support\Facades\View;
 
-
 class LayoutHelper
 {
-
     /**
      * Get Layout Class.
      *

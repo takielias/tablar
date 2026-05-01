@@ -9,15 +9,11 @@ class HrefFilter implements FilterInterface
 {
     /**
      * The url generator instance.
-     *
-     * @var UrlGenerator
      */
     protected UrlGenerator $urlGenerator;
 
     /**
      * Constructor.
-     *
-     * @param  UrlGenerator  $urlGenerator
      */
     public function __construct(UrlGenerator $urlGenerator)
     {

@@ -18,7 +18,9 @@
 
             <div class="d-none d-md-flex">
                 @include('tablar::partials.header.theme-mode')
-                @include('tablar::partials.header.notifications')
+                @if(config('tablar.enable_notifications'))
+                    @include('tablar::partials.header.notifications')
+                @endif
             </div>
 
             @include('tablar::partials.header.top-right')

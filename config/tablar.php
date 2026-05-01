@@ -1,5 +1,13 @@
 <?php
 
+use TakiElias\Tablar\Menu\Filters\ActiveFilter;
+use TakiElias\Tablar\Menu\Filters\ClassesFilter;
+use TakiElias\Tablar\Menu\Filters\DataFilter;
+use TakiElias\Tablar\Menu\Filters\GateFilter;
+use TakiElias\Tablar\Menu\Filters\HrefFilter;
+use TakiElias\Tablar\Menu\Filters\LangFilter;
+use TakiElias\Tablar\Menu\Filters\SearchFilter;
+
 return [
 
     /*
@@ -15,7 +23,6 @@ return [
     'title_postfix' => '',
     'bottom_title' => 'Tablar',
     'current_version' => 'v11.11',
-
 
     /*
     |--------------------------------------------------------------------------
@@ -68,7 +75,7 @@ return [
     */
 
     'layout' => 'horizontal',
-    //boxed, combo, condensed, fluid, fluid-vertical, horizontal, navbar-overlap, navbar-sticky, rtl, vertical, vertical-right, vertical-transparent
+    // boxed, combo, condensed, fluid, fluid-vertical, horizontal, navbar-overlap, navbar-sticky, rtl, vertical, vertical-right, vertical-transparent
 
     'layout_light_sidebar' => null,
     'layout_light_topbar' => true,
@@ -118,8 +125,8 @@ return [
     'register_url' => 'register',
     'password_reset_url' => 'password.request',
     'password_email_url' => 'password.email',
-    'profile_url' => false,
-    'setting_url' => false,
+    'profile_url' => 'profile',
+    'setting_url' => 'settings',
 
     /*
     |--------------------------------------------------------------------------
@@ -133,6 +140,29 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Chrome (notifications, header & footer buttons)
+    |--------------------------------------------------------------------------
+    |
+    | Toggle the notifications dropdown and customise top-bar / footer
+    | buttons. Each button is `['name' => ..., 'url' => ..., 'icon' => 'ti ti-*']`.
+    | Empty arrays render no buttons.
+    |
+    */
+
+    'enable_notifications' => true,
+
+    'header_buttons' => [
+        ['name' => 'Source code', 'url' => 'https://github.com/takielias/tablar', 'icon' => 'ti ti-brand-github'],
+        ['name' => 'Sponsor', 'url' => 'https://www.buymeacoffee.com/takielias', 'icon' => 'ti ti-heart text-pink'],
+    ],
+
+    'footer_buttons' => [
+        ['name' => 'Source code', 'url' => 'https://github.com/takielias/tablar', 'icon' => 'ti ti-brand-github'],
+        ['name' => 'Sponsor', 'url' => 'https://www.buymeacoffee.com/takielias', 'icon' => 'ti ti-heart text-pink'],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Menu Items
     |--------------------------------------------------------------------------
     |
@@ -143,55 +173,11 @@ return [
     */
 
     'menu' => [
-        // Navbar items:
         [
             'text' => 'Home',
             'icon' => 'ti ti-home',
-            'url' => 'home'
+            'url' => 'home',
         ],
-
-        [
-            'text' => 'Support 1',
-            'url' => '#',
-            'icon' => 'ti ti-help',
-            'active' => ['support1'],
-            'submenu' => [
-                [
-                    'text' => 'Ticket',
-                    'url' => 'support1',
-                    'icon' => 'ti ti-article',
-                ]
-            ],
-        ],
-
-        [
-            'text' => 'Support 2',
-            'url' => '#',
-            'icon' => 'ti ti-help',
-            'active' => ['support2'],
-            'submenu' => [
-                [
-                    'text' => 'Ticket',
-                    'url' => 'support2',
-                    'icon' => 'ti ti-article',
-                ]
-            ],
-        ],
-
-        [
-            'text' => 'Support 3',
-            'url' => '#',
-            'icon' => 'ti ti-help',
-            'active' => ['support3'],
-            'submenu' => [
-                [
-                    'text' => 'Ticket',
-                    'url' => 'support3',
-                    'icon' => 'ti ti-article',
-                ]
-            ],
-        ],
-
     ],
 
     /*
@@ -206,13 +192,13 @@ return [
     */
 
     'filters' => [
-        TakiElias\Tablar\Menu\Filters\GateFilter::class,
-        TakiElias\Tablar\Menu\Filters\HrefFilter::class,
-        TakiElias\Tablar\Menu\Filters\SearchFilter::class,
-        TakiElias\Tablar\Menu\Filters\ActiveFilter::class,
-        TakiElias\Tablar\Menu\Filters\ClassesFilter::class,
-        TakiElias\Tablar\Menu\Filters\LangFilter::class,
-        TakiElias\Tablar\Menu\Filters\DataFilter::class,
+        GateFilter::class,
+        HrefFilter::class,
+        SearchFilter::class,
+        ActiveFilter::class,
+        ClassesFilter::class,
+        LangFilter::class,
+        DataFilter::class,
     ],
 
     /*

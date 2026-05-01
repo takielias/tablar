@@ -20,23 +20,23 @@ class TablarUpdateCommand extends Command
         $this->comment('Please run "npm install" first. Once the installation is done, run "npm run dev"');
     }
 
-
     /**
      * Update Tablar import - comment out old demo-theme.js import and add new one
      *
-     * @param string $filePath Path to the tablar-init.js file
+     * @param  string  $filePath  Path to the tablar-init.js file
      * @return void True if update was successful, false otherwise
      */
     private function updateTablarJsImport($filePath = null): void
     {
         // Default path if none provided
-        if (!$filePath) {
+        if (! $filePath) {
             $filePath = resource_path('js/tabler-init.js');
         }
 
         // Check if file exists
-        if (!file_exists($filePath)) {
+        if (! file_exists($filePath)) {
             $this->error("File not found: {$filePath}");
+
             return;
         }
 
@@ -47,7 +47,7 @@ class TablarUpdateCommand extends Command
         // Define patterns to search for /assets/demo-theme.js
         $patterns = [
             '/^(\s*)(import\s+[\'"][^\'\"]*\/assets\/demo-theme\.js[\'"];?\s*)$/m',
-            '/^(\s*)(import\s+[\'"][^\'\"]*\/assets\/demo-theme[\'"];?\s*)$/m'
+            '/^(\s*)(import\s+[\'"][^\'\"]*\/assets\/demo-theme[\'"];?\s*)$/m',
         ];
 
         // Define the new import
@@ -58,15 +58,16 @@ class TablarUpdateCommand extends Command
         // Check and comment out old imports
         foreach ($patterns as $pattern) {
             if (preg_match($pattern, $content)) {
-                $content = preg_replace($pattern, '$1// $2' . "\n$1" . $newImport, $content);
+                $content = preg_replace($pattern, '$1// $2'."\n$1".$newImport, $content);
                 $found = true;
-                $this->info("Found and commented out old demo-theme.js import");
+                $this->info('Found and commented out old demo-theme.js import');
                 break;
             }
         }
 
-        if (!$found) {
-            $this->info("No /assets/demo-theme.js import found in file.");
+        if (! $found) {
+            $this->info('No /assets/demo-theme.js import found in file.');
+
             return;
         }
 
@@ -75,7 +76,7 @@ class TablarUpdateCommand extends Command
 
         if ($result !== false) {
             $this->info("Successfully updated {$filePath}");
-            $this->info("Old import commented out and new import added");
+            $this->info('Old import commented out and new import added');
         } else {
             $this->error("Failed to write to {$filePath}");
         }
@@ -84,19 +85,19 @@ class TablarUpdateCommand extends Command
     /**
      * Update Tabler CSS import - replace old tabler-icons import with new one
      *
-     * @param string $filePath Path to the tabler.scss file
-     * @return void
+     * @param  string  $filePath  Path to the tabler.scss file
      */
     private function updateTablerCssImport($filePath = null): void
     {
         // Default path if none provided
-        if (!$filePath) {
+        if (! $filePath) {
             $filePath = resource_path('sass/tabler.scss');
         }
 
         // Check if file exists
-        if (!file_exists($filePath)) {
+        if (! file_exists($filePath)) {
             $this->error("File not found: {$filePath}");
+
             return;
         }
 
@@ -107,19 +108,20 @@ class TablarUpdateCommand extends Command
         $oldImportPattern = '/^(\s*)@import\s+[\'"]\.\.\/\.\.\/node_modules\/@tabler\/icons-webfont\/dist\/tabler-icons[\'"];?\s*$/m';
 
         // Define the new import
-        $newImport = '@import "@tabler/icons-webfont/dist/tabler-icons.css";' . "\n";
+        $newImport = '@import "@tabler/icons-webfont/dist/tabler-icons.css";'."\n";
 
         $found = false;
 
         // Check if old import exists
         if (preg_match($oldImportPattern, $content)) {
-            $content = preg_replace($oldImportPattern, '$1' . $newImport, $content);
+            $content = preg_replace($oldImportPattern, '$1'.$newImport, $content);
             $found = true;
-            $this->info("Found and updated old tabler-icons import");
+            $this->info('Found and updated old tabler-icons import');
         }
 
-        if (!$found) {
-            $this->info("No old tabler-icons import found in file.");
+        if (! $found) {
+            $this->info('No old tabler-icons import found in file.');
+
             return;
         }
 
@@ -128,10 +130,9 @@ class TablarUpdateCommand extends Command
 
         if ($result !== false) {
             $this->info("Successfully updated {$filePath}");
-            $this->info("Old CSS import replaced with new import");
+            $this->info('Old CSS import replaced with new import');
         } else {
             $this->error("Failed to write to {$filePath}");
         }
     }
-
 }

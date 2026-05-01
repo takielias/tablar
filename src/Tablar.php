@@ -9,16 +9,10 @@ use TakiElias\Tablar\Helpers\NavbarItemHelper;
 use TakiElias\Tablar\Helpers\SidebarItemHelper;
 use TakiElias\Tablar\Menu\Builder;
 
-/**
- *
- */
 class Tablar
 {
-
     /**
      * The array of menu items.
-     *
-     * @var array
      */
     protected array $menu;
 
@@ -32,8 +26,6 @@ class Tablar
     /**
      * The array of menu filters. These filters will apply on each one of the
      * menu items in order to transform them in some way.
-     *
-     * @var array
      */
     protected array $filters;
 
@@ -47,17 +39,11 @@ class Tablar
     /**
      * Map between a valid menu filter token and his respective filter method.
      * These filters are intended to get a specific set of menu items.
-     *
-     * @var array
      */
     protected array $menuFilterMap;
 
     /**
      * Constructor.
-     *
-     * @param array $filters
-     * @param Dispatcher $events
-     * @param Container $container
      */
     public function __construct(array $filters, Dispatcher $events, Container $container)
     {
@@ -75,14 +61,13 @@ class Tablar
         ];
     }
 
-
     /**
      * Get all the menu items, or a specific set of these.
      *
-     * @param string|null $filterToken Token representing a subset of the menu items
+     * @param  string|null  $filterToken  Token representing a subset of the menu items
      * @return array A set of menu items
      */
-    public function menu(string $filterToken = null): array
+    public function menu(?string $filterToken = null): array
     {
         if (empty($this->menu)) {
             $this->menu = $this->buildMenu();
@@ -135,8 +120,7 @@ class Tablar
     /**
      * Filter method used to get the sidebar menu items.
      *
-     * @param mixed $item A menu item
-     * @return bool
+     * @param  mixed  $item  A menu item
      */
     private function sidebarFilter($item): bool
     {
@@ -146,8 +130,7 @@ class Tablar
     /**
      * Filter method used to get the top navbar left menu items.
      *
-     * @param mixed $item A menu item
-     * @return bool
+     * @param  mixed  $item  A menu item
      */
     private function navbarLeftFilter($item): bool
     {
@@ -161,8 +144,7 @@ class Tablar
     /**
      * Filter method used to get the top navbar right menu items.
      *
-     * @param mixed $item A menu item
-     * @return bool
+     * @param  mixed  $item  A menu item
      */
     private function navbarRightFilter($item): bool
     {
@@ -172,12 +154,10 @@ class Tablar
     /**
      * Filter method used to get the navbar user menu items.
      *
-     * @param mixed $item A menu item
-     * @return bool
+     * @param  mixed  $item  A menu item
      */
     private function navbarUserMenuFilter($item): bool
     {
         return NavbarItemHelper::isValidUserMenuItem($item);
     }
-
 }

@@ -1,4 +1,4 @@
-<a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode" data-bs-toggle="tooltip"
+<a href="#" data-bs-theme-value="dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode" data-bs-toggle="tooltip"
    data-bs-placement="bottom">
     <!-- Download SVG icon from http://tabler.io/icons/icon/moon -->
     <svg
@@ -16,7 +16,7 @@
         <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"/>
     </svg>
 </a>
-<a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode" data-bs-toggle="tooltip"
+<a href="#" data-bs-theme-value="light" class="nav-link px-0 hide-theme-light" title="Enable light mode" data-bs-toggle="tooltip"
    data-bs-placement="bottom">
     <!-- Download SVG icon from http://tabler.io/icons/icon/sun -->
     <svg

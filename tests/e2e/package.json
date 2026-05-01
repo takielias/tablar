@@ -1,0 +1,13 @@
+{
+    "name": "tablar-e2e",
+    "private": true,
+    "description": "Playwright e2e suite for Tablar — opt-in dev tooling, not shipped to end users.",
+    "scripts": {
+        "test": "playwright test",
+        "test:ui": "playwright test --ui",
+        "report": "playwright show-report"
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.55.0"
+    }
+}

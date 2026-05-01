@@ -2,11 +2,16 @@
 
 ## Tabler + Laravel = TabLar
 
+[![tests](https://github.com/takielias/tablar/actions/workflows/tests.yml/badge.svg)](https://github.com/takielias/tablar/actions/workflows/tests.yml)
+[![lint](https://github.com/takielias/tablar/actions/workflows/lint.yml/badge.svg)](https://github.com/takielias/tablar/actions/workflows/lint.yml)
 [![Latest Version](https://img.shields.io/packagist/v/takielias/tablar?color=blue&label=release&style=for-the-badge)](https://packagist.org/packages/takielias/tablar)
-[![Stars](https://img.shields.io/github/stars/takielias/tablar?color=rgb%2806%20189%20248%29&label=stars&style=for-the-badge)](https://packagist.org/packages/takielias/tablar)
 [![Total Downloads](https://img.shields.io/packagist/dt/takielias/tablar.svg?color=rgb%28249%20115%2022%29&style=for-the-badge)](https://packagist.org/packages/takielias/tablar)
-[![Forks](https://img.shields.io/github/forks/takielias/tablar?color=rgb%28134%20115%2022%29&style=for-the-badge)](https://packagist.org/packages/takielias/tablar)
-[![Issues](https://img.shields.io/github/issues/takielias/tablar?color=rgb%28134%20239%20128%29&style=for-the-badge)](https://packagist.org/packages/takielias/tablar)
+[![PHP Version](https://img.shields.io/packagist/dependency-v/takielias/tablar/php?style=for-the-badge)](https://packagist.org/packages/takielias/tablar)
+[![Laravel](https://img.shields.io/badge/Laravel-11%20%7C%2012%20%7C%2013-FF2D20?style=for-the-badge&logo=laravel)](https://packagist.org/packages/takielias/tablar)
+[![License](https://img.shields.io/packagist/l/takielias/tablar?style=for-the-badge)](https://github.com/takielias/tablar/blob/master/LICENSE.md)
+[![Stars](https://img.shields.io/github/stars/takielias/tablar?color=rgb%2806%20189%20248%29&label=stars&style=for-the-badge)](https://github.com/takielias/tablar)
+[![Forks](https://img.shields.io/github/forks/takielias/tablar?color=rgb%28134%20115%2022%29&style=for-the-badge)](https://github.com/takielias/tablar)
+[![Issues](https://img.shields.io/github/issues/takielias/tablar?color=rgb%28134%20239%20128%29&style=for-the-badge)](https://github.com/takielias/tablar)
 [![Linkedin](https://img.shields.io/badge/-LinkedIn-black.svg?logo=linkedin&color=rgba(235%2068%2050)&style=for-the-badge)](https://linkedin.com/in/takielias)
 
 
@@ -25,9 +30,7 @@
 ## Tablar: A Laravel Dashboard Preset Featuring Dark Mode and Dynamic Menu Generation for Effortless Navigation and Fast Development.
 
 ## Featured on Laravel News!
-![image](https://github.com/takielias/tablar/assets/38932580/36605697-5ce8-4837-933b-657cb00d9317)
-
-Get it [here](https://laravel-news.com/tablar-laravel-dashboard-preset)
+[Read the feature on laravel-news.com](https://laravel-news.com/tablar-laravel-dashboard-preset)
 
 Please check the corresponding branch for the documentation.
 
@@ -42,6 +45,13 @@ Please check the corresponding branch for the documentation.
 [![Tablar](https://img.youtube.com/vi/ka26mSdmvIQ/0.jpg)](https://www.youtube.com/watch?v=ka26mSdmvIQ)
 
 ## [Demo Project](https://github.com/takielias/tablar-demo-project)
+
+### Requirements
+
+- PHP **8.3+**
+- Laravel **11.x / 12.x / 13.x**
+- Node **20.19+** or **22.12+** (Vite 8 minimum; Node 22 LTS recommended)
+- Composer 2.x
 
 ### Installation
 

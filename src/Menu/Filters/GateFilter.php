@@ -15,8 +15,6 @@ class GateFilter implements FilterInterface
 
     /**
      * Constructor.
-     *
-     * @param  Gate  $gate
      */
     public function __construct(Gate $gate)
     {

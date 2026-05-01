@@ -8,6 +8,9 @@
             <directory suffix=".php">./tests/Menu</directory>
             <exclude>tests/TestCase.php</exclude>
         </testsuite>
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./tests/Feature</directory>
+        </testsuite>
     </testsuites>
     <source>
         <include>

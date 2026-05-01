@@ -8,8 +8,6 @@ class LangFilter implements FilterInterface
 {
     /**
      * The translator instance.
-     *
-     * @var Translator
      */
     protected Translator $translator;
 
@@ -22,8 +20,6 @@ class LangFilter implements FilterInterface
 
     /**
      * Constructor.
-     *
-     * @param  Translator  $translator
      */
     public function __construct(Translator $translator)
     {
