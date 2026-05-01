@@ -44,11 +44,17 @@ jobs:
           restore-keys: |
             composer-${{ runner.os }}-${{ matrix.php }}-${{ matrix.laravel }}-
 
+      - name: Snapshot composer.json (contract tests assert the composite constraints)
+        run: cp composer.json composer.json.snapshot
+
       - name: Install dependencies
         run: |
           composer require "laravel/framework:${{ matrix.laravel }}" "${{ matrix.testbench }}" \
             --no-interaction --no-update --dev
           composer update --prefer-dist --no-interaction --no-progress
+
+      - name: Restore composer.json (matrix install collapses composite constraints; contract tests need the original)
+        run: mv composer.json.snapshot composer.json
 
       - name: Run PHPUnit
         env:
