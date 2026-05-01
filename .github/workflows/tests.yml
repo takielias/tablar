@@ -2,9 +2,9 @@ name: tests
 
 on:
   push:
-    branches: [ master, "[0-9]+.x" ]
+    branches: [ main, master, "[0-9]+.x" ]
   pull_request:
-    branches: [ master, "[0-9]+.x" ]
+    branches: [ main, master, "[0-9]+.x" ]
 
 jobs:
   matrix:
@@ -55,6 +55,9 @@ jobs:
 
       - name: Restore composer.json (matrix install collapses composite constraints; contract tests need the original)
         run: mv composer.json.snapshot composer.json
+
+      - name: Refresh composer.lock content-hash (vendor stays at matrix-resolved versions; only the lock metadata is realigned with the restored composer.json so `composer validate --strict` passes)
+        run: composer update --lock --no-interaction --no-progress
 
       - name: Run PHPUnit
         env:
