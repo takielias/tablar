@@ -1,0 +1,9 @@
+tablar:doctor
+tablar:export-all
+tablar:export-assets
+tablar:export-auth
+tablar:export-config
+tablar:export-js
+tablar:export-views
+tablar:install
+tablar:update

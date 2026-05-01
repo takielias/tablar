@@ -1,0 +1,11 @@
+Tablar Doctor
+─────────────
+PHP             8.3.30                         ✓
+Laravel         13.6.0                         ✓
+Tablar          dev-master                     ✓
+Node            v22.22.2                       ✓
+npm             10.9.7                         ✓
+Vite            8.0.10                         ✓
+@tabler/core    1.4.0                          ✓
+DB driver       sqlite                         ✓
+Vite manifest   present                        ✓

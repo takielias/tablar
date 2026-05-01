@@ -9,15 +9,11 @@ class ActiveFilter implements FilterInterface
 {
     /**
      * The active checker instance.
-     *
-     * @var ActiveChecker
      */
     protected ActiveChecker $activeChecker;
 
     /**
      * Constructor.
-     *
-     * @param  ActiveChecker  $activeChecker
      */
     public function __construct(ActiveChecker $activeChecker)
     {

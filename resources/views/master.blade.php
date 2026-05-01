@@ -6,6 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    {{-- Theme bootstrap — runs before any CSS to prevent FOUC. --}}
+    <script>
+        (function () {
+            var saved = localStorage.getItem('tablar.theme');
+            var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-bs-theme', theme);
+        })();
+        document.addEventListener('click', function (e) {
+            var trigger = e.target.closest('[data-bs-theme-value]');
+            if (!trigger) return;
+            e.preventDefault();
+            var value = trigger.getAttribute('data-bs-theme-value');
+            document.documentElement.setAttribute('data-bs-theme', value);
+            localStorage.setItem('tablar.theme', value);
+        });
+    </script>
+
     {{-- Custom Meta Tags --}}
     @yield('meta_tags')
     {{-- Title --}}

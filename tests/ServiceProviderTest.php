@@ -7,12 +7,11 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\View;
-
 use TakiElias\Tablar\Tablar;
 
 class ServiceProviderTest extends TestCase
 {
-    public function testRegisterSingletonInstance()
+    public function test_register_singleton_instance()
     {
         // Check the instance of Tablar resolver.
 
@@ -24,7 +23,7 @@ class ServiceProviderTest extends TestCase
         $this->assertSame($tablar, $this->app->make(Tablar::class));
     }
 
-    public function testBootLoadViews()
+    public function test_boot_load_views()
     {
         // Check that the main views are loaded.
 
@@ -51,7 +50,6 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue(View::exists('tablar::partials.header.top'));
         $this->assertTrue(View::exists('tablar::partials.header.top-right'));
 
-
         $this->assertTrue(View::exists('tablar::partials.navbar.dropdown-item'));
         $this->assertTrue(View::exists('tablar::partials.navbar.dropdown-item-link'));
         $this->assertTrue(View::exists('tablar::partials.navbar.dropend'));
@@ -62,7 +60,6 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue(View::exists('tablar::partials.navbar.single-item'));
         $this->assertTrue(View::exists('tablar::partials.navbar.submenu-dropdown-item'));
         $this->assertTrue(View::exists('tablar::partials.navbar.topbar'));
-
 
         $this->assertTrue(View::exists('tablar::layouts.boxed'));
         $this->assertTrue(View::exists('tablar::layouts.combo'));
@@ -79,7 +76,7 @@ class ServiceProviderTest extends TestCase
 
     }
 
-    public function testBootLoadTranslations()
+    public function test_boot_load_translations()
     {
         // Check that the main translations are loaded.
 
@@ -87,7 +84,7 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue(Lang::has('tablar::menu.main_navigation'));
     }
 
-    public function testBootLoadConfig()
+    public function test_boot_load_config()
     {
         // Check that config values are loaded.
 
@@ -98,8 +95,7 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue(is_array(Config::get('tablar.menu')));
     }
 
-
-    public function testLayout()
+    public function test_layout()
     {
         $this->assertTrue(Config::has('tablar.layout'));
         $this->assertTrue(in_array(Config::get('tablar.layout'), [
@@ -118,7 +114,7 @@ class ServiceProviderTest extends TestCase
         ]));
     }
 
-    public function testBootRegisterCommands()
+    public function test_boot_register_commands()
     {
         // Check that the artisan commands are registered.
 
@@ -132,7 +128,7 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue(Arr::has($commands, 'tablar:export-assets'));
     }
 
-    public function testBootRegisterViewComposers()
+    public function test_boot_register_view_composers()
     {
         // Check that the Tablar instance exists on the page blade.
 
@@ -143,12 +139,11 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue(Arr::has($viewData, 'tablar'));
     }
 
-    public function testBootRegisterMenu()
+    public function test_boot_register_menu()
     {
         $tablar = $this->app->make(Tablar::class);
         $menu = $tablar->menu();
         $this->assertCount(4, $menu);
         $this->assertEquals('Home', $menu[0]['text']);
     }
-
 }

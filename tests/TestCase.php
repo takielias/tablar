@@ -13,7 +13,8 @@ use Illuminate\Routing\RouteCollection;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Translation\FileLoader;
 use Illuminate\Translation\Translator;
-use TakiElias\Tablar\Tablar;
+use Orchestra\Testbench\TestCase as BaseTestCase;
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 use TakiElias\Tablar\Menu\ActiveChecker;
 use TakiElias\Tablar\Menu\Builder;
 use TakiElias\Tablar\Menu\Filters\ActiveFilter;
@@ -23,8 +24,7 @@ use TakiElias\Tablar\Menu\Filters\GateFilter;
 use TakiElias\Tablar\Menu\Filters\HrefFilter;
 use TakiElias\Tablar\Menu\Filters\LangFilter;
 use TakiElias\Tablar\Menu\Filters\SearchFilter;
-use Orchestra\Testbench\TestCase as BaseTestCase;
-use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
+use TakiElias\Tablar\Tablar;
 
 class TestCase extends BaseTestCase
 {
@@ -44,24 +44,24 @@ class TestCase extends BaseTestCase
         return ['TakiElias\Tablar\TablarServiceProvider'];
     }
 
-    protected function makeMenuBuilder($uri = 'http://example.com', GateContract $gate = null, $locale = 'en')
+    protected function makeMenuBuilder($uri = 'http://example.com', ?GateContract $gate = null, $locale = 'en')
     {
         return new Builder([
             new GateFilter($gate ?: $this->makeGate()),
             new HrefFilter($this->makeUrlGenerator($uri)),
             new ActiveFilter($this->makeActiveChecker($uri)),
-            new ClassesFilter(),
-            new DataFilter(),
+            new ClassesFilter,
+            new DataFilter,
             new LangFilter($this->makeTranslator($locale)),
-            new SearchFilter(),
+            new SearchFilter,
         ]);
     }
 
     protected function makeTranslator($locale = 'en')
     {
-        $translationLoader = new FileLoader(new  Filesystem, 'resources/lang/');
+        $translationLoader = new FileLoader(new Filesystem, 'resources/lang/');
 
-        $this->translator = new  Translator($translationLoader, $locale);
+        $this->translator = new Translator($translationLoader, $locale);
         $this->translator->addNamespace('tablar', 'resources/lang/');
 
         return $this->translator;
@@ -107,12 +107,12 @@ class TestCase extends BaseTestCase
 
     protected function makeContainer()
     {
-        return new  Container();
+        return new Container;
     }
 
     protected function getDispatcher()
     {
-        if (!$this->dispatcher) {
+        if (! $this->dispatcher) {
             $this->dispatcher = new Dispatcher;
         }
 
@@ -126,8 +126,8 @@ class TestCase extends BaseTestCase
 
     protected function getRouteCollection()
     {
-        if (!$this->routeCollection) {
-            $this->routeCollection = new RouteCollection();
+        if (! $this->routeCollection) {
+            $this->routeCollection = new RouteCollection;
         }
 
         return $this->routeCollection;

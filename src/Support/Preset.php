@@ -16,20 +16,17 @@ abstract class Preset
     {
         $filesystem = new Filesystem;
 
-        if (!$filesystem->isDirectory($directory = resource_path('js/components'))) {
+        if (! $filesystem->isDirectory($directory = resource_path('js/components'))) {
             $filesystem->makeDirectory($directory, 0755, true);
         }
     }
 
     /**
      * Update the "package.json" file.
-     *
-     * @param bool $dev
-     * @return void
      */
     protected static function updatePackages(bool $dev = true): void
     {
-        if (!file_exists(base_path('package.json'))) {
+        if (! file_exists(base_path('package.json'))) {
             return;
         }
 
@@ -46,23 +43,17 @@ abstract class Preset
 
         file_put_contents(
             base_path('package.json'),
-            json_encode($packages, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . PHP_EOL
+            json_encode($packages, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT).PHP_EOL
         );
     }
 
     /**
      * Update the given package array.
-     *
-     * @param array $packages
-     * @param string $configurationKey
-     * @return array
      */
     abstract protected static function updatePackageArray(array $packages, string $configurationKey): array;
 
     /**
      * Remove the installed Node modules.
-     *
-     * @return void
      */
     protected static function removeNodeModules(): void
     {

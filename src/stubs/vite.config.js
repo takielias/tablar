@@ -1,6 +1,6 @@
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import {viteStaticCopy} from 'vite-plugin-static-copy'
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
     plugins: [
@@ -12,25 +12,31 @@ export default defineConfig({
             targets: [
                 {
                     src: 'node_modules/@tabler/core/dist/img',
-                    dest: '../dist'
+                    dest: '../dist',
                 },
                 {
                     src: 'node_modules/@tabler/icons-webfont/dist/fonts',
-                    dest: '../build/assets'
-                }
-            ]
-        })
+                    dest: '../build/assets',
+                },
+            ],
+        }),
     ],
-    server: {
-        hmr: {
-            host: 'localhost',
-            protocol: 'ws',
-            port: 3000
-        }
+    css: {
+        preprocessorOptions: {
+            scss: {
+                // Tabler core's sass triggers Dart Sass 1.80+ deprecations
+                // (@import, legacy color funcs, /-as-division). Silence the
+                // third-party noise; the package source is clean.
+                quietDeps: true,
+                silenceDeprecations: [
+                    'import',
+                    'global-builtin',
+                    'color-functions',
+                    'legacy-js-api',
+                    'slash-div',
+                    'if-function',
+                ],
+            },
+        },
     },
-    build: {
-        commonjsOptions: {
-            transformMixedEsModules: true
-        }
-    }
 });
