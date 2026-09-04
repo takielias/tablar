@@ -40,6 +40,7 @@ class InstallOverwritePromptTest extends TestCase
         @unlink($this->stubPath);
         @unlink($this->destPath);
         @rmdir(dirname($this->stubPath));
+        @unlink(base_path('config/tablar.php'));
         TablarPreset::reset();
 
         parent::tearDown();
@@ -104,6 +105,21 @@ class InstallOverwritePromptTest extends TestCase
 
         $this->assertFalse($written, 'Without command/force, user changes must be preserved.');
         $this->assertSame("user-modified content\n", file_get_contents($this->destPath));
+        $this->assertSame(['dest.txt'], array_map('basename', TablarPreset::skippedFiles()));
+    }
+
+    public function test_first_install_overwrites_a_stock_framework_file(): void
+    {
+        file_put_contents($this->destPath, "laravel default config\n");
+        @unlink(base_path('config/tablar.php'));
+
+        TablarPreset::useCommand($this->freshCommand());
+
+        $written = $this->invokeSafeCopy($this->stubPath, $this->destPath);
+
+        $this->assertTrue($written, 'A first install has no user edits to protect.');
+        $this->assertSame("stub content\n", file_get_contents($this->destPath));
+        $this->assertSame([], TablarPreset::skippedFiles());
     }
 
     public function test_install_command_signature_has_force_and_no_credits_flags(): void

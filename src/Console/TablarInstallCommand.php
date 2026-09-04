@@ -25,7 +25,16 @@ class TablarInstallCommand extends Command
 
         $major = (int) explode('.', app()->version())[0];
 
+        $skipped = TablarPreset::skippedFiles();
+
         $this->newLine();
+
+        if ($skipped !== []) {
+            $this->warn('Kept your version of: '.implode(', ', $skipped));
+            $this->warn('Tablar\'s build config is not active. Re-run with --force to replace them.');
+            $this->newLine();
+        }
+
         $this->info("✅ Tablar installed (Laravel {$major}).");
         $this->line('Next: npm install && npm run dev');
         $this->line('Then: php artisan tablar:export-auth');

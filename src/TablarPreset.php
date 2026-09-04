@@ -16,6 +16,11 @@ class TablarPreset extends Preset
 
     protected static bool $force = false;
 
+    protected static bool $firstInstall = false;
+
+    /** @var list<string> */
+    protected static array $skipped = [];
+
     /**
      * Wire the preset to a console command so safeCopy() can prompt the
      * user, and pre-set the force flag for non-interactive overwrites.
@@ -24,12 +29,24 @@ class TablarPreset extends Preset
     {
         static::$command = $command;
         static::$force = $force;
+        static::$firstInstall = ! file_exists(base_path('config/tablar.php'));
+        static::$skipped = [];
     }
 
     public static function reset(): void
     {
         static::$command = null;
         static::$force = false;
+        static::$firstInstall = false;
+        static::$skipped = [];
+    }
+
+    /**
+     * @return list<string>
+     */
+    public static function skippedFiles(): array
+    {
+        return static::$skipped;
     }
 
     /**
@@ -39,6 +56,7 @@ class TablarPreset extends Preset
      *
      * - Destination missing → write silently
      * - Destination exists & content matches stub → skip silently (already in sync)
+     * - Destination exists & Tablar has never been installed → overwrite silently
      * - Destination exists & user-modified → if force OR user confirms, overwrite; otherwise skip
      */
     protected static function safeCopy(string $stub, string $destination): bool
@@ -51,6 +69,12 @@ class TablarPreset extends Preset
 
         if (hash_file('sha256', $stub) === hash_file('sha256', $destination)) {
             return false;
+        }
+
+        if (static::$firstInstall) {
+            copy($stub, $destination);
+
+            return true;
         }
 
         if (static::$force) {
@@ -73,6 +97,7 @@ class TablarPreset extends Preset
             return true;
         }
 
+        static::$skipped[] = $relative;
         static::$command?->warn("Kept user changes in {$relative}.");
 
         return false;
