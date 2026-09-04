@@ -170,6 +170,7 @@ requests/UpdateProfileRequest.stub
 resources/css/icon-style.css
 resources/js/app.js
 resources/js/bootstrap.js
+resources/js/jquery-compat.js
 resources/js/tabler-init.js
 resources/sass/tabler.scss
 resources/views/auth/login.blade.php

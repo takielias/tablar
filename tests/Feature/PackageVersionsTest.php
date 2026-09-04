@@ -81,9 +81,20 @@ class PackageVersionsTest extends BaseTestCase
         $this->assertArrayNotHasKey('sass-loader', $packages, 'sass-loader is webpack-specific and unused under Vite.');
     }
 
-    public function test_jquery_targets_v4(): void
+    public function test_jquery_is_not_installed_by_default(): void
     {
-        $this->assertSame('^4.0.0', $this->packageArray()['jquery'] ?? null);
+        $this->assertArrayNotHasKey('jquery', $this->packageArray(), 'Nothing in Tablar uses jQuery.');
+    }
+
+    public function test_jquery_is_kept_when_the_app_already_has_it(): void
+    {
+        $reflection = new \ReflectionClass(TablarPreset::class);
+        $method = $reflection->getMethod('updatePackageArray');
+        $method->setAccessible(true);
+
+        $merged = $method->invoke(null, ['jquery' => '^3.7.0']);
+
+        $this->assertSame('^3.7.0', $merged['jquery'] ?? null, 'Re-installing must not strip an app dependency we no longer ship.');
     }
 
     public function test_apexcharts_targets_v5(): void

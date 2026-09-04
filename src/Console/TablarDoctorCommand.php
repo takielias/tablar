@@ -37,6 +37,7 @@ class TablarDoctorCommand extends Command
             $this->checkTablerCore(),
             $this->checkDbDriver(),
             $this->checkViteManifest(),
+            $this->checkJqueryCompat(),
         ];
 
         $this->line('Tablar Doctor');
@@ -221,6 +222,48 @@ class TablarDoctorCommand extends Command
     /**
      * @param  array{label: string, value: string, status: string}  $row
      */
+    /**
+     * @return array{label: string, value: string, status: string}
+     */
+    private function checkJqueryCompat(): array
+    {
+        $uses = $this->appUsesJquery();
+        $imported = str_contains(@file_get_contents(resource_path('js/app.js')) ?: '', 'jquery-compat');
+
+        return [
+            'label' => 'jQuery',
+            'value' => match (true) {
+                ! $uses => 'not used',
+                $imported => 'compat imported',
+                default => 'used in your views, compat not imported',
+            },
+            'status' => $uses && ! $imported ? 'warn' : 'ok',
+        ];
+    }
+
+    private function appUsesJquery(): bool
+    {
+        foreach ([resource_path('views'), resource_path('js')] as $dir) {
+            if (! is_dir($dir)) {
+                continue;
+            }
+
+            $files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($dir));
+
+            foreach ($files as $file) {
+                if (! $file->isFile() || $file->getFilename() === 'jquery-compat.js') {
+                    continue;
+                }
+
+                if (preg_match('/(?<![\w$])\$\(|jQuery/', file_get_contents($file->getPathname()))) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     private function renderRow(array $row): void
     {
         $marker = match ($row['status']) {
