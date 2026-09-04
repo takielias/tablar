@@ -61,7 +61,7 @@ class TablarInstallCommand extends Command
     {
         $major = (int) explode('.', app()->version())[0];
 
-        if ($major < 11) {
+        if ($major < 12) {
             return;
         }
 

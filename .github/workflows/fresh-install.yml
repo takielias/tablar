@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        laravel: [ '11.*', '12.*', '13.*' ]
+        laravel: [ '12.*', '13.*' ]
 
     steps:
       - name: Check out the package

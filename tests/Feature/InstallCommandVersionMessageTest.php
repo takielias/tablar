@@ -113,7 +113,7 @@ class InstallCommandVersionMessageTest extends TestCase
     {
         $major = (int) explode('.', $this->app->version())[0];
 
-        $this->assertGreaterThanOrEqual(11, $major, 'Test runs on Laravel 11+ only.');
+        $this->assertGreaterThanOrEqual(12, $major, 'Test runs on Laravel 12+ only.');
 
         $tmpFile = tempnam(sys_get_temp_dir(), 'tablar_ctrl_').'.php';
         file_put_contents(

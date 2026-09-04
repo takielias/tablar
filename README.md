@@ -7,7 +7,7 @@
 [![Latest Version](https://img.shields.io/packagist/v/takielias/tablar?color=blue&label=release&style=for-the-badge)](https://packagist.org/packages/takielias/tablar)
 [![Total Downloads](https://img.shields.io/packagist/dt/takielias/tablar.svg?color=rgb%28249%20115%2022%29&style=for-the-badge)](https://packagist.org/packages/takielias/tablar)
 [![PHP Version](https://img.shields.io/packagist/dependency-v/takielias/tablar/php?style=for-the-badge)](https://packagist.org/packages/takielias/tablar)
-[![Laravel](https://img.shields.io/badge/Laravel-11%20%7C%2012%20%7C%2013-FF2D20?style=for-the-badge&logo=laravel)](https://packagist.org/packages/takielias/tablar)
+[![Laravel](https://img.shields.io/badge/Laravel-12%20%7C%2013-FF2D20?style=for-the-badge&logo=laravel)](https://packagist.org/packages/takielias/tablar)
 [![License](https://img.shields.io/packagist/l/takielias/tablar?style=for-the-badge)](https://github.com/takielias/tablar/blob/master/LICENSE.md)
 [![Stars](https://img.shields.io/github/stars/takielias/tablar?color=rgb%2806%20189%20248%29&label=stars&style=for-the-badge)](https://github.com/takielias/tablar)
 [![Forks](https://img.shields.io/github/forks/takielias/tablar?color=rgb%28134%20115%2022%29&style=for-the-badge)](https://github.com/takielias/tablar)
@@ -49,7 +49,7 @@ Please check the corresponding branch for the documentation.
 ### Requirements
 
 - PHP **8.3+**
-- Laravel **11.x / 12.x / 13.x**
+- Laravel **12.x / 13.x**
 - Node **20.19+** or **22.12+** (Vite 8 minimum; Node 22 LTS recommended)
 - Composer 2.x
 

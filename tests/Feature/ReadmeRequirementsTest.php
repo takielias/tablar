@@ -31,7 +31,7 @@ class ReadmeRequirementsTest extends BaseTestCase
     public function test_readme_lists_laravel_range(): void
     {
         $readme = $this->readme();
-        foreach (['11.x', '12.x', '13.x'] as $major) {
+        foreach (['12.x', '13.x'] as $major) {
             $this->assertStringContainsString($major, $readme, "Laravel {$major} should be declared as supported");
         }
     }
