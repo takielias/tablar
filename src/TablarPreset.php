@@ -274,8 +274,7 @@ class TablarPreset extends Preset
             'sass-embedded' => '^1.99.0',
             'vite' => '^8.0.0',
             'axios' => '^1.7.4',
-            'vite-plugin-static-copy' => '^4.0.0',
-        ], Arr::except($packages, [
+        ], Arr::except($packages, array_merge([
             'axios',
             'choices.js',
             'laravel-vite-plugin',
@@ -285,7 +284,7 @@ class TablarPreset extends Preset
             'select2',
             'vite-plugin-static-copy',
             'vite',
-        ]));
+        ], static::$firstInstall ? ['tailwindcss', '@tailwindcss/vite'] : [])));
     }
 
     /**

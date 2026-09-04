@@ -184,5 +184,5 @@
     "resources\/views\/settings\/show.blade.php": "e11675f089bf60b35dffe25701072a2f4b07ce713820ab464bf1b431872edc15",
     "resources\/views\/welcome.blade.php": "f67004697d026134821b46c9328b1e47a830d5d49941e58f0295d0ed467c7707",
     "routes\/auth.php": "4d0454252af083156f6a26dba91bb93324fe463cc4e9d5122c71bface62ab214",
-    "vite.config.js": "5fcf18c36dc62aff33313c8fac9e6844a0d7949a50224499c33a9a294c940e9b"
+    "vite.config.js": "a088d6c4217de2ec7286a7e5557f1fec052a56934ac786720b8e3a76f9b9157e"
 }
