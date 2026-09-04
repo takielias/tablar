@@ -26,7 +26,6 @@ class ViteConfigStubTest extends BaseTestCase
         $stub = $this->stub();
         $this->assertStringContainsString("import { defineConfig } from 'vite';", $stub);
         $this->assertStringContainsString("import laravel from 'laravel-vite-plugin';", $stub);
-        $this->assertStringContainsString("import { viteStaticCopy } from 'vite-plugin-static-copy';", $stub);
     }
 
     public function test_stub_uses_app_js_as_entry_point(): void
@@ -34,11 +33,9 @@ class ViteConfigStubTest extends BaseTestCase
         $this->assertStringContainsString("input: ['resources/js/app.js']", $this->stub());
     }
 
-    public function test_stub_copies_tabler_assets(): void
+    public function test_stub_does_not_copy_static_assets(): void
     {
-        $stub = $this->stub();
-        $this->assertStringContainsString("'node_modules/@tabler/core/dist/img'", $stub);
-        $this->assertStringContainsString("'node_modules/@tabler/icons-webfont/dist/fonts'", $stub);
+        $this->assertStringNotContainsString('viteStaticCopy', $this->stub(), 'Vite emits the icon fonts from the scss; the copy step was writing files nothing read.');
     }
 
     public function test_stub_drops_legacy_vite_5_options(): void
@@ -46,5 +43,12 @@ class ViteConfigStubTest extends BaseTestCase
         $stub = $this->stub();
         $this->assertStringNotContainsString('commonjsOptions', $stub, 'Vite 8 default already enables transformMixedEsModules; drop the legacy explicit option.');
         $this->assertStringNotContainsString("protocol: 'ws'", $stub, 'Drop the explicit HMR ws block — laravel-vite-plugin v3 handles host/protocol detection.');
+    }
+
+    public function test_stub_silences_third_party_sass_deprecations(): void
+    {
+        $stub = $this->stub();
+        $this->assertStringContainsString('quietDeps: true', $stub);
+        $this->assertStringContainsString('silenceDeprecations', $stub);
     }
 }

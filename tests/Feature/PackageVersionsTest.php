@@ -54,10 +54,13 @@ class PackageVersionsTest extends BaseTestCase
         $this->assertSame('^3.0.0', $packages['laravel-vite-plugin'] ?? null);
     }
 
-    public function test_vite_plugin_static_copy_targets_v4(): void
+    public function test_vite_plugin_static_copy_is_not_installed(): void
     {
-        $packages = $this->packageArray();
-        $this->assertSame('^4.0.0', $packages['vite-plugin-static-copy'] ?? null);
+        $this->assertArrayNotHasKey(
+            'vite-plugin-static-copy',
+            $this->packageArray(),
+            'Vite emits the tabler icon fonts from the scss, so nothing needs copying.'
+        );
     }
 
     public function test_tabler_icons_at_3_41(): void
@@ -95,6 +98,34 @@ class PackageVersionsTest extends BaseTestCase
         $merged = $method->invoke(null, ['jquery' => '^3.7.0']);
 
         $this->assertSame('^3.7.0', $merged['jquery'] ?? null, 'Re-installing must not strip an app dependency we no longer ship.');
+    }
+
+    public function test_first_install_drops_the_skeleton_tailwind_deps(): void
+    {
+        $reflection = new \ReflectionClass(TablarPreset::class);
+        $first = $reflection->getProperty('firstInstall');
+        $first->setAccessible(true);
+        $first->setValue(null, true);
+
+        $method = $reflection->getMethod('updatePackageArray');
+        $method->setAccessible(true);
+        $merged = $method->invoke(null, ['tailwindcss' => '^4.0.0', '@tailwindcss/vite' => '^4.0.0']);
+
+        $first->setValue(null, false);
+
+        $this->assertArrayNotHasKey('tailwindcss', $merged, 'Tablar is bootstrap based; the skeleton tailwind deps are dead weight.');
+        $this->assertArrayNotHasKey('@tailwindcss/vite', $merged);
+    }
+
+    public function test_reinstall_keeps_tailwind_the_app_added(): void
+    {
+        $reflection = new \ReflectionClass(TablarPreset::class);
+        $method = $reflection->getMethod('updatePackageArray');
+        $method->setAccessible(true);
+
+        $merged = $method->invoke(null, ['tailwindcss' => '^4.0.0']);
+
+        $this->assertSame('^4.0.0', $merged['tailwindcss'] ?? null, 'Only a first install may strip it; after that it may be theirs.');
     }
 
     public function test_apexcharts_targets_v5(): void
