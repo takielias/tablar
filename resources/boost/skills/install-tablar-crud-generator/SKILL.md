@@ -9,6 +9,12 @@ Slash command: `/laravel-boost:install-tablar-crud-generator`
 
 Invoked explicitly by the user. Walk one step at a time. **Pause for user approval before every shell command.**
 
+## When to use this skill
+
+Use it when adding `takielias/tablar-crud-generator` as a dev dependency so `make:crud` can scaffold a Model, Controller, views and routes from a table that already exists in the database.
+
+Do not use it when the package is already installed and the task is generating or regenerating a resource — that is `tablar-crud-generator-development`, which covers the command flags, the generated file list and the regeneration caveats.
+
 ## Pre-flight checks
 
 1. **tablar installed**:

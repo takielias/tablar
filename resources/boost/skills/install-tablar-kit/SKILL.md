@@ -9,6 +9,12 @@ Slash command: `/laravel-boost:install-tablar-kit`
 
 This skill is invoked explicitly by the user. Walk through the install one step at a time. **Pause and wait for user approval before running every shell command** — never chain steps together.
 
+## When to use this skill
+
+Use it when adding `takielias/tablar-kit` to an app that already runs `takielias/tablar` — the Blade component set, FormBuilder, DataTable, confirm-modal and Jodit file browser. Also use it when a kit component renders as raw `<x-...>` markup, which means the config was never published or the alias prefix is wrong.
+
+Do not use it to install `takielias/tablar` itself; that is `tablar-installation-development`. For writing code against the components once installed, use the `tablar-kit-*-development` skills instead.
+
 ## Pre-flight checks (run silently before step 1)
 
 Before any install action, verify:
