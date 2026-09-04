@@ -248,7 +248,6 @@ class TablarPreset extends Preset
     protected static function updatePackageArray(array $packages, string $configurationKey = 'devDependencies'): array
     {
         return array_merge([
-            'jquery' => '^4.0.0',
             'bootstrap' => '5.3.8',
             '@tabler/core' => '1.4.0',
             '@popperjs/core' => '^2.11.8',
