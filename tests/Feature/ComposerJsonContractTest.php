@@ -27,11 +27,11 @@ class ComposerJsonContractTest extends TestCase
         $this->assertStringContainsString('^8.3', $php, 'PHP constraint must include ^8.3.');
     }
 
-    public function test_illuminate_support_supports_l11_l12_l13(): void
+    public function test_illuminate_support_supports_l12_l13(): void
     {
         $constraint = $this->composer()['require']['illuminate/support'] ?? '';
 
-        foreach (['^11.0', '^12.0', '^13.0'] as $required) {
+        foreach (['^12.0', '^13.0'] as $required) {
             $this->assertStringContainsString(
                 $required,
                 $constraint,
@@ -67,7 +67,7 @@ class ComposerJsonContractTest extends TestCase
     {
         $constraint = $this->composer()['require-dev']['orchestra/testbench'] ?? '';
 
-        foreach (['^9.0', '^10.0', '^11.0'] as $required) {
+        foreach (['^10.0', '^11.0'] as $required) {
             $this->assertStringContainsString(
                 $required,
                 $constraint,

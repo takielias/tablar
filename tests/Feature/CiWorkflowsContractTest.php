@@ -39,11 +39,11 @@ class CiWorkflowsContractTest extends TestCase
         $this->assertStringNotContainsString("'8.2'", $yaml, 'Drop PHP 8.2 — package floor is 8.3.');
     }
 
-    public function test_tests_workflow_runs_l11_l12_l13_matrix(): void
+    public function test_tests_workflow_runs_l12_l13_matrix(): void
     {
         $yaml = $this->tests();
 
-        foreach (['11.*', '12.*', '13.*'] as $laravel) {
+        foreach (['12.*', '13.*'] as $laravel) {
             $this->assertStringContainsString($laravel, $yaml, "tests.yml must include Laravel {$laravel}.");
         }
     }
@@ -96,11 +96,11 @@ class CiWorkflowsContractTest extends TestCase
         $this->assertFileExists(self::FRESH_INSTALL_WORKFLOW);
     }
 
-    public function test_fresh_install_workflow_provisions_l11_l12_l13(): void
+    public function test_fresh_install_workflow_provisions_l12_l13(): void
     {
         $yaml = file_get_contents(self::FRESH_INSTALL_WORKFLOW);
 
-        foreach (['11.*', '12.*', '13.*'] as $laravel) {
+        foreach (['12.*', '13.*'] as $laravel) {
             $this->assertStringContainsString($laravel, $yaml, "fresh-install must cover Laravel {$laravel}.");
         }
     }

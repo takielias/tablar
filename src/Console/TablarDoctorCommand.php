@@ -8,12 +8,12 @@ use Illuminate\Console\Command;
  * `php artisan tablar:doctor` — one-shot environment snapshot.
  *
  * Prints a colour-coded report of the runtime stack so a reviewer can
- * verify the project is on the modern target (PHP 8.3+, Laravel 11+,
+ * verify the project is on the modern target (PHP 8.3+, Laravel 12+,
  * Vite 8, Node 22) without grepping through composer.lock or
  * package-lock.json by hand. Exit code:
  *   0 — all required components present and at the supported floor
  *   1 — at least one critical check failed (missing Vite manifest,
- *       PHP < 8.3, Laravel < 11, etc.)
+ *       PHP < 8.3, Laravel < 12, etc.)
  */
 class TablarDoctorCommand extends Command
 {
@@ -23,7 +23,7 @@ class TablarDoctorCommand extends Command
 
     private const REQUIRED_PHP = '8.3.0';
 
-    private const REQUIRED_LARAVEL_MAJOR = 11;
+    private const REQUIRED_LARAVEL_MAJOR = 12;
 
     public function handle(): int
     {

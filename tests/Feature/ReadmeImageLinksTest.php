@@ -90,9 +90,9 @@ class ReadmeImageLinksTest extends TestCase
             'README must show the dynamic packagist PHP dependency badge.'
         );
         $this->assertMatchesRegularExpression(
-            '/Laravel-11.+12.+13/',
+            '/Laravel-12.+13/',
             $readme,
-            'README must advertise Laravel 11/12/13 support.'
+            'README must advertise Laravel 12/13 support.'
         );
         $this->assertMatchesRegularExpression(
             '/packagist\/l\/takielias\/tablar/',
