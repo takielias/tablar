@@ -23,7 +23,7 @@ Before any install action, verify:
    ```bash
    php artisan --version
    ```
-   tablar-kit supports Laravel 11, 12, 13. If older, abort with a version hint.
+   tablar-kit supports Laravel 12 and 13. If older, abort with a version hint.
 
 3. **master.blade.php published**:
    ```bash
@@ -49,7 +49,7 @@ composer require takielias/tablar-kit
 
 Service provider `TakiElias\TablarKit\TablarKitServiceProvider` is auto-discovered via `extra.laravel.providers` — no manual registration needed.
 
-If composer fails on Laravel version constraint → confirm `composer.json` Laravel constraint matches `^11.0|^12.0|^13.0`. If not, suggest `composer require takielias/tablar-kit:dev-main` as a temporary workaround pending a tagged release.
+If composer fails on Laravel version constraint → confirm `composer.json` Laravel constraint matches `^12.0|^13.0`. If not, suggest `composer require takielias/tablar-kit:dev-main` as a temporary workaround pending a tagged release.
 
 ## Step 2 — Publish config
 
@@ -148,7 +148,7 @@ Every step is safe to re-run. If user invokes the slash command again:
 | `Unable to locate a class or view for component [confirm]` | Service provider not booted (cache stale). | `php artisan optimize:clear` + retry. |
 | Modal opens but does nothing on confirm | CSRF token meta missing. | Add `<meta name="csrf-token" content="{{ csrf_token() }}">` to layout `<head>`. |
 | Modal opens but other Bootstrap dropdowns stop working | Full `bootstrap` bundle imported elsewhere — DataAPI double-bound. | Search project for `import 'bootstrap'` or `from 'bootstrap'`; replace with individual file imports (`bootstrap/js/dist/dropdown` etc.). |
-| `Cannot assign __PHP_Incomplete_Class` Carbon error on file browser | Laravel 11+ cache safeguard rejects deserialized Carbon objects. | Add Carbon to `config('cache.serializable_classes')` allowlist. See `tablar-kit-file-browser-development` skill. |
+| `Cannot assign __PHP_Incomplete_Class` Carbon error on file browser | Laravel 12+ cache safeguard rejects deserialized Carbon objects. | Add Carbon to `config('cache.serializable_classes')` allowlist. See `tablar-kit-file-browser-development` skill. |
 
 ## Related
 

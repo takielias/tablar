@@ -17,7 +17,7 @@ Walk one step at a time. **Pause for user approval before every shell command.**
    ```bash
    php artisan --version
    ```
-   Lab supports Laravel 11.x / 12.x / 13.x.
+   Lab supports Laravel 12.x / 13.x.
 
 2. **PHP ≥ 8.3** (Lab's minimum):
    ```bash
@@ -170,4 +170,4 @@ This is a common pattern — both packages cooperate cleanly because both expect
 
 - Full Lab method reference — defer to dev skill.
 - Blade directive internals (`@alert`, `@submit`) — defer to dev skill.
-- jQuery migration path — phase-7 revamp dropped jQuery; no migration story for L11+ users.
+- jQuery migration path — phase-7 revamp dropped jQuery; no migration story for existing users.
