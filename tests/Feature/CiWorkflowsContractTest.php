@@ -48,6 +48,15 @@ class CiWorkflowsContractTest extends TestCase
         }
     }
 
+    public function test_tests_workflow_fans_laravel_out_as_a_matrix_key(): void
+    {
+        $this->assertMatchesRegularExpression(
+            "/^\s+laravel: \[/m",
+            $this->tests(),
+            'Laravel must be a matrix key, not include-only, or every version but the last is skipped.'
+        );
+    }
+
     public function test_tests_workflow_displays_deprecations(): void
     {
         $this->assertStringContainsString(
