@@ -1,6 +1,6 @@
 ---
 name: tablar-installation-development
-description: Install, upgrade, and configure the takielias/tablar starter kit — composer require, tablar:install, layout selection, post-install patches (SoftDeletes on User, base Controller class for L11+), and recovery from common install failures.
+description: Install, upgrade, and configure the takielias/tablar starter kit — composer require, tablar:install, layout selection, post-install patches (SoftDeletes on User, base Controller class for L12+), and recovery from common install failures.
 ---
 
 # Tablar — Installation
@@ -36,16 +36,23 @@ Then: php artisan tablar:export-auth
 ## What `tablar:install` does
 
 1. Runs `TablarPreset::install()`:
-   - Updates `package.json` dependencies (Tabler core, Vite, sass-embedded, tabler-icons).
+   - Updates `package.json` dependencies (Tabler core, Vite, sass-embedded, tabler-icons). Does not install jQuery — nothing in Tablar uses it. A first install also drops the skeleton's `tailwindcss` and `@tailwindcss/vite`.
    - Updates `vite.config.js` and `resources/sass/tabler.scss`.
    - Updates `resources/js/app.js` bootstrapping.
    - Updates `resources/views/welcome.blade.php`.
    - Removes `node_modules/` (forces a clean `npm install`).
 2. Runs `TablarPreset::exportConfig()` — publishes `config/tablar.php`.
-3. Calls `checkController()` — Laravel 11+ only: rewrites `app/Http/Controllers/Controller.php` to extend `\Illuminate\Routing\Controller`. Idempotent.
+3. Calls `checkController()` — Laravel 12+ only: rewrites `app/Http/Controllers/Controller.php` to extend `\Illuminate\Routing\Controller`. Idempotent.
 4. Calls `patchUserModelForSoftDeletes()` — adds `Illuminate\Database\Eloquent\SoftDeletes` import + trait to `App\Models\User`. Idempotent. Both single-line `use HasFactory, Notifiable;` and multi-line `use HasFactory;\nuse Notifiable;` patterns handled.
 
-`safeCopy()` applies to every published stub: if the destination matches the stub hash → skip silently; if user-modified → prompt or honor `--force`.
+`safeCopy()` applies to every published stub:
+
+- destination missing → write silently
+- destination matches the stub hash → skip silently
+- **first install** (no `config/tablar.php` yet) → write silently; there are no user edits to protect
+- otherwise → prompt, or honor `--force`
+
+Anything skipped is listed at the end of the install, so a skip cannot pass as success. Before this, Laravel's own `vite.config.js` was treated as user-modified on a fresh app, so Tablar's config never landed and the build ran Tabler's Sass through Laravel's Tailwind config.
 
 ## Companion artisan commands
 
@@ -90,9 +97,9 @@ class User extends Authenticatable
 
 Migration to add `deleted_at` is shipped at `database/migrations/2014_10_12_100000_add_soft_deletes_to_users_table.php` via `tablar:export-auth`.
 
-### Base Controller class (L11+)
+### Base Controller class (L12+)
 
-Laravel 11+ ships streamlined `app/Http/Controllers/Controller.php` as `abstract class Controller {}` (no parent). Tablar patches it to:
+Laravel 12+ ships streamlined `app/Http/Controllers/Controller.php` as `abstract class Controller {}` (no parent). Tablar patches it to:
 ```php
 abstract class Controller extends \Illuminate\Routing\Controller
 {

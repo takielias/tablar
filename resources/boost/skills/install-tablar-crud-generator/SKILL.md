@@ -27,7 +27,7 @@ Invoked explicitly by the user. Walk one step at a time. **Pause for user approv
    ```bash
    php artisan --version
    ```
-   Should be 11.x / 12.x / 13.x.
+   Should be 12.x / 13.x.
 
 4. **Already installed?**:
    ```bash
