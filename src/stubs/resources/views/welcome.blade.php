@@ -7,8 +7,8 @@
     <div class="container container-tight py-4">
         <div class="text-center mb-4">
             <a href="{{ url('/') }}" class="navbar-brand navbar-brand-autodark">
-                <img src="{{ asset('assets/static/logo.svg') }}" height="36" alt="Tablar"
-                     onerror="this.style.display='none'">
+                <img src="{{ asset(config('tablar.auth_logo.img.path', 'assets/logo.svg')) }}"
+                     height="36" alt="Tablar">
             </a>
         </div>
 
