@@ -11,6 +11,12 @@ Note: composer name is `takielias/lab` (the GitHub repo is `laravel-ajax-builder
 
 Walk one step at a time. **Pause for user approval before every shell command.**
 
+## When to use this skill
+
+Use it when adding `takielias/lab` to an app so Blade forms can submit over AJAX with the `@submit`, `@alert` and `@invalid` directives and the `Lab` response builder. Also use it when those directives render but nothing happens on submit, which usually means `lab:install` never patched `resources/js/app.js` or the CSRF meta tag is missing.
+
+Do not use it for building flows once the package is installed — that is `laravel-ajax-builder-development`.
+
 ## Pre-flight checks
 
 1. **Laravel version**:
