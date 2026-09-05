@@ -247,7 +247,17 @@ class TablarPreset extends Preset
      */
     protected static function updatePackageArray(array $packages, string $configurationKey = 'devDependencies'): array
     {
-        return array_merge([
+        return array_merge(Arr::except($packages, array_merge([
+            'axios',
+            'choices.js',
+            'laravel-vite-plugin',
+            'postcss',
+            'sass',
+            'sass-loader',
+            'select2',
+            'vite-plugin-static-copy',
+            'vite',
+        ], static::$firstInstall ? ['tailwindcss', '@tailwindcss/vite'] : [])), [
             'bootstrap' => '5.3.8',
             '@tabler/core' => '1.4.0',
             '@popperjs/core' => '^2.11.8',
@@ -274,17 +284,7 @@ class TablarPreset extends Preset
             'sass-embedded' => '^1.99.0',
             'vite' => '^8.0.0',
             'axios' => '^1.7.4',
-        ], Arr::except($packages, array_merge([
-            'axios',
-            'choices.js',
-            'laravel-vite-plugin',
-            'postcss',
-            'sass',
-            'sass-loader',
-            'select2',
-            'vite-plugin-static-copy',
-            'vite',
-        ], static::$firstInstall ? ['tailwindcss', '@tailwindcss/vite'] : [])));
+        ]);
     }
 
     /**

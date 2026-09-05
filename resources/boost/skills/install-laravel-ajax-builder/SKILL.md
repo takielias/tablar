@@ -59,7 +59,7 @@ Do not use it for building flows once the package is installed — that is `lara
 composer require takielias/lab
 ```
 
-Service provider `Takielias\Lab\LabServiceProvider` auto-discovered. Facade alias `Lab` → `Takielias\Lab\Facades\Lab` registered automatically.
+Service provider `TakiElias\Lab\LabServiceProvider` auto-discovered. Facade alias `Lab` → `TakiElias\Lab\Facades\Lab` registered automatically.
 
 ## Step 2 — Run lab:install
 
