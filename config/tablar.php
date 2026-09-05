@@ -136,7 +136,7 @@ return [
     | Display Alert Visibility.
     |
     */
-    'display_alert' => false,
+    'display_alert' => true,
 
     /*
     |--------------------------------------------------------------------------
