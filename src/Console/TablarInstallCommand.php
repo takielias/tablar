@@ -9,6 +9,7 @@ class TablarInstallCommand extends Command
 {
     protected $signature = 'tablar:install
         {--force : Overwrite user-modified files without prompting}
+        {--with-auth : Also export the auth scaffolding and its migrations}
         {--no-credits : Suppress the GitHub-star credits line}';
 
     protected $description = 'Install Tablar scaffolding and export config';
@@ -23,6 +24,10 @@ class TablarInstallCommand extends Command
         $this->checkController();
         $this->patchUserModelForSoftDeletes();
 
+        if ($this->option('with-auth')) {
+            TablarPreset::exportAuth();
+        }
+
         $major = (int) explode('.', app()->version())[0];
 
         $skipped = TablarPreset::skippedFiles();
@@ -36,8 +41,13 @@ class TablarInstallCommand extends Command
         }
 
         $this->info("✅ Tablar installed (Laravel {$major}).");
-        $this->line('Next: php artisan tablar:export-auth');
-        $this->line('Then: php artisan migrate');
+        if ($this->option('with-auth')) {
+            $this->line('Next: php artisan migrate');
+        } else {
+            $this->line('Next: php artisan tablar:export-auth');
+            $this->line('Then: php artisan migrate');
+        }
+
         $this->line('Then: npm install && npm run dev');
 
         if (! $this->option('no-credits')) {

@@ -342,11 +342,15 @@ class TablarPreset extends Preset
         copy(__DIR__.'/stubs/routes/auth.php', base_path('routes/auth.php'));
 
         // Add route includes to web.php
-        file_put_contents(
-            base_path('routes/web.php'),
-            "require __DIR__.'/auth.php';\n\nRoute::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');\n\n",
-            FILE_APPEND
-        );
+        $webRoutes = base_path('routes/web.php');
+
+        if (! str_contains(file_get_contents($webRoutes), "require __DIR__.'/auth.php'")) {
+            file_put_contents(
+                $webRoutes,
+                "require __DIR__.'/auth.php';\n\nRoute::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');\n\n",
+                FILE_APPEND
+            );
+        }
 
         tap(new Filesystem, function ($filesystem) {
             $filesystem->copyDirectory(__DIR__.'/stubs/resources/views', resource_path('views'));

@@ -16,8 +16,11 @@ class MigrateHintOrderTest extends TestCase
     {
         $source = file_get_contents(__DIR__.'/../../src/Console/TablarInstallCommand.php');
 
-        $exportAuth = strpos($source, 'php artisan tablar:export-auth');
-        $migrate = strpos($source, 'php artisan migrate');
+        preg_match("/else \{(.+?)\}/s", $source, $branch);
+        $this->assertNotEmpty($branch, 'Expected an else branch for the plain install.');
+
+        $exportAuth = strpos($branch[1], 'php artisan tablar:export-auth');
+        $migrate = strpos($branch[1], 'php artisan migrate');
 
         $this->assertNotFalse($exportAuth);
         $this->assertNotFalse($migrate);
