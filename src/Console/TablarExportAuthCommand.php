@@ -15,5 +15,6 @@ class TablarExportAuthCommand extends Command
     {
         TablarPreset::exportAuth();
         $this->info('Tablar auth scaffolding installed successfully.');
+        $this->line('Next: php artisan migrate');
     }
 }
