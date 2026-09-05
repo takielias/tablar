@@ -7,15 +7,25 @@ use TakiElias\Tablar\TablarPreset;
 
 class TablarUpdateCommand extends Command
 {
-    protected $signature = 'tablar:update';
+    protected $signature = 'tablar:update {--force : Overwrite files you have modified}';
 
     protected $description = 'Update Tablar scaffolding and export config';
 
     public function handle()
     {
+        TablarPreset::useCommand($this, force: (bool) $this->option('force'));
         TablarPreset::update();
         $this->updateTablarJsImport();
         $this->updateTablerCssImport();
+
+        $skipped = TablarPreset::skippedFiles();
+
+        if ($skipped !== []) {
+            $this->warn('Kept your version of: '.implode(', ', $skipped));
+            $this->warn('Re-run with --force to replace them.');
+            $this->newLine();
+        }
+
         $this->info('Tablar has been updated successfully.');
         $this->comment('Please run "npm install" first. Once the installation is done, run "npm run dev"');
     }

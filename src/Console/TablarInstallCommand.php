@@ -36,7 +36,8 @@ class TablarInstallCommand extends Command
         }
 
         $this->info("✅ Tablar installed (Laravel {$major}).");
-        $this->line('Next: npm install && npm run dev');
+        $this->line('Next: php artisan migrate');
+        $this->line('Then: npm install && npm run dev');
         $this->line('Then: php artisan tablar:export-auth');
 
         if (! $this->option('no-credits')) {
